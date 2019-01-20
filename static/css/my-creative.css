@@ -1,0 +1,30 @@
+/*-----------------------------------*/
+/* main.css: Add and override styles */
+/*-----------------------------------*/
+
+/* ADD background color to intro text */
+.intro-text-background {
+        padding: 50px 0px;
+        background-color: rgba(245, 245, 245, 0.8);
+        border-radius: 6rem;
+}
+
+/* CHANGE color to text */
+.intro-lead-in {
+       color: #6c757d /* Raven */
+}
+
+/* CHANGE color to text */
+.intro-heading {
+       color: #6c757d /* Raven */
+}
+
+/* ADD radius to buttons */
+.btn {
+        border-radius: 300px;       
+}
+
+/* CHANGE color on button hover */
+.btn-primary:hover {
+    color: black !important;
+}
