@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+                                                          <title> Data Centric Development Project "REGISTER_USER.HTML" (Paul Bennett) </title>
+    <!-- Include standard links                       --> {% include 'head.html' %}                                                       
+    <!-- My Custom styles for this template           --> <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/my-creative.css') }}"> 
+</head>
+ 
+<body> 
+<!-- Bootstrap theme (Creative) downloaded from  https://github.com/BlackrockDigital/startbootstrap-agency -->
+    <body id="page-top">
+
+    <!-- Navigation Navbar -->
+    {% include 'navbar_home.html' %}
+<section class="masthead text-center" id="signin_header">
+     <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-6 col-sm-6 text-center">
+                        <h2 class="text-center text-dark"> {{ category }} Quiz ? </h2>
+                        <hr class="light mb-4">
+                        <img class="rounded mx-auto img-thumbnail" src="{{ img_id }}" alt="{{ category }}">
+                        <p> </p>
+                        <p> If you have already registered then enter your USERNAME and click on the <span class="text-light"> Sign in to Play   </span> <span class="text-dark"> Button </span> </p>
+                        <p> If you enter a unregistered USERNAME click on the                        <span class="text-light"> Register Here     </span> <span class="text-dark"> Link   </span> </p>
+                    </div>
+                    
+                    <div class="col-lg-6 col-sm-6 text-center" id="right_column">
+                        <h4 class="text-center text-light"> <p> Already Registered? </p> </h4>
+                        <form method="POST" action="{{ url_id }}" autocomplete="off"> <!-- Disabled autocompletion --> 
+                            <p> <div class="input-group justify-content-center">
+                             <input id="get_username" type="text" class="form-control" name="get_username" placeholder="Enter your username here" autofocus required>
+                            </div> </p>
+                            <button type ="submit" class="btn btn-light btn-rounded text-dark" value="signin"> Sign in to Play </button> </a>
+                        </form>
+                        
+                        <p> </p>
+                        <p <h4 class="text-center text-dark">
+                          {% if signin_message %}  
+                            {{ signin_message }} <span class="text-light"> &nbsp;{{ username_player.upper() }}&nbsp; </span> <span class="text-dark"> has not been registered. </span>
+                            <a href="{{ urlforname }}"> <button type ="button" class="btn btn-link text-capitalize text-light"> Register here </button> </a>
+                          {% endif %}
+                       </p>   
+                    </div>
+
+                </divS
+            </div>    
+    </section>	
+    
+     <!-- Footer -->
+    {% include 'footer.html' %}
+    
+    <!-- Script -->
+    {% include 'script.html' %} 
+</body>
+ 
+</html>      
