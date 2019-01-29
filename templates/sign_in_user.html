@@ -1,5 +1,95 @@
-{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="en">
 
-{% block content %}
+<head>
+                                                          <title> Data Centric Development Project "SIGN_IN_USER.HTML" (Paul Bennett) </title>
+    <!-- Include standard links                       --> {% include 'head.html' %}                                                       
+    <!-- My Custom styles for this template           --> <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/my-creative.css') }}"> 
+</head>
+ 
+<!-- Bootstrap theme (Creative) downloaded from  https://github.com/BlackrockDigital/startbootstrap-agency -->
+<body id="page-top">
 
-{% endblock %}
+  <!-- Navigation Navbar -->
+  {% include 'navbar_home.html' %}
+  
+  
+  <section>
+    <div class="container">
+        
+        <div class="row">
+            {% include 'messaging.html' %} 
+            <div class="content-section mx-auto">
+                
+                <form method="POST" action="" autocomplete="off"> <!-- Disabled autocompletion --> 
+                    {{ form.hidden_tag() }}
+                    <fieldset class="form-group"
+                        <legend class="border-bottom mb-4"> Sign-in to account </legend> 
+                        
+                        <!-- Username -->
+                        <div class="form-group">
+                            {{ form.username.label(class="form-control-label") }}
+                            <!--Check if form had Errors -->
+                            {% if form.username.errors %}
+                                {{ form.username(class="form-control form-control-lg is-invalid") }}
+                                <div class="invalid-feedback" >
+                                    {% for error in form.username.errors %}
+                                        <span> {{ error }} </span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}  
+                                {{ form.username(class="form-control form-control-lg") }}
+                            {% endif %}
+                        </div>
+                        
+                        <!-- Password -->
+                        <div class="form-group">
+                            {{ form.password.label(class="form-control-label") }}
+                            <!--Check if form had Errors -->
+                            {% if form.password.errors %}
+                                {{ form.password(class="form-control form-control-lg is-invalid") }}
+                                <div class="invalid-feedback" >
+                                    {% for error in form.password.errors %}
+                                        <span> {{ error }} </span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}  
+                                {{ form.password(class="form-control form-control-lg") }}
+                            {% endif %}
+                        </div>
+                        <div class="form-check">
+                            {{ form.remember(class="form-check-input") }}
+                            {{ form.remember.label(class="form-check-label") }}
+                        </div>
+                        
+                    </fieldset>
+                     <!-- Forgot Password? -->
+                    <div class="form-group">
+                       {{ form.submit(class="btn btn-outline-info") }} 
+                    </div>
+                    <small class="text-muted ml-2"> </small>
+                        <a href="#"> Forgot Password? </a>
+                </form>
+                
+            </div>
+        </div>
+        
+        <!-- Not Registered? -->
+        <div class="border-top pt-3">
+            <small class="text-muted">
+                Not Registered? <a class="ml-2" href="{{ url_for('register_user') }}"> Register Now </a>
+                                <a class="btn btn-outline-info" href="/home"> Cancel  </a>
+            </small>
+        </div>
+        
+    </div> 
+  </section>
+
+  <!-- Footer -->
+  {% include 'footer.html' %}
+          
+  <!-- Script -->
+  {% include 'script.html' %}
+  
+</body>
+</html>      

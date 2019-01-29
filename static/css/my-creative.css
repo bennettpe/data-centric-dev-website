@@ -29,6 +29,8 @@
     color: black !important;
 }
 
-#mainNav {
-  background-color: #212529;
+
+/* ADD spacing to Top of page Button */
+.btn-space {
+    margin: 10px;
 }

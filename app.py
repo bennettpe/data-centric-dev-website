@@ -1,31 +1,74 @@
 import os
 from flask import Flask, flash, redirect, render_template, request, session, url_for
 from flask_pymongo import PyMongo
-from bson.objectid import ObjectId
+from bson.objectid import ObjectId 
+from flask_bcrypt import Bcrypt
+from flask_wtf import FlaskForm
+from forms import RegisterForm, SigninForm
+#from flask_login import logon_user
 
 app = Flask(__name__)
+app.secret_key = '5149fde2f2f15a6f77dddf0f319b20c6'
+
+# BCRYPT CONFIGURATION
+bcrypt = Bcrypt(app)
 
 # MONGODB CONFIGURATION
 app.config["MONGO_DBNAME"] = 'task_manager'
-app.config["MONGO_URI"] = 'mongodb://admin_cookbook:Data_Centric_development_project04@ds229790.mlab.com:29790/online_cookbook'
+app.config["MONGO_URI"] = 'mongodb://admin_cookbook:project04@ds213665.mlab.com:13665/online_cookbook'
+                           
 mongo = PyMongo(app)
+
 
 # INDEX/HOME PAGE
 @app.route('/')
-
-@app.route('/base')
-def base():
+@app.route('/home')
+def home():
     return render_template('base.html') 
 
-# REGISTER USER
-@app.route('/register_user')
+#REGISTER NEW USER via WTForm
+@app.route('/register_user', methods=['GET', 'POST'])
 def register_user():
-    return render_template("register_user.html")
+    form = RegisterForm()
+        
+    if request.method == 'POST'and form.validate_on_submit():
+        users = mongo.db.users
+        existing_user = users.find_one({'username' : request.form['username']})
+        
+        # Check for existing user to avoid re-registering existing user
+        if existing_user is None:
+            # hash password using flask-bcrypt
+            hashed_password = bcrypt.generate_password_hash(request.form['password']).decode('utf-8')
+            # insert username & hashed password into mongo.db.users
+            users.insert({'username':  request.form['username'], 'password' : hashed_password})
+            session['username'] = request.form['username']
+            flash('Your username has been created! You are now able to log in', 'success')
+            return redirect(url_for('sign_in_user'))
+        
+        flash('Username already exists!, Please enter another Username', 'error')
+    return render_template("register_user.html", title='Register', form=form)
     
-# SIGN IN USER
-@app.route('/sign_in_user')
+#SIGN IN USER via WTForm
+@app.route('/sign_in_user',methods=['GET', 'POST'])
 def sign_in_user():
-    return render_template("sign_in_user.html")  
+    form = SigninForm()
+        
+    if request.method == 'POST' and form.validate_on_submit(): 
+            users = mongo.db.users
+            user_signin   = users.find_one({'username' : request.form['username']})
+            
+            # Check if username exsits in mongodb.
+            if user_signin is not None:
+                # Check if hashed password in mongo.db.users = password entered in WTForm.
+                if bcrypt.check_password_hash(user_signin['password'],(request.form['password']).encode('utf-8')):
+                   session['username'] = request.form['username']
+                   flash('Username and Password Matched', 'success')
+                   return redirect(url_for('search_recipes'))
+                   
+            flash('Username and or Password Not Matched', 'error')       
+            return redirect(url_for('sign_in_user'))
+        
+    return render_template("sign_in_user.html", title='Signin', form=form)
     
 # ADD FORM RECIPE
 @app.route('/add_form_recipe')
