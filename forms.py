@@ -13,5 +13,4 @@ class RegisterForm(FlaskForm):
 class SigninForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired(), Length(min=5, max=15)])
     password = PasswordField('Password', validators=[DataRequired()]) 
-    remember = BooleanField('Remember Me')
     submit   = SubmitField('Sign In') 

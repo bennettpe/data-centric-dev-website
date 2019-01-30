@@ -24,7 +24,7 @@
                 <form method="POST" action="" autocomplete="off"> <!-- Disabled autocompletion --> 
                     {{ form.hidden_tag() }}
                     <fieldset class="form-group"
-                        <legend class="border-bottom mb-4"> Sign-in to account </legend> 
+                        <h3 class="border-bottom mb-4"> Sign-in to account </h3> 
                         
                         <!-- Username -->
                         <div class="form-group">
@@ -57,28 +57,24 @@
                                 {{ form.password(class="form-control form-control-lg") }}
                             {% endif %}
                         </div>
-                        <div class="form-check">
-                            {{ form.remember(class="form-check-input") }}
-                            {{ form.remember.label(class="form-check-label") }}
-                        </div>
                         
                     </fieldset>
-                     <!-- Forgot Password? -->
+                    
+                     <!-- Sign in  -->
                     <div class="form-group">
-                       {{ form.submit(class="btn btn-outline-info") }} 
+                       {{ form.submit(class="btn btn-outline-warning ml-2 mr-5") }}
+                       <a class="btn btn-outline-warning ml-5 mr-2" href="/home"> Cancel  </a>
                     </div>
-                    <small class="text-muted ml-2"> </small>
-                        <a href="#"> Forgot Password? </a>
                 </form>
                 
             </div>
         </div>
         
         <!-- Not Registered? -->
-        <div class="border-top pt-3">
+        <div class="text-center">
+            <br>
             <small class="text-muted">
-                Not Registered? <a class="ml-2" href="{{ url_for('register_user') }}"> Register Now </a>
-                                <a class="btn btn-outline-info" href="/home"> Cancel  </a>
+                Not Registered? <a class="ml-2" href="{{ url_for('register_user') }}"> Click Here To Register Account </a>
             </small>
         </div>
         
