@@ -19,6 +19,9 @@
             <div class="content-section mx-auto">
                 <h3 class="text-center text-muted"> Register an account </h3> <br>
                 
+                <!-- Flash Messaging -->
+                {% include 'messaging.html' %}
+                
                 <form method="POST" action="" autocomplete="off"> <!-- Disabled autocompletion --> 
                     {{ form.hidden_tag() }}
                     <fieldset class="form-group"

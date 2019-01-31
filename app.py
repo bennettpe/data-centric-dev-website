@@ -30,11 +30,6 @@ def home():
 @app.route('/register_user', methods=['GET', 'POST'])
 def register_user():
     form = RegisterForm()
-    message =[]
-    
-    if 'usename' in session:
-        return render_template('register_user.html',
-                                message="You are already signed in and registered!")
                                 
     if form.validate_on_submit():
         users = mongo.db.users
@@ -48,7 +43,8 @@ def register_user():
             users.insert({'username':  request.form['username'], 'password' : hashed_password})
             session['username'] = request.form['username']
             return redirect(url_for('sign_in_user'))
-        return render_template('register_user.html')    
+        else:
+            flash("Username already registered", 'danger')     
         
     return render_template("register_user.html", title='Register', form=form)
     
@@ -56,23 +52,19 @@ def register_user():
 @app.route('/sign_in_user',methods=['GET', 'POST'])
 def sign_in_user():
     form = SigninForm()
-    message =[]
     
-    if 'usename' in session:
-        return render_template('base.html',
-                                message="You are already signed in!")
-                                
     if form.validate_on_submit(): 
-        users = mongo.db.users
-        user_signin   = users.find_one({'username' : request.form['username']})
+         users = mongo.db.users
+         user_signin   = users.find_one({'username' : request.form['username']})
             
-        # Check if username exsits in mongodb.
-        if user_signin:
+         # Check if username exsits in mongodb.
+         if user_signin:
             # Check if hashed password in mongo.db.users = password entered in WTForm.
             if bcrypt.check_password_hash(user_signin['password'],(request.form['password']).encode('utf-8')):
                 session['username'] = request.form['username']
                 return redirect(url_for('search_recipes'))
-        return render_template('sign_in_user.html', message='Invalid username or password')
+         else: 
+             flash("Invalid username or password", 'danger')    
         
     return render_template("sign_in_user.html", title='Signin', form=form)
     

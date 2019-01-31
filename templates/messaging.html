@@ -1,23 +1,67 @@
-<!-- Flash Messaging -->
-<div class="container mt-4">
+<!-- Flash Messaging Alerts with categories -->
+<!-- Downloaded from Pretty Printed https://youtu.be/lcVdZtVvnnk  -->
+
+<div class="container mt-4 text-center">
   {% with messages = get_flashed_messages(with_categories=true) %}
         {% if messages %}
             {%for category, message in messages %}
+            
+              <!-- Primary Message -->
+              {% if category == 'danger' %}
+                <div class="alert alert-primary mb3" role="alert">
+                  {{ message }} 
+                </div>  
+              {% endif %}
+              
+              <!-- Secondary Message -->
+              {% if category == 'danger' %}
+                <div class="alert alert-secondary mb3" role="alert">
+                  {{ message }} 
+                </div>  
+              {% endif %}
               
               <!-- Success Message -->
               {% if category == 'success' %}
                 <div class="alert alert-success mb3" role="alert">
-                  {{ message }}
-                </div>
-              {% endif %}
-          
-              <!-- Error Message -->
-              {% if category == 'error' %}
-                <div class="alert alert-danger mb3" role="alert">
-                  {{ message }}
+                  {{ message }} 
                 </div>  
               {% endif %}
-            
+              
+              <!-- Danger Message -->
+              {% if category == 'danger' %}
+                <div class="alert alert-danger mb3" role="alert">
+                  {{ message }} 
+                </div>  
+              {% endif %}
+          
+              <!-- Warning Message -->
+              {% if category == 'warning' %}
+                <div class="alert alert-warning mb3" role="alert">
+                  {{ message }} 
+                </div>
+              {% endif %}  
+                
+              <!-- Info Message -->
+              {% if category == 'info' %}
+                <div class="alert alert-info mb3" role="alert">
+                  {{ message }} 
+                </div>
+              {% endif %}  
+                
+              <!-- Light Message -->
+              {% if category == 'light' %}
+                <div class="alert alert-light mb3" role="alert">
+                  {{ message }} 
+                </div>
+              {% endif %}  
+                
+              <!-- Dark Message -->
+              {% if category == 'dark' %}
+                <div class="alert alert-dark mb3" role="alert">
+                  {{ message }} 
+                </div>
+              {% endif %}
+              
             {% endfor %}
       {% endif %}
   {% endwith %}
