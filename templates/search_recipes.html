@@ -1,5 +1,14 @@
-{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="en">
 
-{% block content %}
+<head>
+                                                          <title> Data Centric Development Project "SEARCH_RECIPES.HTML" (Paul Bennett) </title>
+    <!-- Include standard links                       --> {% include 'head.html' %}                                                       
+    <!-- My Custom styles for this template           --> <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/my-creative.css') }}"> 
+</head>
+ 
+<!-- Bootstrap theme (Creative) downloaded from  https://github.com/BlackrockDigital/startbootstrap-agency -->
+<body id="page-top">
 
-{% endblock %}
+  <!-- Navigation Navbar -->
+  {% include 'navbar_recipes.html' %}

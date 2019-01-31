@@ -16,16 +16,13 @@
   
   <section>
     <div class="container">
-        
         <div class="row">
-            {% include 'messaging.html' %} 
             <div class="content-section mx-auto">
+                <h3 class="text-center text-muted"> Sign-in to account </h3> <br>
                 
                 <form method="POST" action="" autocomplete="off"> <!-- Disabled autocompletion --> 
                     {{ form.hidden_tag() }}
                     <fieldset class="form-group"
-                        <h3 class="border-bottom mb-4"> Sign-in to account </h3> 
-                        
                         <!-- Username -->
                         <div class="form-group">
                             {{ form.username.label(class="form-control-label") }}
@@ -57,27 +54,24 @@
                                 {{ form.password(class="form-control form-control-lg") }}
                             {% endif %}
                         </div>
-                        
                     </fieldset>
                     
                      <!-- Sign in  -->
-                    <div class="form-group">
-                       {{ form.submit(class="btn btn-outline-warning ml-2 mr-5") }}
-                       <a class="btn btn-outline-warning ml-5 mr-2" href="/home"> Cancel  </a>
+                        <div class=class="form-group">
+                           {{ form.submit(class="btn btn-outline-warning mx-5") }} 
+                           <a class="btn btn-outline-warning mx-5" href="/home"> Cancel <i class="far fa-times-circle"></i> </a>
+                       </div>
+                    
+                    <!-- Not Registered? -->
+                    <div class="mt-3 text-center"> <br>
+                        <small class="text-muted">
+                            Not Registered? <a class="ml-2" href="{{ url_for('register_user') }}"> Click Here To Register Account </a>
+                        </small>
                     </div>
                 </form>
                 
             </div>
         </div>
-        
-        <!-- Not Registered? -->
-        <div class="text-center">
-            <br>
-            <small class="text-muted">
-                Not Registered? <a class="ml-2" href="{{ url_for('register_user') }}"> Click Here To Register Account </a>
-            </small>
-        </div>
-        
     </div> 
   </section>
 

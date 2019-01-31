@@ -30,8 +30,13 @@ def home():
 @app.route('/register_user', methods=['GET', 'POST'])
 def register_user():
     form = RegisterForm()
-        
-    if request.method == 'POST'and form.validate_on_submit():
+    message =[]
+    
+    if 'usename' in session:
+        return render_template('register_user.html',
+                                message="You are already signed in and registered!")
+                                
+    if form.validate_on_submit():
         users = mongo.db.users
         existing_user = users.find_one({'username' : request.form['username']})
         
@@ -42,31 +47,32 @@ def register_user():
             # insert username & hashed password into mongo.db.users
             users.insert({'username':  request.form['username'], 'password' : hashed_password})
             session['username'] = request.form['username']
-            flash('Your username has been created! You are now able to log in', 'success')
             return redirect(url_for('sign_in_user'))
+        return render_template('register_user.html')    
         
-        flash('Username already exists!, Please enter another Username', 'error')
     return render_template("register_user.html", title='Register', form=form)
     
 #SIGN IN USER via WTForm
 @app.route('/sign_in_user',methods=['GET', 'POST'])
 def sign_in_user():
     form = SigninForm()
-        
-    if request.method == 'POST' and form.validate_on_submit(): 
-            users = mongo.db.users
-            user_signin   = users.find_one({'username' : request.form['username']})
+    message =[]
+    
+    if 'usename' in session:
+        return render_template('base.html',
+                                message="You are already signed in!")
+                                
+    if form.validate_on_submit(): 
+        users = mongo.db.users
+        user_signin   = users.find_one({'username' : request.form['username']})
             
-            # Check if username exsits in mongodb.
-            if user_signin is not None:
-                # Check if hashed password in mongo.db.users = password entered in WTForm.
-                if bcrypt.check_password_hash(user_signin['password'],(request.form['password']).encode('utf-8')):
-                   session['username'] = request.form['username']
-                   flash('Username and Password Matched', 'success')
-                   return redirect(url_for('search_recipes'))
-                   
-            flash('Username and or Password Not Matched', 'error')       
-            return redirect(url_for('sign_in_user'))
+        # Check if username exsits in mongodb.
+        if user_signin:
+            # Check if hashed password in mongo.db.users = password entered in WTForm.
+            if bcrypt.check_password_hash(user_signin['password'],(request.form['password']).encode('utf-8')):
+                session['username'] = request.form['username']
+                return redirect(url_for('search_recipes'))
+        return render_template('sign_in_user.html', message='Invalid username or password')
         
     return render_template("sign_in_user.html", title='Signin', form=form)
     
