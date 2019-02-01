@@ -26,6 +26,7 @@ mongo = PyMongo(app)
 def home():
     return render_template('base.html') 
 
+
 #REGISTER NEW USER via WTForm
 @app.route('/register_user', methods=['GET', 'POST'])
 def register_user():
@@ -47,6 +48,7 @@ def register_user():
             flash("Username already registered", 'danger')     
         
     return render_template("register_user.html", title='Register', form=form)
+
     
 #SIGN IN USER via WTForm
 @app.route('/sign_in_user',methods=['GET', 'POST'])
@@ -54,19 +56,33 @@ def sign_in_user():
     form = SigninForm()
     
     if form.validate_on_submit(): 
-         users = mongo.db.users
-         user_signin   = users.find_one({'username' : request.form['username']})
-            
-         # Check if username exsits in mongodb.
-         if user_signin:
-            # Check if hashed password in mongo.db.users = password entered in WTForm.
-            if bcrypt.check_password_hash(user_signin['password'],(request.form['password']).encode('utf-8')):
-                session['username'] = request.form['username']
-                return redirect(url_for('search_recipes'))
-         else: 
-             flash("Invalid username or password", 'danger')    
+         if 'username' in session:
+              flash("You are already signed in!")
+         else:      
+             users = mongo.db.users
+             user_signin   = users.find_one({'username' : request.form['username']})
+         
+             # Check if username exsits in mongodb.
+             if user_signin:
+                 # Check if hashed password in mongo.db.users = password entered in WTForm.
+                  if bcrypt.check_password_hash(user_signin['password'],(request.form['password']).encode('utf-8')):
+                      session['username'] = request.form['username']
+                      return redirect(url_for('search_recipes'))
+                  else: 
+                      flash("Invalid username or password", 'danger')    
         
     return render_template("sign_in_user.html", title='Signin', form=form)
+
+
+#SIGN OUT USER
+@app.route('/sign_out_user',methods=['GET', 'POST'])
+def sign_out_user():
+    if request.method == 'GET':
+        session.pop('username', None)
+        session.pop('_flashes', None)
+        flash("you have signed out", 'success')
+    return render_template("base.html")    
+        
     
 # ADD FORM RECIPE
 @app.route('/add_form_recipe')

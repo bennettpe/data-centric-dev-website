@@ -18,31 +18,34 @@
           <img src="./static/images/website/cooking_pot_logo.png" width="75" height="50" class="d-inline-block align-top" alt=""> 
           The Recipe Collection 
         </a>
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler navbar-toggler-right" 
+                 type="button" 
+                 data-toggle="collapse" 
+                 data-target="#navbarResponsive" 
+                 aria-controls="navbarResponsive" 
+                 aria-expanded="false" 
+                 aria-label="Toggle navigation">
           <i class="fas fa-bars"></i>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav text-uppercase ml-auto">
-            <li class="nav-item"> 
-              <a class="nav-link js-scroll-trigger" href="{{ url_for('home') }}"> Home <i class="fas fa-home fa-lg"></i> </a>
-            </li>
-            <li class="nav-item"> 
-              <a class="nav-link js-scroll-trigger" href="{{ url_for('list_all_recipes') }}"> All Recipes <i class="fas fa-utensils fa-lg"></i> </a>
-            </li>
-            <li class="nav-item"> 
-             <a class="nav-link js-scroll-trigger" href="{{ url_for('sign_in_user') }}"> Sign In <i class="fas fa-sign-in-alt fa-lg"></i> </a>
-            </li>
-            <li class="nav-item"> 
-             <a class="nav-link js-scroll-trigger" href="{{ url_for('register_user') }}"> Register <i class="fas fa-user-plus fa-lg"></i> </a>
-            </li>
-            <li class="nav-item"> 
-             <a class="nav-link js-scroll-trigger" href="{{ url_for('site_statistics') }}"> Site Stats <i class="fas fa-chart-line fa-lg"></i> </a>
-            </li>
+          <ul class="navbar-nav mx-auto">
+              <li class="nav-item"> <a class="nav-link js-scroll-trigger" href="{{ url_for('home') }}"> Home <i class="fas fa-home fa-lg"> </i></a></li>
+              <li class="nav-item"> <a class="nav-link js-scroll-trigger" href="{{ url_for('list_all_recipes') }}"> All Recipes <i class="fas fa-utensils fa-lg"> </i></a></li>
+            {% if 'username' in session %}
+              <li class="nav-item"> <a class="nav-link js-scroll-trigger" href="{{ url_for('add_form_recipe') }}"> Add Recipes <i class="fas fa-sign-in-alt fa-lg"> </i></a></li>
+              <li class="nav-item"> <a class="nav-link js-scroll-trigger" href="{{ url_for('my_recipes') }}"> My Recipes <i class="fas fa-book fa-lg"> </i></a></li>
+              <li class="nav-item"> <a class="nav-link js-scroll-trigger" href="{{ url_for('sign_out_user') }}"> Sign Out <i class="fas fa-sign-in-alt fa-lg"> </i></a></li> 
+            {% else %}   
+              <li class="nav-item"> <a class="nav-link js-scroll-trigger" href="{{ url_for('sign_in_user') }}"> Sign In  <i class="fas fa-sign-in-alt fa-lg"> </i></a></li>
+              <li class="nav-item"> <a class="nav-link js-scroll-trigger" href="{{ url_for('register_user') }}"> Register <i class="fas fa-user-plus fa-lg"> </i></a></li>
+            {% endif %}
+              <li class="nav-item"> <a class="nav-link js-scroll-trigger" href="{{ url_for('site_statistics') }}"> Site Stats <i class="fas fa-chart-line fa-lg"> </i></a></li>
           </ul>
         </div>
       </div> 
     </nav>
-
+    
+    
     <!-- Header -->
     <header class="masthead text-center text-white d-flex" style=”background-image: url(‘static/img/header.jpg’)"> <!-- Add Style= to override header background image -->  
       <div class="container">
@@ -50,15 +53,25 @@
           <div class="intro-text-background">
             <div class="intro-lead-in"> Welcome To </div>
             <div class="intro-heading text-uppercase"> The Recipe Collection </div> 
-             <p class="text-dark mb-2"> SIGN IN to add your own recipe(s) </p> </br>
-             <a class="btn btn-primary btn-lg btn-rounded text-uppercase js-scroll-trigger" href="/register_user"> Register </a>
-             <a class="btn btn-primary btn-lg btn-rounded text-uppercase js-scroll-trigger" href="/list_all_recipes"> Browse Recipes </a>
-             <a class="btn btn-primary btn-lg btn-rounded text-uppercase js-scroll-trigger" href="/sign_in_user"> Sign In </a>
+             {% if 'username' in session %}
+               <a class="btn btn-primary btn-lg btn-rounded js-scroll-trigger" href="/add_form_recipe"> Add Recipes </a>
+               <a class="btn btn-primary btn-lg btn-rounded js-scroll-trigger" href="/list_all_recipes"> All Recipes </a>
+               <a class="btn btn-primary btn-lg btn-rounded js-scroll-trigger" href="/my_recipes"> My Recipes </a>
+             {% else %}
+               <p class="text-dark mb-2"> SIGN IN to add your own recipe(s) </p> </br>
+               <a class="btn btn-primary btn-lg btn-rounded js-scroll-trigger" href="/register_user"> Register </a>
+               <a class="btn btn-primary btn-lg btn-rounded js-scroll-trigger" href="/sign_in_user"> Sign In </a>
+             {% endif %}
           </div>
         </div> 
       </div>
     </header>
+ 
+    
+    <!-- Flash Messaging -->
+    {% include 'messaging.html' %}
 
+    
     <!-- Filter -->
     <section id="filter-by">
       <div class="container">
@@ -97,50 +110,17 @@
       </div>
     </section>
 
-    <!-- Portfolio Modals -->
-
-    <!-- Modal 1 -->
-    <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="close-modal" data-dismiss="modal">
-            <div class="lr">
-              <div class="rl"></div>
-            </div>
-          </div>
-          <div class="container">
-            <div class="row">
-              <div class="col-lg-8 mx-auto">
-                <div class="modal-body">
-                  <!-- Project Details Go Here -->
-                  <h2 class="text-uppercase">Project Name</h2>
-                  <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
-                  <img class="img-fluid d-block mx-auto" src="static/img/portfolio/01-full.jpg" alt="">
-                  <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
-                  <ul class="list-inline">
-                    <li>Date: January 2017</li>
-                    <li>Client: Threads</li>
-                    <li>Category: Illustration</li>
-                  </ul>
-                  <button class="btn btn-primary" data-dismiss="modal" type="button">
-                    <i class="fas fa-times"></i>
-                    Close Project</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
     
     {% block content %}
     {% endblock %}  
+
     
     <!-- Footer -->
     {% include 'footer.html' %}
+
           
     <!-- Script -->
     {% include 'script.html' %} 
+    
   </body>
-
 </html>    
