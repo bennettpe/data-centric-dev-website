@@ -24,11 +24,15 @@
         border-radius: 300px;       
 }
 
+/* CHANGE color on button border */
+.btn-primary {
+  border-color: #6c757d; /* Raven */
+}
+
 /* CHANGE color on button hover */
 .btn-primary:hover {
     color: black !important;
 }
-
 
 /* ADD spacing to Top of page Button */
 .btn-space {

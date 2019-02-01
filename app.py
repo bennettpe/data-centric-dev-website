@@ -24,7 +24,11 @@ mongo = PyMongo(app)
 @app.route('/')
 @app.route('/home')
 def home():
-    return render_template('base.html') 
+    if 'username' in session:
+        return render_template('base.html',
+        welcome_message ='Welcome ' + str(session['username']) + ' To') 
+    return render_template('base.html',
+        welcome_message ='Welcome To')
 
 
 #REGISTER NEW USER via WTForm
@@ -87,42 +91,51 @@ def sign_out_user():
 # ADD FORM RECIPE
 @app.route('/add_form_recipe')
 def add_form_recipe():
-    return render_template("add_form_recipe.html") 
+    return render_template('add_form_recipe.html')
+
     
 # EDIT FORM RECIPE
 @app.route('/edit_form_recipe')
 def edit_form_recipe():
     return render_template("edit_form_recipe.html") 
+ 
     
 # LIST CUISINE RECIPES
 @app.route('/list_cuisine_recipes')
 def list_cuisine_recipes():
     return render_template("list_cuisine_recipes.html") 
+
     
 # LIST ALL RECIPES
 @app.route('/list_all_recipes')
 def list_all_recipes():
-    return render_template("list_all_recipes.html")  
+        return render_template('list_all_recipes.html',
+        welcome_message ='Welcome ' + str(session['username'])) 
+
 
 # MY RECIPES
 @app.route('/my_recipes')
 def my_recipes():
     return render_template("my_recipes.html")  
+
     
 # SEARCH RECIPES
 @app.route('/search_recipes')
 def search_recipes():
     return render_template("search_recipes.html")
 
+
 # VIEW RECIPE
 @app.route('/view_recipe')
 def view_recipe():
     return render_template("view_recipe.html")    
+
     
 # SITE STATISICS
 @app.route('/site_statistics')
 def site_statistics():
     return render_template("site_statistics.html")
+
     
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),

@@ -51,8 +51,9 @@
       <div class="container">
         <div class="intro-text">
           <div class="intro-text-background">
-            <div class="intro-lead-in"> Welcome To </div>
-            <div class="intro-heading text-uppercase"> The Recipe Collection </div> 
+            <div class="intro-lead-in"> {{ welcome_message }} </div>
+            <div class="intro-heading text-uppercase"> The Recipe Collection </div>
+            
              {% if 'username' in session %}
                <a class="btn btn-primary btn-lg btn-rounded js-scroll-trigger" href="/add_form_recipe"> Add Recipes </a>
                <a class="btn btn-primary btn-lg btn-rounded js-scroll-trigger" href="/list_all_recipes"> All Recipes </a>
@@ -62,6 +63,7 @@
                <a class="btn btn-primary btn-lg btn-rounded js-scroll-trigger" href="/register_user"> Register </a>
                <a class="btn btn-primary btn-lg btn-rounded js-scroll-trigger" href="/sign_in_user"> Sign In </a>
              {% endif %}
+             
           </div>
         </div> 
       </div>

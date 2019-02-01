@@ -12,3 +12,22 @@
 
   <!-- Navigation Navbar -->
   {% include 'navbar_recipes.html' %}
+  
+ <!-- Header -->
+    <header class="masthead text-center text-white d-flex" style=”background-image: url(‘static/img/header.jpg’)"> <!-- Add Style= to override header background image -->  
+      <div class="container">
+        <div class="intro-text">
+          <div class="intro-text-background">
+            <div class="intro-lead-in"> {{ welcome_message }} </div>
+            <div class=" h4 text-dark"> Search recipes by: </div> <br>
+               <a class="btn btn-primary btn-lg btn-rounded js-scroll-trigger m-2" href="/add_form_recipe"> Allergen </a>
+               <a class="btn btn-primary btn-lg btn-rounded js-scroll-trigger m-2" href="/list_all_recipes"> Category </a>
+               <a class="btn btn-primary btn-lg btn-rounded js-scroll-trigger m-2" href="/my_recipes"> Difficulty </a>
+               <a class="btn btn-primary btn-lg btn-rounded js-scroll-trigger m-2" href="/register_user"> Main Ingredient </a>
+          </div>
+        </div> 
+      </div>
+    </header>
+ 
+    <!-- Flash Messaging -->
+    {% include 'messaging.html' %} 
