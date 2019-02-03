@@ -38,3 +38,30 @@
 .btn-space {
     margin: 10px;
 }
+
+/* CHANGE padding for Card body */
+.card-body {
+  padding: 0.5rem;
+}
+
+/* CHANGE border for Card */
+.card {
+  border: 2px solid rgba(0, 0, 0, .25rem); 
+  padding: 0.5rem;
+}
+
+/* CHANGE font size for Card title */
+h3.card-title {
+    font-size: 1.5em; 
+}
+
+/* CHANGE font size for Card subtitle */
+h5.card-subtitle {
+    font-size: 1.2em; 
+}
+
+/* CHANGE padding & line-height for Card text */
+p.card-text {
+    padding-bottom: 08.rem;
+    line-height: 1.2rem;
+}

@@ -19,15 +19,68 @@
         <div class="intro-text">
           <div class="intro-text-background">
             <div class="intro-lead-in"> {{ welcome_message }} </div>
-            <div class=" h4 text-dark"> Search recipes by: </div> <br>
-               <a class="btn btn-primary btn-lg btn-rounded js-scroll-trigger m-2" href="/add_form_recipe"> Allergen </a>
+            <div class=" h3 text-dark"> Search recipes by: </div> <br>
+            
+            
                <a class="btn btn-primary btn-lg btn-rounded js-scroll-trigger m-2" href="/list_all_recipes"> Category </a>
                <a class="btn btn-primary btn-lg btn-rounded js-scroll-trigger m-2" href="/my_recipes"> Difficulty </a>
                <a class="btn btn-primary btn-lg btn-rounded js-scroll-trigger m-2" href="/register_user"> Main Ingredient </a>
+            </div>   
           </div>
         </div> 
       </div>
     </header>
- 
+
+
     <!-- Flash Messaging -->
     {% include 'messaging.html' %} 
+    
+    
+    <!-- cards -->
+    <div class="container">
+      <div class="card-deck text-center ">
+      
+        <div class="card text-muted">
+          <div class="card-body">
+            <img src="https://www.bbcgoodfood.com/sites/default/files/Collections_British_4.jpg" class="img-fluid" alt=<"bbcgoodfood"/> 
+            <h3 class="card-title mt-2"> British </h3>
+            <a href="#" class="btn btn-primary btn-rounded"> <i class="fas fa-book fa-lg mr-1"> </i> View Recipes </a>
+          </div>
+        </div>
+      
+        <div class="card text-muted">
+          <div class="card-body">
+            <img src="https://www.bbcgoodfood.com/sites/default/files/recipe-collections/collection-image/2013/05/blood-orange-madeleines.jpg" class="img-fluid" alt=<"bbcgoodfood"/> 
+            <h3 class="card-title mt-2"> French </h3>
+            <a href="#" class="btn btn-primary btn-rounded"> <i class="fas fa-book fa-lg mr-1"> </i> View Recipes </a>
+          </div>
+        </div>
+      
+        <div class="card text-muted ">
+          <div class="card-body">
+            <img src="https://www.bbcgoodfood.com/sites/default/files/recipe-collections/collection-image/2013/05/canoli3.jpg" class="img-fluid" alt=<"bbcgoodfood"/> 
+            <h3 class="card-title mt-2"> Italian </h3>
+            <a href="#" class="btn btn-primary btn-rounded"> <i class="fas fa-book fa-lg mr-1"> </i> View Recipes </a> 
+          </div>
+        </div>
+        
+        <div class="card text-muted">
+          <div class="card-body">
+            <img src="https://www.bbcgoodfood.com/sites/default/files/recipe-collections/collection-image/2013/05/canoli3.jpg" class="img-fluid" alt=<"bbcgoodfood"/> 
+            <h3 class="card-title mt-2"> Italian </h3>
+            <a href="#" class="btn btn-primary btn-rounded"> <i class="fas fa-book fa-lg mr-1"> </i> View Recipes </a>
+          </div>
+        </div>
+          
+      </div> 
+    </div>
+    
+       <!-- Footer -->
+    {% include 'footer.html' %}
+
+          
+    <!-- Script -->
+    {% include 'script.html' %} 
+    
+  </body>
+</html>     

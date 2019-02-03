@@ -19,15 +19,20 @@ app.config["MONGO_URI"] = 'mongodb://admin_cookbook:project04@ds213665.mlab.com:
                            
 mongo = PyMongo(app)
 
-
+# FUNCTION - GET DIFFICULTIES DOCUMENT
+def get_difficulties_document():
+    difficulties=mongo.db.difficulties.find()
+    return difficulties
+           
 # INDEX/HOME PAGE
 @app.route('/')
 @app.route('/home')
 def home():
     if 'username' in session:
         return render_template('base.html',
-        welcome_message ='Welcome ' + str(session['username']) + ' To') 
-    return render_template('base.html',
+        welcome_message ='Welcome ' + str(session['username']) + ' To')
+        
+    return render_template('base.html',recipes=mongo.db.recipes.find(),
         welcome_message ='Welcome To')
 
 
@@ -98,13 +103,28 @@ def add_form_recipe():
 @app.route('/edit_form_recipe')
 def edit_form_recipe():
     return render_template("edit_form_recipe.html") 
+
  
-    
+# LIST CATEGORY RECIPES
+@app.route('/list_category_recipes/<category>')
+def list_category_recipes(category):
+    return render_template("list_category_recipes.html",
+           categories=mongo.db.categories.find(),
+           category=category)
+
+        
 # LIST CUISINE RECIPES
-@app.route('/list_cuisine_recipes')
-def list_cuisine_recipes():
+@app.route('/list_cuisine_recipes/<cuisine>')
+def list_cuisine_recipes(cusine):
     return render_template("list_cuisine_recipes.html") 
 
+           
+# LIST DIFFICULTIES RECIPIES
+@app.route('/list_difficulties_recipes')
+def list_difficulties_recipes():
+    difficulties=mongo.db.difficulties.find()
+    return render_template("test.html",
+                            difficulties=difficulties)
     
 # LIST ALL RECIPES
 @app.route('/list_all_recipes')
