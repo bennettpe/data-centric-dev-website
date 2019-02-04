@@ -5,7 +5,6 @@ from bson.objectid import ObjectId
 from flask_bcrypt import Bcrypt
 from flask_wtf import FlaskForm
 from forms import RegisterForm, SigninForm
-#from flask_login import logon_user
 
 app = Flask(__name__)
 app.secret_key = '5149fde2f2f15a6f77dddf0f319b20c6'
@@ -19,10 +18,6 @@ app.config["MONGO_URI"] = 'mongodb://admin_cookbook:project04@ds213665.mlab.com:
                            
 mongo = PyMongo(app)
 
-# FUNCTION - GET DIFFICULTIES DOCUMENT
-def get_difficulties_document():
-    difficulties=mongo.db.difficulties.find()
-    return difficulties
            
 # INDEX/HOME PAGE
 @app.route('/')
@@ -30,10 +25,22 @@ def get_difficulties_document():
 def home():
     if 'username' in session:
         return render_template('base.html',
+        recipes=mongo.db.recipes.find(),
+        cuisines=mongo.db.cuisines.find(),
+        categories=mongo.db.categories.find(),
+        difficulties=mongo.db.difficulties.find(),
+        main_ingredients=mongo.db.main_ingredients.find(),
+        allergens=mongo.db.allergens.find(),
         welcome_message ='Welcome ' + str(session['username']) + ' To')
         
-    return render_template('base.html',recipes=mongo.db.recipes.find(),
-        welcome_message ='Welcome To')
+    return render_template('base.html',
+    recipes=mongo.db.recipes.find(),
+    cuisines=mongo.db.cuisines.find(),
+    categories=mongo.db.categories.find(),
+    difficulties=mongo.db.difficulties.find(),
+    main_ingredients=mongo.db.main_ingredients.find(),
+    allergens=mongo.db.allergens.find(),
+    welcome_message ='Welcome To')
 
 
 #REGISTER NEW USER via WTForm
@@ -118,21 +125,21 @@ def list_category_recipes(category):
 def list_cuisine_recipes(cusine):
     return render_template("list_cuisine_recipes.html") 
 
-           
-# LIST DIFFICULTIES RECIPIES
-@app.route('/list_difficulties_recipes')
-def list_difficulties_recipes():
-    difficulties=mongo.db.difficulties.find()
-    return render_template("test.html",
-                            difficulties=difficulties)
-    
+
+# GET DIFFICULTIES DOCUMENT
+@app.route('/get_difficulties_document')
+def get_difficulties_document():
+        return render_template("test.html", 
+        difficulties=mongo.db.difficulties.find())
+
+        
 # LIST ALL RECIPES
 @app.route('/list_all_recipes')
 def list_all_recipes():
         return render_template('list_all_recipes.html',
         welcome_message ='Welcome ' + str(session['username'])) 
 
-
+        
 # MY RECIPES
 @app.route('/my_recipes')
 def my_recipes():

@@ -1,5 +1,35 @@
-{% extends 'base.html' %}
+<html lang="en">
 
-{% block content %}
-
-{% endblock %}
+<head>
+                                                          <title> Data Centric Development Project "TEST.HTML" (Paul Bennett) </title>
+    <!-- Include standard links                       --> {% include 'head.html' %}                                                       
+    <!-- My Custom styles for this template           --> <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/my-creative.css') }}"> 
+</head>
+ 
+<!-- Bootstrap theme (Creative) downloaded from  https://github.com/BlackrockDigital/startbootstrap-agency -->
+<body id="page-top">
+       
+      <!-- Dropdown-->
+      <div class="row">
+         <form action="" method="POST">
+            <select class=custom-select id="difficulty">
+               <option> Choose Difficulty </option>
+               {% for difficulty in difficulties %}
+               <option value="{{difficulty.difficulty_name }}"> {{difficulty.difficulty_name}} </option>
+               {% endfor %}
+            </select>
+         </form>
+      </div>
+      
+      <!-- Print 
+      {% for difficulty in difficulties %}
+            <h6> {{ difficulty }} </h6>
+      {% endfor %}
+      -->
+         
+         
+     <!-- Script -->
+    {% include 'script.html' %}      
+    
+</body>
+</html>
