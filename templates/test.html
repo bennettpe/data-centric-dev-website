@@ -8,8 +8,26 @@
  
 <!-- Bootstrap theme (Creative) downloaded from  https://github.com/BlackrockDigital/startbootstrap-agency -->
 <body id="page-top">
-       
-      <!-- Dropdown-->
+      
+      <!-- Dropdown using list-->
+      <div class="row">
+         <form action="" method="POST">
+            <select class=custom-select id="difficulty">
+               <option> Choose Difficulty </option>
+               {% for difficulty in difficulties_list %}
+               <option value="{{ difficulty }}"> {{ difficulty }} </option>
+               {% endfor %}
+            </select>
+         </form>
+         
+      
+      <!-- Print 
+      {% for difficulty in difficulties_list %}
+            <h6> {{ difficulty }} </h6>
+      {% endfor %} -->
+      
+      
+      <!-- Dropdown using mongodb 
       <div class="row">
          <form action="" method="POST">
             <select class=custom-select id="difficulty">
@@ -19,15 +37,9 @@
                {% endfor %}
             </select>
          </form>
-      </div>
+      </div> -->
       
-      <!-- Print 
-      {% for difficulty in difficulties %}
-            <h6> {{ difficulty }} </h6>
-      {% endfor %}
-      -->
-         
-         
+    
      <!-- Script -->
     {% include 'script.html' %}      
     

@@ -2,11 +2,22 @@
 /* main.css: Add and override styles */
 /*-----------------------------------*/
 
-/* ADD background color to intro text */
+/* ADD background */
+.header.masthead {
+  background-image: url("./static/img/header.jpg");
+}
+
+/* ADD background color to intro text background */
 .intro-text-background {
-        padding: 50px 0px;
+        padding: 35px;
         background-color: rgba(245, 245, 245, 0.8);
         border-radius: 6rem;
+}
+
+/* CHANGE padding to intro text */
+.intro-text {
+       padding-top: 300px;  
+       padding-bottom: 200px;      
 }
 
 /* CHANGE color to text */
@@ -21,7 +32,7 @@
 
 /* ADD radius to buttons */
 .btn {
-        border-radius: 300px;       
+  border-radius: 300px;           
 }
 
 /* CHANGE color on button border */
@@ -64,4 +75,10 @@ h5.card-subtitle {
 p.card-text {
     padding-bottom: 08.rem;
     line-height: 1.2rem;
+}
+
+/* CHANGE custom dropdown */
+.custom-select {
+  border-color: #6c757d; /* Raven */  
+  border-radius: 300px;
 }

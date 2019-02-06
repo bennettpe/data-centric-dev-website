@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-                                                          <title> Data Centric Development Project "LIST_RECIPES_BY_DIFFICULTIES.HTML" (Paul Bennett) </title>
+                                                          <title> Data Centric Development Project "BY_DIFFICULTIES_RECIPE.HTML" (Paul Bennett) </title>
     <!-- Include standard links                       --> {% include 'head.html' %}                                                       
     <!-- My Custom styles for this template           --> <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/my-creative.css') }}"> 
 </head>
@@ -18,23 +18,59 @@
       <div class="container">
         <div class="intro-text">
           <div class="intro-text-background">
-            <div class=" h3 text-dark"> Search recipes by difficulty: </div> <br>
-            </div>   
+            <div class=" h3 text-dark"> Search recipes by: </div> <br>
+    
+            <div class="btn-group">
+              <!-- Button Dropdown using allergens list-->
+              <div class="dropdown">
+                <a button class="btn btn-primary btn-lg btn-rounded dropdown-toggle m-1" id="allergensButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" > Allergens</button> </a>
+                <div class="dropdown-menu" aria-labelledby="allergensButton">
+                     {% for difficulty in difficulties_list %}
+                      <option <a class="dropdown-item" href="{{url_for('by_difficulties_recipe')}}"> {{ difficulty }} </a> </option>
+                     {% endfor %}
+                </div>     
+              </div> 
+             
+             <!-- Button Dropdown using category list-->
+              <div class="dropdown">
+                <a button class="btn btn-primary btn-lg btn-rounded dropdown-toggle m-1" id="categoryButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" > Category </button> </a>
+                <div class="dropdown-menu" aria-labelledby="categoryButton">
+                     {% for difficulty in difficulties_list %}
+                      <option <a class="dropdown-item" href="{{url_for('by_difficulties_recipe')}}"> {{ difficulty }} </a> </option>
+                     {% endfor %}
+                </div>     
+              </div>
+              
+             <!-- Button Dropdown using difficulty list-->
+              <div class="dropdown">
+                <button class="btn btn-primary btn-lg btn-rounded dropdown-toggle m-1" id="difficultyButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+                  Difficulty
+                </button>
+                <div class="dropdown-menu" aria-labelledby="difficultyButton">
+                     {% for difficulty in difficulties_list %}
+                      <option <a class="dropdown-item" href="{{url_for('by_difficulties_recipe')}}"> {{ difficulty }} </a> </option>
+                     {% endfor %}
+                </div>     
+              </div>
+              
+             <!-- Button Dropdown using main ingredient list-->
+              <div class="dropdown">
+                <button class="btn btn-primary btn-lg btn-rounded dropdown-toggle m-1" id="mainingredientButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+                  Main Ingredient
+                </button>
+                <div class="dropdown-menu" aria-labelledby="mainingredientButton">
+                     {% for difficulty in difficulties_list %}
+                      <option <a class="dropdown-item" href="{{url_for('by_difficulties_recipe')}}"> {{ difficulty }} </a> </option>
+                     {% endfor %}
+                </div>     
+              </div>
+            </div>
+            
           </div>
         </div> 
       </div>
-    </header>
+   </header>
     
-    <div class="col s12 m4">
-            <div class="filter-btn">
-            <a class='dropdown-button btn' href='#' data-activates='difficulty'> Difficulty </a>
-            <ul id="difficulty_name" class="dropdown-content">
-                {% for difficulty in difficulties %}
-                <li> <a href="{{ url_for('get_difficulties_document', difficulty=difficulty) }}" </a></li>
-                {% endfor %}
-            </ul>
-            </div>
-        </div>
 
     <!-- Flash Messaging -->
     {% include 'messaging.html' %} 

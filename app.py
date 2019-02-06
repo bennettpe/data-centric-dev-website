@@ -18,28 +18,34 @@ app.config["MONGO_URI"] = 'mongodb://admin_cookbook:project04@ds213665.mlab.com:
                            
 mongo = PyMongo(app)
 
-           
+# FUNCTION: GET ALLERGENS DOCUMENT
+def get_allergens_document():
+        allergens = mongo.db.categories.find().sort("allergens_name", -1)
+        return allergens
+        
+# FUNCTION: GET CATEGORIES DOCUMENT
+def get_categories_document():
+        categories = mongo.db.categories.find().sort("categories_name", -1)
+        return categories
+        
+# FUNCTION: GET DIFFICULTIES DOCUMENT
+def get_difficulties_document():
+        difficulties = mongo.db.difficulties.find().sort("difficult_name", -1)
+        return difficulties
+        
+# FUNCTION: GET MAIN INGREDIENT DOCUMENT
+def get_main_ingredient_document():
+        main_ingredient = mongo.db.main_ingredient.find().sort("main_ingredient", -1)
+        return main_ingredient
+        
 # INDEX/HOME PAGE
 @app.route('/')
-@app.route('/home')
-def home():
+def index():
     if 'username' in session:
         return render_template('base.html',
-        recipes=mongo.db.recipes.find(),
-        cuisines=mongo.db.cuisines.find(),
-        categories=mongo.db.categories.find(),
-        difficulties=mongo.db.difficulties.find(),
-        main_ingredients=mongo.db.main_ingredients.find(),
-        allergens=mongo.db.allergens.find(),
         welcome_message ='Welcome ' + str(session['username']) + ' To')
         
     return render_template('base.html',
-    recipes=mongo.db.recipes.find(),
-    cuisines=mongo.db.cuisines.find(),
-    categories=mongo.db.categories.find(),
-    difficulties=mongo.db.difficulties.find(),
-    main_ingredients=mongo.db.main_ingredients.find(),
-    allergens=mongo.db.allergens.find(),
     welcome_message ='Welcome To')
 
 
@@ -98,7 +104,19 @@ def sign_out_user():
         session.pop('_flashes', None)
         flash("you have signed out", 'success')
     return render_template("base.html")    
+
         
+# BY DIFFICULTIES RECIPE
+@app.route('/by_difficulties_recipe')
+def by_difficulties_recipe():
+        difficulties_document = get_difficulties_document()
+        # list comprehensions used to create list
+        difficulties_list = [difficulties_record["difficulty_name"]
+                             for difficulties_record in difficulties_document]
+        # Reverse difficulties_list
+        difficulties_list = difficulties_list[::-1]                     
+        return render_template("by_difficulties_recipe.html", 
+                                difficulties_list=difficulties_list)
     
 # ADD FORM RECIPE
 @app.route('/add_form_recipe')
@@ -115,9 +133,7 @@ def edit_form_recipe():
 # LIST CATEGORY RECIPES
 @app.route('/list_category_recipes/<category>')
 def list_category_recipes(category):
-    return render_template("list_category_recipes.html",
-           categories=mongo.db.categories.find(),
-           category=category)
+    return render_template("list_category_recipes.html")
 
         
 # LIST CUISINE RECIPES
@@ -126,13 +142,6 @@ def list_cuisine_recipes(cusine):
     return render_template("list_cuisine_recipes.html") 
 
 
-# GET DIFFICULTIES DOCUMENT
-@app.route('/get_difficulties_document')
-def get_difficulties_document():
-        return render_template("test.html", 
-        difficulties=mongo.db.difficulties.find())
-
-        
 # LIST ALL RECIPES
 @app.route('/list_all_recipes')
 def list_all_recipes():
