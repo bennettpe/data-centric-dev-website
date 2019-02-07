@@ -9,25 +9,25 @@
 
 /* ADD background color to intro text background */
 .intro-text-background {
-        padding: 35px;
-        background-color: rgba(245, 245, 245, 0.8);
-        border-radius: 6rem;
+  padding: 35px; 
+  background-color: rgba(245, 245, 245, 0.8);
+  border-radius: 6rem;
 }
 
 /* CHANGE padding to intro text */
 .intro-text {
-       padding-top: 300px;  
-       padding-bottom: 200px;      
+  padding-top: 400px;  
+  padding-bottom: 200px;      
 }
 
 /* CHANGE color to text */
 .intro-lead-in {
-       color: #6c757d /* Raven */
+  color: #6c757d /* Raven */
 }
 
 /* CHANGE color to text */
 .intro-heading {
-       color: #6c757d; /* Raven */
+  color: #6c757d; /* Raven */
 }
 
 /* ADD radius to buttons */
@@ -42,12 +42,12 @@
 
 /* CHANGE color on button hover */
 .btn-primary:hover {
-    color: black !important;
+  color: black !important;
 }
 
 /* ADD spacing to Top of page Button */
 .btn-space {
-    margin: 10px;
+  margin: 10px;
 }
 
 /* CHANGE padding for Card body */
@@ -77,8 +77,41 @@ p.card-text {
     line-height: 1.2rem;
 }
 
-/* CHANGE custom dropdown */
-.custom-select {
-  border-color: #6c757d; /* Raven */  
-  border-radius: 300px;
+/* ----- Changes to Dropdown ----- */
+
+/* CHANGE  to dropdown padding */
+.dropdown-item {
+  padding: 0 0 0 5px;
+}
+
+/* CHANGES to dropdown menu */
+.dropdown-menu {
+  text-align: left; 
+  background-color: rgba(245, 245, 245, 0.9);
+  border: 2px solid rgba(0, 0, 0, .25rem); 
+  border-color: #6c757d; /* Raven */
+  border-radius: 15px;
+}
+
+/* CHANGE color of dropdown menu when hover */
+.dropdown-menu:hover {
+  background-color: #fed136;
+}
+
+/* ADD to dropdown menu */
+.dropdown-menu {
+  max-height:500px;
+  overflow-y:auto;    
+}
+
+/* CHANGE colour of dropdown toggle */
+.dropdown-toggle[aria-expanded="true"] {
+  background:#FFF !important;
+  color:#000 !important;
+}
+
+/* CHANGE colour of dropdown-item when active */
+.dropdown-item:active {
+  color: #000;
+  background-color: #fff;
 }

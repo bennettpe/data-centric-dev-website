@@ -18,25 +18,30 @@ app.config["MONGO_URI"] = 'mongodb://admin_cookbook:project04@ds213665.mlab.com:
                            
 mongo = PyMongo(app)
 
-# FUNCTION: GET ALLERGENS DOCUMENT
+# FUNCTION: GET ALLERGENS DB DOCUMENT
 def get_allergens_document():
-        allergens = mongo.db.categories.find().sort("allergens_name", -1)
+        allergens = mongo.db.allergens.find().sort("allergen_name", 1)
         return allergens
         
-# FUNCTION: GET CATEGORIES DOCUMENT
+# FUNCTION: GET CATEGORIES DB DOCUMENT
 def get_categories_document():
-        categories = mongo.db.categories.find().sort("categories_name", -1)
+        categories = mongo.db.categories.find().sort("category_name", 1)
         return categories
         
-# FUNCTION: GET DIFFICULTIES DOCUMENT
+# FUNCTION: GET DIFFICULTIES DB DOCUMENT
 def get_difficulties_document():
         difficulties = mongo.db.difficulties.find().sort("difficult_name", -1)
         return difficulties
         
-# FUNCTION: GET MAIN INGREDIENT DOCUMENT
-def get_main_ingredient_document():
-        main_ingredient = mongo.db.main_ingredient.find().sort("main_ingredient", -1)
-        return main_ingredient
+# FUNCTION: GET MAIN INGREDIENTS DB DOCUMENT
+def get_main_ingredients_document():
+        main_ingredients = mongo.db.main_ingredients.find().sort("main_ingredient", 1)
+        return main_ingredients
+
+# FUNCTION: GET RECIPES DB DOCUMENT
+def get_recipies_document():
+        recipes = mongo.db.recipes.find()
+        return recipes
         
 # INDEX/HOME PAGE
 @app.route('/')
@@ -106,18 +111,40 @@ def sign_out_user():
     return render_template("base.html")    
 
         
-# BY DIFFICULTIES RECIPE
-@app.route('/by_difficulties_recipe')
-def by_difficulties_recipe():
-        difficulties_document = get_difficulties_document()
+# BY RECIPE(S)
+@app.route('/by_recipes')
+def by_recipes():
+        # allergens
+        allergens_document = get_allergens_document()
         # list comprehensions used to create list
+        allergens_list = [allergens_record["allergen_name"]
+                             for allergens_record in allergens_document]
+                             
+        # categories
+        categories_document = get_categories_document()
+        categories_list = [categories_record["category_name"]
+                             for categories_record in categories_document]                     
+        
+        # difficulties                     
+        difficulties_document = get_difficulties_document()
         difficulties_list = [difficulties_record["difficulty_name"]
                              for difficulties_record in difficulties_document]
         # Reverse difficulties_list
-        difficulties_list = difficulties_list[::-1]                     
-        return render_template("by_difficulties_recipe.html", 
-                                difficulties_list=difficulties_list)
-    
+        difficulties_list = difficulties_list[::-1] 
+        
+        # main_ingredients
+        main_ingredients_document = get_main_ingredients_document()
+        main_ingredients_list = [main_ingredients_record["main_ingredient"]
+                             for main_ingredients_record in main_ingredients_document] 
+
+        return render_template("by_recipes.html", 
+                                allergens_list    = allergens_list,
+                                categories_list   = categories_list,
+                                difficulties_list = difficulties_list,
+                                main_ingredients_list = main_ingredients_list,
+                                welcome_message ='Welcome ' + str(session['username'])) 
+           
+                             
 # ADD FORM RECIPE
 @app.route('/add_form_recipe')
 def add_form_recipe():
@@ -143,10 +170,10 @@ def list_cuisine_recipes(cusine):
 
 
 # LIST ALL RECIPES
-@app.route('/list_all_recipes')
-def list_all_recipes():
-        return render_template('list_all_recipes.html',
-        welcome_message ='Welcome ' + str(session['username'])) 
+#@app.route('/list_all_recipes')
+#def list_all_recipes1():
+#        return render_template('list_all_recipes.html',
+#        welcome_message ='Welcome ' + str(session['username'])) 
 
         
 # MY RECIPES
