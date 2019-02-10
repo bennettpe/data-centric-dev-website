@@ -2,6 +2,11 @@
 /* main.css: Add and override styles */
 /*-----------------------------------*/
 
+.bg-primary {
+  background-color: #ffe37a9e!important;
+  padding: 20px;
+}
+
 /* ADD background */
 .header.masthead {
   background-image: url("./static/img/header.jpg");
@@ -56,11 +61,24 @@
 
 /* ----- Changes to Card ----- */
 
+
+/* ADD Background to cuisines heading */
+.cusines-heading {
+  padding: 35px; 
+  background-color: rgba(245, 245, 245, 0.8);
+  border: 1.25px solid rgba(0, 0, 0, .50);
+  border-radius: 6rem;
+}
+
 /* CHANGE border for Card */
 .card {
   border: 1.25px solid rgba(0, 0, 0, .50);
   background-color: rgba(245, 245, 245, 0.9); 
+}
 
+/* Add Shadow for Card hover */
+.card:hover {
+ box-shadow: 2px 5px 20px #6c757d; 
 }
 
 /* CHANGE font size for Card subtitle */
