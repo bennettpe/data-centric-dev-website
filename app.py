@@ -28,6 +28,11 @@ def get_categories_document():
         categories = mongo.db.categories.find().sort("category_name", 1)
         return categories
         
+# FUNCTION: GET CUISINES DB DOCUMENT
+def get_cuisines_document():
+        cuisines = mongo.db.cuisines.find().sort("cuisine_name", 1)
+        return cuisines        
+        
 # FUNCTION: GET DIFFICULTIES DB DOCUMENT
 def get_difficulties_document():
         difficulties = mongo.db.difficulties.find().sort("difficult_name", -1)
@@ -45,6 +50,8 @@ def get_recipies_document():
         
 # INDEX/HOME PAGE
 @app.route('/')
+
+@app.route('/index')
 def index():
     if 'username' in session:
         return render_template('base.html',
@@ -123,7 +130,10 @@ def by_recipes():
         # categories
         categories_document = get_categories_document()
         categories_list = [categories_record["category_name"]
-                             for categories_record in categories_document]                     
+                             for categories_record in categories_document] 
+                            
+        # cuisines
+        cuisines_document = get_cuisines_document()
         
         # difficulties                     
         difficulties_document = get_difficulties_document()
@@ -138,13 +148,21 @@ def by_recipes():
                              for main_ingredients_record in main_ingredients_document] 
 
         return render_template("by_recipes.html", 
+                                cuisines_document = cuisines_document,
                                 allergens_list    = allergens_list,
                                 categories_list   = categories_list,
                                 difficulties_list = difficulties_list,
                                 main_ingredients_list = main_ingredients_list,
                                 welcome_message ='Welcome ' + str(session['username'])) 
            
-                             
+#TEST
+@app.route('/test')
+def by_test():
+# Cuisines document
+        cuisines_document = get_cuisines_document()
+        return render_template("test.html", 
+                                cuisines_document = cuisines_document)
+                                
 # ADD FORM RECIPE
 @app.route('/add_form_recipe')
 def add_form_recipe():

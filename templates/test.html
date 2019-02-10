@@ -8,36 +8,24 @@
  
 <!-- Bootstrap theme (Creative) downloaded from  https://github.com/BlackrockDigital/startbootstrap-agency -->
 <body id="page-top">
-      
-      <!-- Dropdown using list-->
-      <div class="row">
-         <form action="" method="POST">
-            <select class=custom-select id="difficulty">
-               <option> Choose Difficulty </option>
-               {% for difficulty in difficulties_list %}
-               <option value="{{ difficulty }}"> {{ difficulty }} </option>
-               {% endfor %}
-            </select>
-         </form>
-         
-      
-      <!-- Print 
-      {% for difficulty in difficulties_list %}
-            <h6> {{ difficulty }} </h6>
-      {% endfor %} -->
-      
-      
-      <!-- Dropdown using mongodb 
-      <div class="row">
-         <form action="" method="POST">
-            <select class=custom-select id="difficulty">
-               <option> Choose Difficulty </option>
-               {% for difficulty in difficulties %}
-               <option value="{{difficulty.difficulty_name }}"> {{difficulty.difficulty_name}} </option>
-               {% endfor %}
-            </select>
-         </form>
-      </div> -->
+   
+  <section> 
+   <div class="container">
+        <div class="row">
+          {% for cuisine in cuisines_document %} 
+          <div class=" col-lg-3 col-md-4 col-sm-6">
+            <div class="card text-muted text-center mb-4">
+               <div class="card-body">
+                  <a href="#">
+                  <img src="{{ cuisine.cuisine_image }}" class="img-fluid" alt="bbcgoodfood" style="border-bottom: 1px solid black!important;"> 
+                  <h5 class="card-title mt-3"> {{ cuisine.cuisine_name }} </h5> </a>
+               </div>
+            </div>
+         </div>
+         {% endfor %}
+      </div>
+   </div>
+  </section>
       
     
      <!-- Script -->

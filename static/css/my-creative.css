@@ -30,6 +30,9 @@
   color: #6c757d; /* Raven */
 }
 
+
+/* ----- Changes to Buttons ----- */
+
 /* ADD radius to buttons */
 .btn {
   border-radius: 300px;           
@@ -50,20 +53,14 @@
   margin: 10px;
 }
 
-/* CHANGE padding for Card body */
-.card-body {
-  padding: 0.5rem;
-}
+
+/* ----- Changes to Card ----- */
 
 /* CHANGE border for Card */
 .card {
-  border: 2px solid rgba(0, 0, 0, .25rem); 
-  padding: 0.5rem;
-}
+  border: 1.25px solid rgba(0, 0, 0, .50);
+  background-color: rgba(245, 245, 245, 0.9); 
 
-/* CHANGE font size for Card title */
-h3.card-title {
-    font-size: 1.5em; 
 }
 
 /* CHANGE font size for Card subtitle */
@@ -71,18 +68,30 @@ h5.card-subtitle {
     font-size: 1.2em; 
 }
 
-/* CHANGE padding & line-height for Card text */
-p.card-text {
-    padding-bottom: 08.rem;
-    line-height: 1.2rem;
+/* CHANGE padding for Card body */
+.card-body {
+  padding: 0rem;
 }
 
+/* CHANGE margin for Card title */
+.card-title {
+  margin-bottom: 1rem;
+  color: #6c757d; /* Raven */
+}
+
+/* CHANGE margin for Card title */
+.card-title:hover {
+  color: #fed136;
+}
+
+    
 /* ----- Changes to Dropdown ----- */
 
 /* CHANGE  to dropdown padding */
 .dropdown-item {
   padding: 0 0 0 5px;
 }
+
 
 /* CHANGES to dropdown menu */
 .dropdown-menu {
@@ -114,4 +123,36 @@ p.card-text {
 .dropdown-item:active {
   color: #000;
   background-color: #fff;
+}
+
+/* ----- Changes to Back To Top Button ----- */
+
+/* Back to top button */
+.bttop {
+  width: 65px;
+  background: #fed136d4;
+  position: fixed;
+  right: -9px;
+  bottom: 33px;
+  z-index: 9998;
+  border: 2px solid #fff;
+  border-radius: 10px;
+}
+
+/* Back to top button hover */
+.bttop:hover {
+   background: #fed136;
+   box-shadow: 5px 10px 25px #555;
+}
+
+/* Back to top button icon */
+.bttop i {
+  color: #ffffffd4;
+  font-size: 45px;
+  padding: 7px;   
+}
+
+/* Back to top button icon hover */
+.bttop i:hover {
+ color: #fff; 
 }

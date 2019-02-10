@@ -16,87 +16,87 @@
   
  <!-- Header -->
     <header class="masthead text-center text-white d-flex" style=”background-image: url(‘static/img/header.jpg’)"> <!-- Add Style= to override header background image -->  
-      <div class="container">
-        <div class="intro-text">
-          <div class="intro-text-background">
-            <div class=" h3 text-dark"> Search recipes by: </div> <br>
+        <div class="container">
+            <div class="intro-text">
+                <div class="intro-text-background">
+                <div class=" h3 text-dark"> Search recipes by: </div> <br>
     
-            <div class="btn-group">
-              <!-- Button Dropdown using allergens list-->
-              <div class="dropdown">
-                <button class="btn btn-primary btn-md btn-rounded dropdown-toggle m-1" id="allergens_Button" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false"> 
-                  Allergens
-                </button> 
-                <div class="dropdown-menu dropdown-menu-lg-right" aria-labelledby="allergens_Button">
-                     {% for allergen in allergens_list %}
-                      <option <a class="dropdown-item" href="{{url_for('by_recipes')}}"> {{ allergen }} </a> </option>
-                     {% endfor %}
-                </div>     
-              </div> 
+                <div class="btn-group">
+                  <!-- Button Dropdown using allergens list-->
+                    <div class="dropdown">
+                          <button class="btn btn-primary btn-md btn-rounded dropdown-toggle m-1" id="allergens_Button" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false"> 
+                           Allergens
+                           </button> 
+                        <div class="dropdown-menu dropdown-menu-lg-right" aria-labelledby="allergens_Button">
+                         {% for allergen in allergens_list %}
+                          <option <a class="dropdown-item" href="{{url_for('by_recipes')}}"> {{ allergen }} </a> </option>
+                         {% endfor %}
+                        </div>     
+                    </div> 
              
-             <!-- Button Dropdown using category list-->
-              <div class="dropdown">
-                <button class="btn btn-primary btn-md btn-rounded dropdown-toggle m-1" id="category_Button" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false"> 
-                  Category 
-                </button>
-                <div class="dropdown-menu dropdown-menu-lg-right" aria-labelledby="category_Button">
-                     {% for category in categories_list %}
-                      <option <a class="dropdown-item" href="{{url_for('by_recipes')}}"> {{ category }} </a> </option>
-                     {% endfor %}
-                </div>     
-              </div>
+                   <!-- Button Dropdown using category list-->
+                    <div class="dropdown">
+                          <button class="btn btn-primary btn-md btn-rounded dropdown-toggle m-1" id="category_Button" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false"> 
+                           Category 
+                          </button>
+                        <div class="dropdown-menu dropdown-menu-lg-right" aria-labelledby="category_Button">
+                          {% for category in categories_list %}
+                           <option <a class="dropdown-item" href="{{url_for('by_recipes')}}"> {{ category }} </a> </option>
+                          {% endfor %}
+                        </div>     
+                    </div>
               
-             <!-- Button Dropdown using difficulty list-->
-              <div class="dropdown">
-                <button class="btn btn-primary btn-md btn-rounded dropdown-toggle m-1" id="difficulty_Button" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
-                  Difficulty
-                </button>
-                <div class="dropdown-menu dropdown-menu-lg-right" aria-labelledby="difficulty_Button">
-                     {% for difficulty in difficulties_list %}
-                      <option <a class="dropdown-item" href="{{url_for('by_recipes')}}"> {{ difficulty }} </a> </option>
-                     {% endfor %}
-                </div>     
-              </div>
+                    <!-- Button Dropdown using difficulty list-->
+                    <div class="dropdown">
+                          <button class="btn btn-primary btn-md btn-rounded dropdown-toggle m-1" id="difficulty_Button" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
+                           Difficulty
+                          </button>
+                        <div class="dropdown-menu dropdown-menu-lg-right" aria-labelledby="difficulty_Button">
+                          {% for difficulty in difficulties_list %}
+                           <option <a class="dropdown-item" href="{{url_for('by_recipes')}}"> {{ difficulty }} </a> </option>
+                          {% endfor %}
+                        </div>     
+                    </div>
               
-             <!-- Button Dropdown using main ingredient list-->
-              <div class="dropdown">
-                <button class="btn btn-primary btn-md btn-rounded dropdown-toggle m-1" id="main_ingredients_Button" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
-                  Main Ingredient
-                </button>
-                <div class="dropdown-menu dropdown-menu-lg-right" aria-labelledby="main_ingredients_Button">
-                     {% for main_ingredient in main_ingredients_list %}
-                      <option <a class="dropdown-item" href="{{url_for('by_recipes')}}"> {{ main_ingredient }} </a> </option>
-                     {% endfor %}
-                </div>     
-              </div>
-            </div>
-            
-          </div>
-        </div> 
-      </div>
-   </header>
+                    <!-- Button Dropdown using main ingredient list-->
+                    <div class="dropdown">
+                          <button class="btn btn-primary btn-md btn-rounded dropdown-toggle m-1" id="main_ingredients_Button" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
+                           Main Ingredient
+                          </button>
+                        <div class="dropdown-menu dropdown-menu-lg-right" aria-labelledby="main_ingredients_Button">
+                          {% for main_ingredient in main_ingredients_list %}
+                           <option <a class="dropdown-item" href="{{url_for('by_recipes')}}"> {{ main_ingredient }} </a> </option>
+                          {% endfor %}
+                        </div>     
+                    </div>
+                    
+                </div>
+                </div>
+            </div> 
+        </div>
+    </header>
     
 
     <!-- Flash Messaging -->
     {% include 'messaging.html' %} 
-    
-    
+  
     <!-- Cuisine cards -->
-    <div class="row"> 
-      {% for cusine in cuisines %}
-      <div class="container">
-       <div class="card-deck text-center ">
-          <div class="card text-muted">
-            <div class="card-body">
-              <img src="{{ cuisine_image }}" class="img-fluid" alt=<"bbcgoodfood"/> 
-              <h3 class="card-title mt-2"> {{ cuisine.name }} </h3>
-              <a href="{{ url_for('by_cuisine', cuisine_name=cuisine_name) }}"
+    <div class="container cuisine-cards mt-5">
+        <div class="row">
+          {% for cuisine in cuisines_document %} 
+            <div class=" col-lg-3 col-md-4 col-sm-6">
+                <div class="card text-muted text-center mb-4">
+                    <div class="card-body">
+                     <a href="#">
+                     <img src="{{ cuisine.cuisine_image }}" class="img-fluid" alt="bbcgoodfood" style="border-bottom: 1px solid black!important;"> 
+                     <h5 class="card-title mt-3"> {{ cuisine.cuisine_name }} </h5> </a>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div> 
-      </div>
+          {% endfor %}
+        </div>
     </div>
-    
+  
        <!-- Footer -->
     {% include 'footer.html' %}
 
