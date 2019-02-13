@@ -9,11 +9,12 @@
 <!-- Bootstrap theme (Creative) downloaded from  https://github.com/BlackrockDigital/startbootstrap-agency -->
 <body>
     
-  <!-- Navigation Navbar 
-  {% include 'navbar_recipes.html' %} -->
-    
+  <!-- Navigation Navbar -->
+  {% include 'navbar_recipes.html' %} 
+
   <!-- Recipe card by recipe_id -->
-<section>
+<div class="bg-primary">
+<section>    
     <div class="container">
         <div class="row">
             <!-- First recipe card -->
@@ -21,27 +22,31 @@
                 <div class="card mb-4">
                     <div class="card-header recipe-url"> <img src="{{ recipes_document_by_recipe.recipe_url }}" class="img-fluid"> </div>
                         <div class=card-body">
-                            <div class="h4 card-header text-center mb-2"> <strong> {{ recipes_document_by_recipe.recipe_name}} </strong> </h4> </div>
+                            <div class="h4 card-header text-center mb-2"> <strong>                {{ recipes_document_by_recipe.recipe_name}} </strong> </h4> </div>
+                            <div class="recipe-details mb-2"> <span> <strong> Added by: </strong> {{ recipes_document_by_recipe.username }} </span> </div>
                             <div class="card-text ml-2">
-                                <div class="recipe-details text-center mb-2"> <span>                              {{ recipes_document_by_recipe.recipe_description }} </span> </div>
-                                <div class="recipe-details">                  <span> <strong> Author:   </strong> {{ recipes_document_by_recipe.author_name }}        </span> </div>
-                                <div class="recipe-details">                  <span> <strong> Category: </strong> 
+                                <div class="recipe-details mb-2 mr-2"> <span>                              {{ recipes_document_by_recipe.recipe_description }} </span> </div>
+                                <div class="recipe-details">           <span> <strong> Author:   </strong> {{ recipes_document_by_recipe.author_name }}        </span> </div>
+                                <div class="recipe-details">           <span> <strong> Category: </strong> 
                                     {% for category_name in recipes_document_by_recipe.category_name %}
-                                        {{ category_name }} </span> 
+                                        {{ category_name }}, </span> 
                                     {% endfor %}
                                 </div>
                                 <div class="recipe-details"> <span> <strong> Difficulty:       </strong> {{ recipes_document_by_recipe.difficulty_name  }} </span> </div>
                                 <div class="recipe-details"> <span> <strong> Main ingredients: </strong> {{ recipes_document_by_recipe.main_ingredient  }} </span> </div>
                                 <div class="recipe-details"> <span> <strong> Preparation time: </strong> {{ recipes_document_by_recipe.preparation_time }} </span> </div>
-                                <div class="recipe-details"> <span> <strong> Cooking time:     </strong> {{ recipes_document_by_recipe.preparation_time }} </span> </div>
+                                <div class="recipe-details"> <span> <strong> Cooking time:     </strong> {{ recipes_document_by_recipe.cooking_time     }} </span> </div>
                                 <div class="recipe-details"> <span> <strong> Servings:         </strong> {{ recipes_document_by_recipe.servings_num     }} </span> </div>
                                 <div class="recipe-details mb-2">   <span> <strong> Allergens: </strong>
                                     {% for allergen_name in recipes_document_by_recipe.allergen_name %}
                                         {{ allergen_name }}, </span> 
                                     {% endfor %}
                                 </div>
-                        </div> 
-                    </div>
+                                <div class="row justify-content-center">
+                                    <a class="btn btn-primary btn-md btn-rounded js-scroll-trigger mb-2" href="/by_recipes"> Return to Recipes </a>
+                                </div>    
+                            </div> 
+                        </div>
                 </div>
             </div>
             
@@ -51,15 +56,15 @@
                     <div class=card-body">
                         <div class="h4 card-header text-center"> <strong> Ingredients </strong> </h4> </div>
                             <div class="card-text mt-2">
-                                <ul>
+                                <ul style="list-style-image: url(../static/images/website/font-awesome_4-7-0_pencil_20_0_fed136_none.png);">
                                     {% for recipe_ingredient in recipes_document_by_recipe.recipe_ingredients %}
                                         <li> {{ recipe_ingredient }} </li> 
                                     {% endfor %}
                                 </ul>
                             </div>
-                        <div class="h4 card-header text-center"> <strong> Method </strong> </h4> </div>
-                            <div class="card-text mt-2">
-                                <ul>
+                        <div class="h4 card-header card-header-method text-center"> <strong> Method </strong> </h4> </div>
+                            <div class="card-text mt-2 mr-2">
+                                <ul style="list-style-image: url(../static/images/website/font-awesome_4-7-0_check_20_0_fed136_none.png);">
                                     {% for recipe_method in recipes_document_by_recipe.recipe_method %}
                                         <li> {{ recipe_method }} </li> 
                                     {% endfor %}
@@ -71,7 +76,8 @@
         </div>  
     </div>
 </section>  
-    
+</div> 
+
   <!-- Footer -->
   {% include 'footer.html' %}
 

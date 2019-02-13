@@ -1,4 +1,4 @@
-{"allergen_name": "Peanuts",
+{"allergen_name": ["Peanuts"],
  "author_name": "Elena Silcock",
  "category_name": ["Vegetarian", "Vegan", "Gluten-free"],
  "cooking_time": "45 Minutes",
@@ -40,7 +40,7 @@
 
 {"allergen_name": ["Eggs","Milk","Mustard"],
  "author_name": "Good Food",
- "category_name": "Dinner",
+ "category_name": ["Dinner"],
  "cooking_time": "40 Minutes",
  "cuisine_name": "British",
  "difficulty_name": "Easy",
@@ -69,7 +69,7 @@
  "username": "tiggerbloggs"}
 
 
-{"allergen_name": "Mustard",
+{"allergen_name": ["Mustard"],
  "author_name": "Silvana Franco",
  "category_name": ["Dinner,Lunch"],
  "cooking_time": "3 Hours 30 Minutes",
@@ -120,7 +120,7 @@
 
 {"allergen_name": ["Eggs","Milk"],
  "author_name": "Sarah Cook",
- "category_name": "Desert",
+ "category_name": ["Desert"],
  "cooking_time": "40 Minutes",
  "cuisine_name": "British",
  "difficulty_name": "Easy",
@@ -128,7 +128,6 @@
  "preparation_time": "20 Minutes",
  "recipe_description": "A simple baked version of this classic childhood pudding, with a zesty treacle sauce forming an irresistible puddle at the bottom.",
  "recipe_ingredients": ["250g golden syrup",
-                        "100g smoked bacon lardons",
 						"zest 1 lemon, plus juice ½ lemon",
 					    "5 tbsp breadcrumb",
 					    "200g pack butter, softened",
@@ -148,9 +147,9 @@
  "username": "tiggerbloggs"}
  
  
-{"allergen_name": "Milk",
+{"allergen_name": ["Milk"],
  "author_name": "Valerie Barrett",
- "category_name": "Desert",
+ "category_name": ["Desert"],
  "cooking_time": "1 Hour 30 Minutes",
  "cuisine_name": "British",
  "difficulty_name": "Easy",

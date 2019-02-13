@@ -12,7 +12,7 @@
 
 /* ADD background */
 .header.masthead {
-  background-image: url("./static/img/header.jpg");
+  background-image: url("../static/img/header.jpg");
 }
 
 /* ADD background color to intro text background */
@@ -124,13 +124,12 @@ h5.card-subtitle {
 }
 
 /* ADD top border for Card header */
-recipe-url.card-header {
-border-top: 1px solid rgba(0,0,0,.125);
+.card-header {
+border-bottom: 1px solid rgba(0,0,0,.125);  
 }
 
 /* ADD top border for Card header */
-.card-header {
-border-bottom: 1px solid rgba(0,0,0,.125);  
+.card-header-method {
 border-top: 1px solid rgba(0,0,0,.125);
 }
 
@@ -150,7 +149,16 @@ border-top: 1px solid rgba(0,0,0,.125);
   color: #fed136;
 }
 
-    
+/* ADD top border for Card header */
+recipe-url.card-header {
+border-top: 1px solid rgba(0,0,0,.125);
+}
+
+/*CHANGE text align of recipe-details*/
+.recipe-details {
+  text-align: center!important;
+}
+
 /* ----- Changes to Dropdown ----- */
 
 /* CHANGE  to dropdown padding */
@@ -222,3 +230,4 @@ border-top: 1px solid rgba(0,0,0,.125);
 .bttop i:hover {
  color: #fff; 
 }
+
