@@ -7,29 +7,48 @@
 </head>
  
 <!-- Bootstrap theme (Creative) downloaded from  https://github.com/BlackrockDigital/startbootstrap-agency -->
-<body id="page-top">
-   
-  <section> 
-   <div class="container">
-        <div class="row">
-          {% for cuisine in cuisines_document %} 
-          <div class=" col-lg-3 col-md-4 col-sm-6">
-            <div class="card text-muted text-center mb-4">
-               <div class="card-body">
-                  <a href="#">
-                  <img src="{{ cuisine.cuisine_image }}" class="img-fluid" alt="bbcgoodfood" style="border-bottom: 1px solid black!important;"> 
-                  <h5 class="card-title mt-3"> {{ cuisine.cuisine_name }} </h5> </a>
-               </div>
+<body>
+    
+  <!-- Navigation Navbar -->
+  {% include 'navbar_recipes.html' %}
+  
+  <!-- Header -->
+    <header class="masthead text-center text-white d-flex">  
+        <div class="container">
+            <div class="intro-text">
+                <div class="intro-text-background">
+                <div class=" h3 text-dark"> {{ cuisine_name }} Recipes </div> 
+                <p class="text-dark mb-2"> Click on image below to view the recipe. </p> </br>
+                <a class="btn btn-primary btn-lg btn-rounded js-scroll-trigger" href="/by_recipes"> Return to Recipes </a>
+    </header>
+    
+  <!-- Cuisine cards by cuisine_name -->
+    <section class="bg-primary">
+        <div class="container cuisine-cards mt-4">
+            <h3 class=" text-dark text-center cusines-heading"> Recipes
+            <div class="row mt-3">
+              {% for recipe in recipes_document_by_cuisine %} 
+                <div class="col-md-4 col-sm-6">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                         <a href="#">
+                         <img src="{{ recipe.recipe_url }}" class="img-fluid" alt="bbcgoodfood" style="border-bottom:1px solid black!important;"> </a>
+                         <h5 class="card-title text-muted text-center mt-3"> {{ recipe.recipe_name }}        </h5> 
+                         <p class="card-text text-left m-3">                 {{ recipe.recipe_description }} </p> 
+                        </div>
+                    </div>
+                </div>
+              {% endfor %}
             </div>
-         </div>
-         {% endfor %}
-      </div>
-   </div>
-  </section>
-      
+        </div>
+    </section>
     
-     <!-- Script -->
-    {% include 'script.html' %}      
+       <!-- Footer -->
+    {% include 'footer.html' %}
+
+          
+    <!-- Script -->
+    {% include 'script.html' %} 
     
-</body>
-</html>
+  </body>
+</html>     

@@ -2,6 +2,9 @@
 /* main.css: Add and override styles */
 /*-----------------------------------*/
 
+
+  
+/* CHANGE background color */
 .bg-primary {
   background-color: #ffe37a9e!important;
   padding: 20px;
@@ -61,6 +64,35 @@
 
 /* ----- Changes to Card ----- */
 
+/* Equal-height card images, cf. https://stackoverflow.com/a/47698201/1375163*/
+.card-img-top {
+    /*height: 11vw;*/
+    object-fit: cover;
+}
+  /* Small devices (landscape phones, 576px and up) */
+  @media (min-width: 576px) {
+    .card-img-top {
+        height: 19vw;
+    }
+  }
+  /* Medium devices (tablets, 768px and up) */
+  @media (min-width: 768px) {
+    .card-img-top {
+        height: 16vw;
+    }
+  }
+  /* Large devices (desktops, 992px and up) */
+  @media (min-width: 992px) {
+    .card-img-top {
+        height: 11vw;
+    }
+  }
+  /* Extra large devices (large desktops, 1200px and up) */
+  @media (min-width: 992px) {
+    .card-img-top {
+        height: 11vw;
+    }
+  }
 
 /* ADD Background to cuisines heading */
 .cusines-heading {
@@ -89,6 +121,22 @@ h5.card-subtitle {
 /* CHANGE padding for Card body */
 .card-body {
   padding: 0rem;
+}
+
+/* ADD top border for Card header */
+recipe-url.card-header {
+border-top: 1px solid rgba(0,0,0,.125);
+}
+
+/* ADD top border for Card header */
+.card-header {
+border-bottom: 1px solid rgba(0,0,0,.125);  
+border-top: 1px solid rgba(0,0,0,.125);
+}
+
+/* CHANGE font size and height for Card text */
+.card-text {
+  font-size: 14px;
 }
 
 /* CHANGE margin for Card title */

@@ -1,0 +1,83 @@
+{<html lang="en">
+
+<head>
+                                                          <title> Data Centric Development Project "VIEW_DETAILS_RECIPE.HTML" (Paul Bennett) </title>
+    <!-- Include standard links                       --> {% include 'head.html' %}                                                       
+    <!-- My Custom styles for this template           --> <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/my-creative.css') }}"> 
+</head>
+ 
+<!-- Bootstrap theme (Creative) downloaded from  https://github.com/BlackrockDigital/startbootstrap-agency -->
+<body>
+    
+  <!-- Navigation Navbar 
+  {% include 'navbar_recipes.html' %} -->
+    
+  <!-- Recipe card by recipe_id -->
+<section>
+    <div class="container">
+        <div class="row">
+            <!-- First recipe card -->
+            <div class="col-sm-6">
+                <div class="card mb-4">
+                    <div class="card-header recipe-url"> <img src="{{ recipes_document_by_recipe.recipe_url }}" class="img-fluid"> </div>
+                        <div class=card-body">
+                            <div class="h4 card-header text-center mb-2"> <strong> {{ recipes_document_by_recipe.recipe_name}} </strong> </h4> </div>
+                            <div class="card-text ml-2">
+                                <div class="recipe-details text-center mb-2"> <span>                              {{ recipes_document_by_recipe.recipe_description }} </span> </div>
+                                <div class="recipe-details">                  <span> <strong> Author:   </strong> {{ recipes_document_by_recipe.author_name }}        </span> </div>
+                                <div class="recipe-details">                  <span> <strong> Category: </strong> 
+                                    {% for category_name in recipes_document_by_recipe.category_name %}
+                                        {{ category_name }} </span> 
+                                    {% endfor %}
+                                </div>
+                                <div class="recipe-details"> <span> <strong> Difficulty:       </strong> {{ recipes_document_by_recipe.difficulty_name  }} </span> </div>
+                                <div class="recipe-details"> <span> <strong> Main ingredients: </strong> {{ recipes_document_by_recipe.main_ingredient  }} </span> </div>
+                                <div class="recipe-details"> <span> <strong> Preparation time: </strong> {{ recipes_document_by_recipe.preparation_time }} </span> </div>
+                                <div class="recipe-details"> <span> <strong> Cooking time:     </strong> {{ recipes_document_by_recipe.preparation_time }} </span> </div>
+                                <div class="recipe-details"> <span> <strong> Servings:         </strong> {{ recipes_document_by_recipe.servings_num     }} </span> </div>
+                                <div class="recipe-details mb-2">   <span> <strong> Allergens: </strong>
+                                    {% for allergen_name in recipes_document_by_recipe.allergen_name %}
+                                        {{ allergen_name }}, </span> 
+                                    {% endfor %}
+                                </div>
+                        </div> 
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Second recipe card -->
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class=card-body">
+                        <div class="h4 card-header text-center"> <strong> Ingredients </strong> </h4> </div>
+                            <div class="card-text mt-2">
+                                <ul>
+                                    {% for recipe_ingredient in recipes_document_by_recipe.recipe_ingredients %}
+                                        <li> {{ recipe_ingredient }} </li> 
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        <div class="h4 card-header text-center"> <strong> Method </strong> </h4> </div>
+                            <div class="card-text mt-2">
+                                <ul>
+                                    {% for recipe_method in recipes_document_by_recipe.recipe_method %}
+                                        <li> {{ recipe_method }} </li> 
+                                    {% endfor %}
+                                </ul> 
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>  
+    </div>
+</section>  
+    
+  <!-- Footer -->
+  {% include 'footer.html' %}
+
+          
+  <!-- Script -->
+  {% include 'script.html' %} 
+    
+</body>
+</html>         

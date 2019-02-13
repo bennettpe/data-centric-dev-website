@@ -8,11 +8,11 @@
 </head>
  
 <!-- Bootstrap theme (Creative) downloaded from  https://github.com/BlackrockDigital/startbootstrap-agency -->
-<body id="page-top">
+<body>
 
-  <!-- Navigation Navbar 
+  <!-- Navigation Navbar -->
   {% include 'navbar_recipes.html' %}
-  -->
+  
   
  <!-- Header -->
     <header class="masthead text-center text-white d-flex" style=”background-image: url(‘static/img/header.jpg’)"> <!-- Add Style= to override header background image -->  
@@ -86,9 +86,9 @@
                 <div class=" col-lg-3 col-md-4 col-sm-6">
                     <div class="card text-muted text-center mb-4">
                         <div class="card-body">
-                         <a href="#">
-                         <img src="{{ cuisine.cuisine_image }}" class="img-fluid" alt="bbcgoodfood" style="border-bottom: 1px solid black!important;"> 
-                         <h5 class="card-title mt-3"> {{ cuisine.cuisine_name }} </h5> </a>
+                         <a href="{{ url_for('by_cuisine', cuisine_name=cuisine.cuisine_name) }}">
+                         <img src="{{ cuisine.cuisine_image }}" class="img-fluid" alt="bbcgoodfood" style="border-bottom: 1px solid black!important;"> </a>
+                         <h5 class="card-title mt-3"> {{ cuisine.cuisine_name }} </h5> 
                         </div>
                     </div>
                 </div>

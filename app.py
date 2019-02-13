@@ -44,8 +44,8 @@ def get_main_ingredients_document():
         return main_ingredients
 
 # FUNCTION: GET RECIPES DB DOCUMENT
-def get_recipies_document():
-        recipes = mongo.db.recipes.find()
+def get_recipes_document_by_cuisine():
+        recipes = mongo.db.recipes.find().sort("recipe_name", 1)
         return recipes
         
 # INDEX/HOME PAGE
@@ -154,14 +154,30 @@ def by_recipes():
                                 difficulties_list = difficulties_list,
                                 main_ingredients_list = main_ingredients_list,
                                 welcome_message ='Welcome ' + str(session['username'])) 
-           
+#BY CUISINE
+@app.route('/by_cuisine/<cuisine_name>')
+def by_cuisine(cuisine_name):
+        recipes_document_by_cuisine = mongo.db.recipes.find({"cuisine_name": cuisine_name})
+        return render_template("by_cuisine.html", 
+                                cuisine_name = cuisine_name,
+                                recipes_document_by_cuisine = recipes_document_by_cuisine)    
+
+#VIEW DETAILS RECIPE
+@app.route('/view_details_recipe/<recipe_id>')
+def view_details_recipe(recipe_id):
+       recipes_document_by_recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+       return render_template("view_details_recipe.html",
+                                recipes_document_by_recipe = recipes_document_by_recipe)
+
+
 #TEST
-@app.route('/test')
-def by_test():
-# Cuisines document
-        cuisines_document = get_cuisines_document()
+@app.route('/by_test/<cuisine_name>')
+def by_test(cuisine_name):
+# Recipes document
+        recipes_document_by_cuisine = mongo.db.recipes.find({"cuisine_name": cuisine_name})
         return render_template("test.html", 
-                                cuisines_document = cuisines_document)
+                                cuisine_name = cuisine_name,
+                                recipes_document_by_cuisine = recipes_document_by_cuisine)
                                 
 # ADD FORM RECIPE
 @app.route('/add_form_recipe')
