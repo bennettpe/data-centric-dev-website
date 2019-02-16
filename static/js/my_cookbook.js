@@ -23,7 +23,7 @@ $('.more-instructions').click(function () {
 })
 
 function addInstructions() {
-    var option = '<div class="ing-del"> <textarea class="input form-control mb-2" id="inputInstructions1" rows="2 placeholder="Instructions"></textarea> <span class="delete"> X </span> </div>';
+    var option = '<div class="ing-del"> <textarea class="input form-control mb-2" id="inputInstructions1" rows="2" placeholder="Instructions"></textarea> <span class="delete"> X </span> </div>';
     $(option).insertBefore('.list-more-instructions');
 }
 

@@ -269,7 +269,16 @@ h3.recipe-heading, .recipe-p {
   text-align: center;
 }  
 
-/**/
+/*CHANGE padding to */
 .form-group {
   padding: 0px;;
+}
+
+/* Put the X at end of input form */
+/* for ingredients & instructions */
+.ing-del {
+   display: grid;
+   grid-template-columns: 1fr 25px;
+   grid-column-gap: 10px;
+   color: red;
 }

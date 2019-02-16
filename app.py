@@ -85,6 +85,8 @@ def get_recipes_document_by_cuisine():
         
 # INDEX/HOME PAGE
 @app.route('/')
+
+@app.route('/base')
 def base():
     if 'username' in session:
         return render_template('base.html',
@@ -229,10 +231,14 @@ def add_form_recipe():
                             main_ingredients_list = main_ingredients_list
     )
 
+# ADD RECIPE
+@app.route('/add_recipe',methods=['GET', 'POST'])
+def add_recipe():
+    return "Your recipe has been added."
+
 # EDIT FORM RECIPE
 @app.route('/edit_form_recipe')
 def edit_form_recipe():
-    
     return render_template("edit_form_recipe.html") 
 
  
