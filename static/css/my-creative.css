@@ -2,8 +2,6 @@
 /* main.css: Add and override styles */
 /*-----------------------------------*/
 
-
-  
 /* CHANGE background color */
 .bg-primary {
   background-color: #ffe37a9e!important;
@@ -113,6 +111,13 @@
  box-shadow: 2px 5px 20px #6c757d; 
 }
 
+/* CHANGE border for Recipe Card */
+.recipe-card.card {
+  border: 1.25px solid rgba(0, 0, 0, .50);
+  background-color: rgba(245, 245, 245, 0.9); 
+  box-shadow: 2px 5px 20px #6c757d; 
+}
+
 /* CHANGE font size for Card subtitle */
 h5.card-subtitle {
     font-size: 1.2em; 
@@ -159,6 +164,11 @@ border-top: 1px solid rgba(0,0,0,.125);
   text-align: center!important;
 }
 
+/*CHANGE padding of ratings button*/
+.btn-sm {
+padding: .25rem;  
+}
+
 /* ----- Changes to Dropdown ----- */
 
 /* CHANGE  to dropdown padding */
@@ -199,6 +209,11 @@ border-top: 1px solid rgba(0,0,0,.125);
   background-color: #fff;
 }
 
+#dropdownMenuLink {
+  cursor: pointer; /* not necessary for Bootstrap */
+  color: white /* change if you want */
+}
+
 /* ----- Changes to Back To Top Button ----- */
 
 /* Back to top button */
@@ -231,3 +246,30 @@ border-top: 1px solid rgba(0,0,0,.125);
  color: #fff; 
 }
 
+/* ADD Background to */
+.recipe-heading {
+  padding: 35px; 
+  background-color: rgba(245, 245, 245, 0.8);
+  border: 1.25px solid rgba(0, 0, 0, .50);
+  border-radius: 6rem;
+}
+
+/* CHANGE font-size to */
+.recipe-p, .form-control, .form-group, .form-row, .custom-select {
+font-size: 14px;  
+}
+
+/*CHANGE text-align to */
+.recipe-label {
+  text-align: left;
+}
+
+/*CHANGE text-align to  */
+h3.recipe-heading, .recipe-p {
+  text-align: center;
+}  
+
+/**/
+.form-group {
+  padding: 0px;;
+}

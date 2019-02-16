@@ -23,26 +23,61 @@ def get_allergens_document():
         allergens = mongo.db.allergens.find().sort("allergen_name", 1)
         return allergens
         
+# FUNCTION: CREATE ALLERGENS LIST
+def create_allergens_list():
+        allergens_document = get_allergens_document()
+        allergens_list = [allergens_record["allergen_name"]
+                             for allergens_record in allergens_document] 
+        return allergens_list     
+        
 # FUNCTION: GET CATEGORIES DB DOCUMENT
 def get_categories_document():
         categories = mongo.db.categories.find().sort("category_name", 1)
         return categories
-        
+
+# FUNCTION: CREATE CATEGORIES LIST
+def create_categories_list():
+        categories_document = get_categories_document()
+        categories_list = [categories_record["category_name"]
+                             for categories_record in categories_document]
+        return categories_list                      
+                             
 # FUNCTION: GET CUISINES DB DOCUMENT
 def get_cuisines_document():
         cuisines = mongo.db.cuisines.find().sort("cuisine_name", 1)
-        return cuisines        
+        return cuisines 
         
+# FUNCTION: CREATE CUISINES LIST
+def create_cuisines_list():
+        cuisines_document = get_cuisines_document()
+        cuisines_list = [cuisines_record["cuisine_name"]
+                             for cuisines_record in cuisines_document] 
+        return cuisines_list         
+      
 # FUNCTION: GET DIFFICULTIES DB DOCUMENT
 def get_difficulties_document():
-        difficulties = mongo.db.difficulties.find().sort("difficult_name", -1)
+        difficulties = mongo.db.difficulties.find().sort("difficulty_name", -1)
         return difficulties
+        
+# FUNCTION: CREATE DIFFICULTIES LIST
+def create_difficulties_list():
+        difficulties_document = get_difficulties_document()
+        difficulties_list = [difficulties_record["difficulty_name"]
+                             for difficulties_record in difficulties_document] 
+        return difficulties_list 
         
 # FUNCTION: GET MAIN INGREDIENTS DB DOCUMENT
 def get_main_ingredients_document():
         main_ingredients = mongo.db.main_ingredients.find().sort("main_ingredient", 1)
         return main_ingredients
-
+        
+# FUNCTION: CREATE MAIN INGREDIENTS LIST
+def create_main_ingredients_list():
+        main_ingredients_document = get_main_ingredients_document()
+        main_ingredients_list = [main_ingredients_record["main_ingredient"]
+                             for main_ingredients_record in main_ingredients_document] 
+        return main_ingredients_list 
+        
 # FUNCTION: GET RECIPES DB DOCUMENT
 def get_recipes_document_by_cuisine():
         recipes = mongo.db.recipes.find().sort("recipe_name", 1)
@@ -50,9 +85,7 @@ def get_recipes_document_by_cuisine():
         
 # INDEX/HOME PAGE
 @app.route('/')
-
-@app.route('/index')
-def index():
+def base():
     if 'username' in session:
         return render_template('base.html',
         welcome_message ='Welcome ' + str(session['username']) + ' To')
@@ -61,7 +94,7 @@ def index():
     welcome_message ='Welcome To')
 
 
-#REGISTER NEW USER via WTForm
+# REGISTER NEW USER via WTForm
 @app.route('/register_user', methods=['GET', 'POST'])
 def register_user():
     form = RegisterForm()
@@ -84,7 +117,7 @@ def register_user():
     return render_template("register_user.html", title='Register', form=form)
 
     
-#SIGN IN USER via WTForm
+# SIGN IN USER via WTForm
 @app.route('/sign_in_user',methods=['GET', 'POST'])
 def sign_in_user():
     form = SigninForm()
@@ -108,7 +141,7 @@ def sign_in_user():
     return render_template("sign_in_user.html", title='Signin', form=form)
 
 
-#SIGN OUT USER
+# SIGN OUT USER
 @app.route('/sign_out_user',methods=['GET', 'POST'])
 def sign_out_user():
     if request.method == 'GET':
@@ -154,7 +187,8 @@ def by_recipes():
                                 difficulties_list = difficulties_list,
                                 main_ingredients_list = main_ingredients_list,
                                 welcome_message ='Welcome ' + str(session['username'])) 
-#BY CUISINE
+
+# BY CUISINE
 @app.route('/by_cuisine/<cuisine_name>')
 def by_cuisine(cuisine_name):
         recipes_document_by_cuisine = mongo.db.recipes.find({"cuisine_name": cuisine_name})
@@ -162,7 +196,7 @@ def by_cuisine(cuisine_name):
                                 cuisine_name = cuisine_name,
                                 recipes_document_by_cuisine = recipes_document_by_cuisine)    
 
-#VIEW DETAILS RECIPE
+# VIEW DETAILS RECIPE
 @app.route('/view_details_recipe/<recipe_id>')
 def view_details_recipe(recipe_id):
        recipes_document_by_recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
@@ -170,7 +204,7 @@ def view_details_recipe(recipe_id):
                                 recipes_document_by_recipe = recipes_document_by_recipe)
 
 
-#TEST
+# TEST
 @app.route('/by_test/<cuisine_name>')
 def by_test(cuisine_name):
 # Recipes document
@@ -180,14 +214,25 @@ def by_test(cuisine_name):
                                 recipes_document_by_cuisine = recipes_document_by_cuisine)
                                 
 # ADD FORM RECIPE
-@app.route('/add_form_recipe')
+@app.route('/add_form_recipe',methods=['GET', 'POST'])
 def add_form_recipe():
-    return render_template('add_form_recipe.html')
+    allergens_list        = create_allergens_list()
+    categories_list       = create_categories_list()
+    cuisines_list         = create_cuisines_list()
+    difficulties_list     = create_difficulties_list()
+    main_ingredients_list = create_main_ingredients_list()
+    return render_template("add_form_recipe.html",
+                            allergens_list        = allergens_list,
+                            categories_list       = categories_list, 
+                            cuisines_list         = cuisines_list,
+                            difficulties_list     = difficulties_list,
+                            main_ingredients_list = main_ingredients_list
+    )
 
-    
 # EDIT FORM RECIPE
 @app.route('/edit_form_recipe')
 def edit_form_recipe():
+    
     return render_template("edit_form_recipe.html") 
 
  
