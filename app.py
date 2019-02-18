@@ -215,26 +215,63 @@ def by_test(cuisine_name):
                                 cuisine_name = cuisine_name,
                                 recipes_document_by_cuisine = recipes_document_by_cuisine)
                                 
-# ADD FORM RECIPE
-@app.route('/add_form_recipe',methods=['GET', 'POST'])
-def add_form_recipe():
+# ADD RECIPE
+@app.route('/<username>/add_recipe',methods=['GET', 'POST'])
+def add_recipe(username):
     allergens_list        = create_allergens_list()
     categories_list       = create_categories_list()
     cuisines_list         = create_cuisines_list()
     difficulties_list     = create_difficulties_list()
+    # Reverse difficulties_list
+    #difficulties_list = difficulties_list[::-1] 
     main_ingredients_list = create_main_ingredients_list()
-    return render_template("add_form_recipe.html",
-                            allergens_list        = allergens_list,
-                            categories_list       = categories_list, 
-                            cuisines_list         = cuisines_list,
-                            difficulties_list     = difficulties_list,
-                            main_ingredients_list = main_ingredients_list
-    )
-
-# ADD RECIPE
-@app.route('/add_recipe',methods=['GET', 'POST'])
-def add_recipe():
-    return "Your recipe has been added."
+    
+    if 'username in session':
+        username = session['username']
+        if request.method == 'POST': 
+           recipes = mongo.db.recipes
+        
+           # create required lists
+           allergen_name_getlist = request.form.getlist('allergen_name')
+           allergen_name_list = [i for i in allergen_name_getlist]
+           category_name_getlist = request.form.getlist('category_name')
+           category_name_list = [i for i in category_name_getlist]
+           recipe_ingredients_list = request.form.getlist('recipe_ingredient')
+           recipe_ingredients_list_empty = [i for i in recipe_ingredients_list if i != ""]
+           recipe_method_list = request.form.getlist('recipe_method')
+           recipe_method_list_empty = [i for i in recipe_method_list if i != ""]
+    
+           # create new recipe
+           new_recipe = {
+            'allergen_name'      : allergen_name_list,
+            'author_name'        : request.form.get('author_name'),
+            'category_name'      : category_name_list,
+            'cooking_time'       : request.form.get('cooking_time'),
+            'cuisine_name'       : request.form.get('cuisine_name'),
+            'difficulty_name'    : request.form.get('difficulty_name'),
+            'main_ingredient'    : request.form.get('main_ingredient'),
+            'preparation_time'   : request.form.get('preparation_time'),
+            'recipe_description' : request.form.get('recipe_description'),
+            'recipe_ingredients' : recipe_ingredients_list,
+            'recipe_method'      : recipe_method_list,
+            'recipe_name'        : request.form.get('recipe_name'),
+            'recipe_url'         : request.form.get('recipe_url'),
+            'ratings_score'      : int(0),
+            'servings_num'       : request.form.get('servings_num'),
+            'username'           : username
+           }
+           
+           print(new_recipe)
+           #insert new recipe into mongoDB
+           recipes.insert_one(new_recipe)
+           
+        return render_template("add_recipe.html",
+                                allergens_list        = allergens_list,
+                                categories_list       = categories_list, 
+                                cuisines_list         = cuisines_list,
+                                difficulties_list     = difficulties_list,
+                                main_ingredients_list = main_ingredients_list)
+    return render_template('signin.html')                            
 
 # EDIT FORM RECIPE
 @app.route('/edit_form_recipe')

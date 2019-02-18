@@ -1,15 +1,15 @@
-// Add extra Ingredient inputs to add recipe form
+// Add ingredients form
 $('.more-ingredients').click(function () {
     addIngredients();
     return false; //Stops page jumping back to top
 })
 
 function addIngredients() {
-    var option = '<div class="ing-del"> <input type="text" class="form-control mb-2" id="inputMainingredient" placeholder="Ingredient" /> <span class="delete"> X </span> </div>';
-    $(option).insertBefore('.list-more-ingredients');
+    var option = '<div class="ing-del"> <input type="text" class="input form-control mb-2" id="ingredient" name="recipe_ingredient" placeholder="Input ingredient" /> <span class="delete"> <i class="fas fa-times-circle"></i> </span></div>';
+    $(option).insertBefore('.more-ingredients');
 }
 
-// Remove Ingredients from form
+// Remove ingredients form
 $('.ingredients-list').on('click', 'span', function () {
     var rem = $(this).closest('div.ing-del');
     $(rem).remove();
@@ -23,7 +23,7 @@ $('.more-instructions').click(function () {
 })
 
 function addInstructions() {
-    var option = '<div class="ing-del"> <textarea class="input form-control mb-2" id="inputInstructions1" rows="2" placeholder="Instructions"></textarea> <span class="delete"> X </span> </div>';
+    var option = '<div class="ing-del"> <textarea class="input form-control mb-2" id="method" rows="2" name="recipe_method" placeholder="Input instructions"></textarea> <span class="delete"> <i class="fas fa-times-circle"></i> </span></div>';
     $(option).insertBefore('.list-more-instructions');
 }
 

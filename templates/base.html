@@ -35,9 +35,9 @@
               <li class="nav-item"> <a class="nav-link js-scroll-trigger" href="{{ url_for('base') }}"> Home <i class="fas fa-home fa-lg"> </i></a></li>
               <li class="nav-item"> <a class="nav-link js-scroll-trigger" href="{{ url_for('by_recipes') }}"> All Recipes <i class="fas fa-utensils fa-lg"> </i></a></li>
             {% if 'username' in session %}
-              <li class="nav-item"> <a class="nav-link js-scroll-trigger" href="{{ url_for('add_form_recipe') }}"> Add Recipes <i class="fas fa-sign-in-alt fa-lg"> </i></a></li>
+              <li class="nav-item"> <a class="nav-link js-scroll-trigger" href="{{ url_for('add_recipe', username=session['username']) }}"> Add Recipes <i class="fas fa-folder-plus fa-lg"></i></a></li>
               <li class="nav-item"> <a class="nav-link js-scroll-trigger" href="{{ url_for('my_recipes') }}"> My Recipes <i class="fas fa-book fa-lg"> </i></a></li>
-              <li class="nav-item"> <a class="nav-link js-scroll-trigger" href="{{ url_for('sign_out_user') }}"> Sign Out <i class="fas fa-sign-in-alt fa-lg"> </i></a></li> 
+              <li class="nav-item"> <a class="nav-link js-scroll-trigger" href="{{ url_for('sign_out_user') }}"> Sign Out <i class="fas fa-sign-out-alt fa-lg"></i></a></li> 
             {% else %}   
               <li class="nav-item"> <a class="nav-link js-scroll-trigger" href="{{ url_for('sign_in_user') }}"> Sign In  <i class="fas fa-sign-in-alt fa-lg"> </i></a></li>
               <li class="nav-item"> <a class="nav-link js-scroll-trigger" href="{{ url_for('register_user') }}"> Register <i class="fas fa-user-plus fa-lg"> </i></a></li>
@@ -58,7 +58,7 @@
             <div class="intro-heading text-uppercase"> The Recipe Collection </div>
             
              {% if 'username' in session %}
-               <a class="btn btn-primary btn-lg btn-rounded" href="/add_form_recipe"> Add Recipes </a>
+               <a class="btn btn-primary btn-lg btn-rounded" href="/add_recipe"> Add Recipes </a>
                <a class="btn btn-primary btn-lg btn-rounded" href="/by_recipes"> All Recipes </a>
                <a class="btn btn-primary btn-lg btn-rounded" href="/my_recipes"> My Recipes </a>
              {% else %}

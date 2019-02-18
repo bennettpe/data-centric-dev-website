@@ -275,7 +275,7 @@ h3.recipe-heading, .recipe-p {
 }
 
 /* Put the X at end of input form */
-/* for ingredients & instructions */
+/* for ingredients & instructions */ 
 .ing-del {
    display: grid;
    grid-template-columns: 1fr 25px;
