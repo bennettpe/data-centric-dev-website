@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-                                                          <title> Data Centric Development Project "VIEW_DETAILS_RECIPE.HTML" (Paul Bennett) </title>
+                                                          <title> Data Centric Development Project "VIEW_MY_DETAILS_RECIPE.HTML" (Paul Bennett) </title>
     <!-- Include standard links                       --> {% include 'head.html' %}                                                       
     <!-- My Custom styles for this template           --> <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/my-creative.css') }}"> 
 </head>
@@ -54,7 +54,7 @@
                                 </div>
                                 
                                 <div class="row justify-content-center">
-                                    <a class="btn btn-primary btn-sm btn-rounded mb-2" href="{{ url_for('by_recipes') }}"> Return to recipes </a>
+                                    <a class="btn btn-primary btn-sm btn-rounded mb-2" href="{{ url_for('by_my_recipes', username=session['username']) }}"> Return to my recipes </a>
                                 </div>    
                             </div> 
                         </div>

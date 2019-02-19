@@ -194,10 +194,31 @@ def by_recipes():
 @app.route('/by_cuisine/<cuisine_name>')
 def by_cuisine(cuisine_name):
         recipes_document_by_cuisine = mongo.db.recipes.find({"cuisine_name": cuisine_name})
+        # Counts total amount of recipes by cuisine
+        recipe_cuisine_count = mongo.db.recipes.find({ "cuisine_name": cuisine_name }).count()
         return render_template("by_cuisine.html", 
+                                recipe_cuisine_count = recipe_cuisine_count,
                                 cuisine_name = cuisine_name,
                                 recipes_document_by_cuisine = recipes_document_by_cuisine)    
 
+
+# BY MY RECIPES
+@app.route('/by_my_recipes/<username>')
+def by_my_recipes(username):
+    if 'username' in session:
+        user_document_by_signed_in_username = mongo.db.users.find_one({"username": username})
+        recipes_document_by_signed_in = mongo.db.recipes.find({"username": session['username']})
+        recipes_document_by_signed_in_count = recipes_document_by_signed_in.count()
+        return render_template("by_my_recipes.html",
+                                recipes_document_by_signed_in_count = recipes_document_by_signed_in_count,
+                                user_document_by_signed_in_username = user_document_by_signed_in_username,
+                                recipes_document_by_signed_in       = recipes_document_by_signed_in,
+                                message = "Your recipes")
+    else:
+        return redirect(url_for('index',
+                                    message="You don't have any recipes!"))
+                                    
+                                    
 # VIEW DETAILS RECIPE
 @app.route('/view_details_recipe/<recipe_id>')
 def view_details_recipe(recipe_id):
@@ -205,7 +226,13 @@ def view_details_recipe(recipe_id):
        return render_template("view_details_recipe.html",
                                 recipes_document_by_recipe = recipes_document_by_recipe)
 
-
+# VIEW MY DETAILS RECIPE
+@app.route('/view_my_details_recipe/<recipe_id>')
+def view_my_details_recipe(recipe_id):
+       recipes_document_by_recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+       return render_template("view_my_details_recipe.html",
+                                recipes_document_by_recipe = recipes_document_by_recipe)
+                                
 # TEST
 @app.route('/by_test/<cuisine_name>')
 def by_test(cuisine_name):
@@ -273,10 +300,10 @@ def add_recipe(username):
                                 main_ingredients_list = main_ingredients_list)
     return render_template('signin.html')                            
 
-# EDIT FORM RECIPE
-@app.route('/edit_form_recipe')
-def edit_form_recipe():
-    return render_template("edit_form_recipe.html") 
+# EDIT RECIPE
+@app.route('/edit_recipe')
+def edit_recipe():
+    return render_template("edit_recipe.html") 
 
  
 # LIST CATEGORY RECIPES
@@ -298,12 +325,7 @@ def list_cuisine_recipes(cusine):
 #        welcome_message ='Welcome ' + str(session['username'])) 
 
         
-# MY RECIPES
-@app.route('/my_recipes')
-def my_recipes():
-    return render_template("my_recipes.html")  
 
-    
 # SEARCH RECIPES
 @app.route('/search_recipes')
 def search_recipes():

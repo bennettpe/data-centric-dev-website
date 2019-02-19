@@ -89,7 +89,7 @@
                         <div class="card-body">
                          <a href="{{ url_for('by_cuisine', cuisine_name=cuisine.cuisine_name) }}">
                          <img src="{{ cuisine.cuisine_image }}" class="img-fluid" alt="bbcgoodfood" style="border-bottom: 1px solid black!important;"> </a>
-                         <h5 class="card-title mt-3"> {{ cuisine.cuisine_name }} </h5> 
+                         <h5 class="card-title mt-3"> {{ cuisine.cuisine_name }} {{cuisine.cuisine_count }} </h5> 
                         </div>
                     </div>
                 </div>

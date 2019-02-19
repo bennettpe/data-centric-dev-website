@@ -93,7 +93,7 @@
   }
 
 /* ADD Background to cuisines heading */
-.cusines-heading {
+.cuisines-heading {
   padding: 35px; 
   background-color: rgba(245, 245, 245, 0.8);
   border: 1.25px solid rgba(0, 0, 0, .50);
@@ -255,7 +255,7 @@ padding: .25rem;
 }
 
 /* CHANGE font-size to */
-.recipe-p, .form-control, .form-group, .form-row, .custom-select {
+.cuisines-p, .recipe-p, .form-control, .form-group, .form-row, .custom-select {
 font-size: 14px;  
 }
 
