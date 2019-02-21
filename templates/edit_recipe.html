@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+                                                          <title> Data Centric Development Project "EDIT_RECIPE.HTML" (Paul Bennett) </title>
+    <!-- Include standard links                       --> {% include 'head.html' %}                                                       
+    <!-- My Custom styles for this template           --> <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/my-creative.css') }}"> 
+</head>
+ 
+<!-- Bootstrap theme (Creative) downloaded from  https://github.com/BlackrockDigital/startbootstrap-agency -->
+<body>
+    
+  <!-- Navigation Navbar -->
+  {% include 'navbar_recipes.html' %} 
+
+<div class="bg-primary">
+  <section>    
+    <div class="container edit-form-recipe">
+        <h3 class="text-center recipe-heading"> Edit Recipe  
+        <p  class="text-dark text-center recipe-p mt-2"> Please edit form and once completed click on Update recipe button below. </p> </h3> 
+        
+        <h3 class="text-dark text-left recipe-heading"> 
+        
+        <!-- FLASH MESSAGING-->
+        {% include 'messaging.html' %} 
+        
+        <!-- EDIT RECIPE FORM --> 
+        <form method="POST" action="{{ url_for('update_recipe', recipe_id=recipe._id) }}" id="update_recipe_form" name="update_recipe_form" autocomplete="off"> <!-- Disabled autocompletion --> 
+           
+          <div class="form-row">
+            <!-- EDIT CUISINE SELECTION -->
+            <div class="form-group col-md-4">
+              <label for="edit_cuisine_name" class="recipe-label ml-2"> <i class="far fa-map mr-2"></i> Cuisine </label>
+                <select class="custom-select" id="edit_cuisine_name" name="cuisine_name">
+                  <option disabled selected> Select cuisine </option>
+                    {% for cuisine in cuisines_list %}
+                    {% if  cuisine == recipe.cuisine_name %}
+                      <option value="{{ cuisine }}" selected> {{ cuisine }} </option> 
+                    {% else %}
+                      <option value="{{ cuisine }}"> {{ cuisine }} </option>
+                    {% endif %}  
+                    {% endfor %}
+                </select>
+            </div>
+            
+            <!-- EDIT CATEGORY SELECTION -->
+            <div class="form-group col-md-4">
+              <label for="edit_category_name" class="recipe-label ml-2"> <i class="far fa-clipboard mr-2"></i> Categories </label>
+                <select multiple class="custom-select" id="edit_category_name" name="category_name">
+                  <option disabled> Select category(s) </option>
+                      {% for category in categories_list %}
+                      {% if  category == recipe.category_name %}
+                        <option value="{{ category }}" selected> {{ category }} </option> 
+                      {% else %}
+                        <option value="{{ category }}"> {{ category }} </option>
+                      {% endif %}  
+                    {% endfor %}
+                </select>
+            </div>
+            
+            <!-- EDIT AUTHOR -->
+            <div class="form-group col-md-4">
+              <label for="edit_author_name" class="recipe-label ml-2"> <i class="far fa-user mr-2"></i> Author </label>
+                <input type="text" class="form-control"  id="edit_author_name" name="author_name" placeholder="Original recipe author" value="{{ recipe.author_name }}">
+            </div>
+          </div>
+          
+          <!-- EDIT RECIPE NAME -->
+          <div class="form-group col-md-8"> 
+            <label for="edit_recipe_name" class="recipe-label ml-2"> <i class="fas fa-utensils mr-2"></i> Recipe name </label>
+              <input type="text" class="form-control" id="edit_recipe_name" name="recipe_name" placeholder="Input name of recipe" required=required value="{{ recipe.recipe_name }}">
+          </div>
+            
+          <!-- EDIT RECIPE DESCRIPTION -->
+          <div class="form-group col-md-8"> 
+            <label for="edit_recipe_description" class="recipe-label ml-2"> <i class="fas fa-utensils mr-2"></i> Recipe description </label>
+              <textarea class="form-control" id="edit_recipe_description" name="recipe_description" placeholder="Input description of recipe" rows="2">{{ recipe.recipe_description }} </textarea>
+          </div>  
+            
+          <!-- EDIT RECIPE_URL -->
+          <div class="form-group col-md-8">
+            <label for="edit_recipe_url" class="recipe-label ml-2"> <i class="far fa-image mr-2"></i> Recipe image </label>
+              <input type="url" class="form-control" id="edit_recipe_url" name="recipe_url" placeholder="Add url for recipe image" required=required value="{{ recipe.recipe_url }}">
+          </div>
+        
+        <div class="form-row">        
+          <!-- EDIT PREPARATION TIME -->
+          <div class="form-group col-md-4"> 
+            <label for="edit_preparation_time" class="recipe-label ml-2"> <i class="far fa-hourglass mr-2"></i> Preparation time </label>
+               <input type="text" class="form-control" id="edit_preparation_time" name="preparation_time" placeholder="Input preparation time" required=required value="{{ recipe.preparation_time }}">
+          </div> 
+          
+          <!-- EDIT COOKING TIME -->
+          <div class="form-group col-md-4">
+            <label for="edit_cooking_time" class="recipe-label ml-2"> <i class="far fa-clock mr-2"></i> Cooking time </label>
+              <input type="text" class="form-control" id="edit_cooking_time" name="cooking_time" placeholder="Input cooking time" required=required value="{{ recipe.cooking_time }}">
+          </div> 
+          
+          <!-- EDIT SERVING -->
+          <div class="form-group col-md-4">
+            <label for="edit_servings_num" class="recipe-label ml-2"> <i class="fas fa-utensil-spoon mr-2"></i> Serves </label>
+              <input type="number" min=1 class="form-control" id="edit_servings_num" name="servings_num" placeholder="Select servings" required=required value="{{ recipe.servings_num }}">
+          </div> 
+        </div>
+        
+        <div class="form-row">
+          <!-- EDIT DIFFICULTY SELECTION -->
+            <div class="form-group col-md-4">
+              <label for="edit_difficulty_name" class="recipe-label ml-2"> <i class="fas fa-skiing mr-2"></i> Difficulty </label>
+                <select class="custom-select" id="edit_difficulty_name" name="difficulty_name" required>
+                  <option disabled selected> Select Difficulty </option>
+                    {% for difficulty in difficulties_list %}
+                      {% if  difficulty == recipe.difficulty_name %}
+                        <option value="{{ difficulty }}" selected> {{ difficulty }} </option>
+                      {% else %}  
+                        <option value="{{ difficulty }}"> {{ difficulty }} </option>
+                      {% endif %}  
+                    {% endfor %}
+                </select>
+            </div> 
+            
+            <!-- EDIT MAIN INGREDIENT SELECTION -->
+            <div class="form-group col-md-4">
+              <label for="edit_main_ingredient" class="recipe-label ml-2"> <i class="fas fa-mortar-pestle mr-2"></i> Main Ingredient </label>
+                <select class="custom-select" id="edit_main_ingredient" name="main_ingredient" required>
+                  <option disabled selected> Select Main Ingredient </option>
+                    {% for ingredient in main_ingredients_list %}
+                      {% if  ingredient == recipe.main_ingredient %}
+                        <option value="{{ ingredient }}" selected> {{ ingredient }} </option>
+                      {% else %}  
+                        <option value="{{ ingredient }}"> {{ ingredient }} </option>
+                      {% endif %}  
+                    {% endfor %}
+                </select>
+            </div> 
+            
+            <!-- EDIT ALLERGEN SELECTION  -->
+            <div class="form-group col-md-4">
+              <label for="edit_allergen_name" class="recipe-label ml-2"> <i class="fas fa-allergies mr-2"></i> Allergen </label>
+                <select multiple class="custom-select" id="edit_allergen_name" name="allergen_name" required>
+                  <option disabled selected> Select Allergen(s) </option>
+                    {% for allergen in allergens_list %}
+                      {% if  allergen == recipe.allergen_name %}
+                        <option value="{{allergen }}" selected> {{ allergen }} </option> 
+                      {% else %}  
+                        <option value="{{ allergen }}"> {{ allergen }} </option>
+                      {% endif %}  
+                    {% endfor %}
+                </select>
+            </div> 
+        </div>
+        
+        
+        <!-- EDIT INGREDIENT(S) -->
+        <div class="form-row"> 
+          <div class="form-group col-md-5">
+            <div class="ingredients-list" id="ingredients_list">
+              <label for="edit_ingredients" class="recipe-label ml-2"> <i class="fas fa-shopping-cart mr-2"></i> Ingredients </label>
+                {% for ingredient in recipe.recipe_ingredients %}
+                  <input type="text" class="form-control mb-2" id="edit_ingredients" name="recipe_ingredient" placeholder="Input ingredient" value="{{ ingredient }}" />
+                {% endfor %}
+               
+              <div class="list-more-ingredients">
+                <button> <span class="more-ingredients"> <i class="fa fa-plus-circle"aria-hidden="true"></i> Add ingredient </span> </button>
+              </div>
+            </div> 
+          </div>
+        
+          <!-- EDIT INSTRUCTION(S) --> 
+          <div class="form-group col-md-5">
+            <div class="ingredients-list" id="ingredients_list">
+              <label for="edit_instructions" class="recipe-label ml-2"> <i class="fas fa-book-reader mr-2"></i> Instructions </label>
+                {% for method in recipe.recipe_method %}
+                  <textarea class="form-control" id="edit_instructions" name="recipe_method" placeholder="Input instructions"> {{ method }} </textarea> 
+                {% endfor %}
+              
+              <div class="list-more-instructions">
+                <button> <span class="more-instructions"> <i class="fa fa-plus-circle"aria-hidden="true"></i> Add instruction </span> </button>
+              </div>
+           </div>
+         </div>  
+       </div>
+       
+          <!-- HIDDEN RATINGS_SCORE -->
+          <div id="hiddenfields">
+            <input type="input" class="form-control" id="ratings_score" name="ratings_score" value="{{ recipe.ratings_score }}" hidden>
+          </div>
+          
+          <!-- UPDATE RECIPE OR CANCEL BUTTONS --> 
+          <div class="form-group text-center">
+            <button class="btn btn-outline-warning" type="submit" name="action"> <i class="fa  fa-plus-circle"></i> Update Recipe </button> 
+            <a class="btn btn-outline-warning ml-4" href="/base">                <i class="fas fa-times-circle"></i> Cancel </a>
+          </div>
+        
+      </form>
+      
+    </div>
+  </section>
+</div>
+        
+  <!-- Footer -->
+  {% include 'footer.html' %}
+  
+  <!-- Script -->
+  {% include 'script.html' %} 
+  
+</body>
+</html>           

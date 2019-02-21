@@ -1,12 +1,17 @@
-// Add ingredients form
+//Add ingredients form
 $('.more-ingredients').click(function () {
     addIngredients();
     return false; //Stops page jumping back to top
 })
 
 function addIngredients() {
-    var option = '<div class="ing-del"> <input type="text" class="input form-control mb-2" id="ingredient" name="recipe_ingredient" placeholder="Input ingredient" /> <span class="delete"> <i class="fas fa-times-circle"></i> </span></div>';
-    $(option).insertBefore('.more-ingredients');
+    var option = `<div class="ing-del">
+                    <input type="text" class="input form-control mb-2" id="ingredient" name="recipe_ingredient" placeholder="Input ingredient" />
+                    <span class="delete">
+                        <i class="fas fa-times-circle"></i> Remove 
+                    </span>
+                </div>`;
+    $(option).insertBefore('.list-more-ingredients');
 }
 
 // Remove ingredients form
@@ -23,7 +28,12 @@ $('.more-instructions').click(function () {
 })
 
 function addInstructions() {
-    var option = '<div class="ing-del"> <textarea class="input form-control mb-2" id="method" rows="2" name="recipe_method" placeholder="Input instructions"></textarea> <span class="delete"> <i class="fas fa-times-circle"></i> </span></div>';
+    var option = `<div class="ing-del">
+                    <textarea class="input form-control mb-2" id="method" rows="2" name="recipe_method" placeholder="Input instructions"></textarea>
+                    <span class="delete">
+                        <i class="fas fa-times-circle"></i> Remove 
+                    </span>
+                </div>`;
     $(option).insertBefore('.list-more-instructions');
 }
 

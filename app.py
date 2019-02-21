@@ -197,8 +197,8 @@ def by_cuisine(cuisine_name):
         # Counts total amount of recipes by cuisine
         recipe_cuisine_count = mongo.db.recipes.find({ "cuisine_name": cuisine_name }).count()
         return render_template("by_cuisine.html", 
-                                recipe_cuisine_count = recipe_cuisine_count,
-                                cuisine_name = cuisine_name,
+                                recipe_cuisine_count        = recipe_cuisine_count,
+                                cuisine_name                = cuisine_name,
                                 recipes_document_by_cuisine = recipes_document_by_cuisine)    
 
 
@@ -207,7 +207,7 @@ def by_cuisine(cuisine_name):
 def by_my_recipes(username):
     if 'username' in session:
         user_document_by_signed_in_username = mongo.db.users.find_one({"username": username})
-        recipes_document_by_signed_in = mongo.db.recipes.find({"username": session['username']})
+        recipes_document_by_signed_in       = mongo.db.recipes.find({"username": session['username']})
         recipes_document_by_signed_in_count = recipes_document_by_signed_in.count()
         return render_template("by_my_recipes.html",
                                 recipes_document_by_signed_in_count = recipes_document_by_signed_in_count,
@@ -216,7 +216,7 @@ def by_my_recipes(username):
                                 message = "Your recipes")
     else:
         return redirect(url_for('index',
-                                    message="You don't have any recipes!"))
+                        message="You don't have any recipes!"))
                                     
                                     
 # VIEW DETAILS RECIPE
@@ -259,14 +259,14 @@ def add_recipe(username):
            recipes = mongo.db.recipes
         
            # create required lists
-           allergen_name_getlist = request.form.getlist('allergen_name')
-           allergen_name_list = [i for i in allergen_name_getlist]
-           category_name_getlist = request.form.getlist('category_name')
-           category_name_list = [i for i in category_name_getlist]
-           recipe_ingredients_list = request.form.getlist('recipe_ingredient')
+           allergen_name_getlist         = request.form.getlist('allergen_name')
+           allergen_name_list            = [i for i in allergen_name_getlist]
+           category_name_getlist         = request.form.getlist('category_name')
+           category_name_list            = [i for i in category_name_getlist]
+           recipe_ingredients_list       = request.form.getlist('recipe_ingredient')
            recipe_ingredients_list_empty = [i for i in recipe_ingredients_list if i != ""]
-           recipe_method_list = request.form.getlist('recipe_method')
-           recipe_method_list_empty = [i for i in recipe_method_list if i != ""]
+           recipe_method_list            = request.form.getlist('recipe_method')
+           recipe_method_list_empty      = [i for i in recipe_method_list if i != ""]
     
            # create new recipe
            new_recipe = {
@@ -284,28 +284,97 @@ def add_recipe(username):
             'recipe_name'        : request.form.get('recipe_name'),
             'recipe_url'         : request.form.get('recipe_url'),
             'ratings_score'      : int(0),
-            'servings_num'       : request.form.get('servings_num'),
+            'servings_num'       : (request.form.get('servings_num')),
             'username'           : username
            }
-           
            print(new_recipe)
-           #insert new recipe into mongoDB
+           #insert new recipe into mongoDB recipies document
            recipes.insert_one(new_recipe)
            
+           # Check main_ingredients document to see if main_ingredient added in recipe
+           # already exists, if not add to main_ingredients document
+           main_ingredient     = mongo.db.main_ingredients
+           current_ingredients = main_ingredient.find_one({'main_ingredient': request.form.get('main_ingredient')})
+           if request.form['main_ingredient']: 
+                if current_ingredients is None:
+                   main_ingredient.insert({
+                   'main_ingredient': request.form.get('main_ingredient')
+                   })
+                return redirect(url_for('base'))    
         return render_template("add_recipe.html",
                                 allergens_list        = allergens_list,
                                 categories_list       = categories_list, 
                                 cuisines_list         = cuisines_list,
                                 difficulties_list     = difficulties_list,
                                 main_ingredients_list = main_ingredients_list)
-    return render_template('signin.html')                            
+    return render_template('sign_in_user.html',
+                   message='Please sign in to add your recipe!')                            
+
+
+# DELETE RECIPE
+@app.route('/<username>/delete_recipe/<recipe_id>')
+def delete_recipe(username, recipe_id):
+    if 'username' in session:
+        # Delete selected recipe
+        mongo.db.recipes.remove({'_id': ObjectId(recipe_id)})
+        return redirect(url_for('by_my_recipes', username=session['username']))
+    return render_template('sign_out_user.html',
+                    message='Please sign in to delete your recipe!')
+
 
 # EDIT RECIPE
-@app.route('/edit_recipe')
-def edit_recipe():
-    return render_template("edit_recipe.html") 
+@app.route('/<username>/edit_recipe/<recipe_id>', methods=['GET','POST'])
+def edit_recipe(username, recipe_id):
+    # find selected recipe
+    find_my_details_recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+    # create required lists
+    allergens_list        = create_allergens_list()
+    categories_list       = create_categories_list()
+    cuisines_list         = create_cuisines_list()
+    difficulties_list     = create_difficulties_list()
+    main_ingredients_list = create_main_ingredients_list()
+    
+    if 'username' in session:
+        return render_template('edit_recipe.html',
+                                recipe = find_my_details_recipe,
+                                allergens_list         = allergens_list,
+                                categories_list        = categories_list,
+                                cuisines_list          = cuisines_list,
+                                difficulties_list      = difficulties_list,
+                                main_ingredients_list  = main_ingredients_list,
+                                username  = session['username']) 
+    return render_template('sign_in_user.html',
+                   message='Please sign in to edit your recipe!')
 
- 
+# UPDATE RECIPE
+@app.route('/update_recipe/<recipe_id>', methods=['POST'])
+def update_recipe(recipe_id):
+    if 'username' in session:
+        recipe = mongo.db.recipes
+        # Update selected edited recipe
+        recipe.update(
+                {'_id': ObjectId(recipe_id)}, 
+                {
+                    'allergen_name': request.form.getlist('allergen_name'),
+                    'author_name': request.form.get('author_name'),
+                    'category_name': request.form.getlist('category_name'),
+                    'cooking_time': request.form.get('cooking_time'),
+                    'cuisine_name': request.form.get('cuisine_name'),
+                    'difficulty_name': request.form.get('difficulty_name'),
+                    'main_ingredient': request.form.get('main_ingredient'),
+                    'preparation_time': request.form.get('preparation_time'),
+                    'recipe_description': request.form.get('recipe_description'),
+                    'recipe_ingredients': request.form.getlist('recipe_ingredients'),
+                    'recipe_method': request.form.getlist('recipe_method'),
+                    'recipe_name': request.form.get('recipe_name'),
+                    'recipe_url': request.form.get('recipe_url'),
+                    'ratings_score': request.form.get('ratings_score'),
+                    'servings_num': request.form.get('servings_num'),
+                    'username': session['username']
+                })
+        return redirect(url_for('view_my_details_recipe', recipe_id=recipe_id, username=session['username'])) 
+                                        
+                                        
 # LIST CATEGORY RECIPES
 @app.route('/list_category_recipes/<category>')
 def list_category_recipes(category):
@@ -318,26 +387,12 @@ def list_cuisine_recipes(cusine):
     return render_template("list_cuisine_recipes.html") 
 
 
-# LIST ALL RECIPES
-#@app.route('/list_all_recipes')
-#def list_all_recipes1():
-#        return render_template('list_all_recipes.html',
-#        welcome_message ='Welcome ' + str(session['username'])) 
-
-        
-
 # SEARCH RECIPES
 @app.route('/search_recipes')
 def search_recipes():
     return render_template("search_recipes.html")
 
 
-# VIEW RECIPE
-@app.route('/view_recipe')
-def view_recipe():
-    return render_template("view_recipe.html")    
-
-    
 # SITE STATISICS
 @app.route('/site_statistics')
 def site_statistics():

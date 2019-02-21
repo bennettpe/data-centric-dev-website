@@ -22,7 +22,7 @@
             <div class="col-sm-6">
                 <div class="card recipe-card mb-4">
                     <div class="card-header recipe-url"> <img src="{{ recipes_document_by_recipe.recipe_url }}" class="img-fluid"> </div>
-                        <div class=card-body">
+                        <div class="card-body">
                             <div class="h4 card-header text-center mb-2"> <strong> {{ recipes_document_by_recipe.recipe_name}} </strong> </h4>
                                 <button type="button" class="btn-sm btn-info m-2">
                                   ratings <span class="badge badge-pill badge-light"> {{ recipes_document_by_recipe.ratings_score}} </span>
@@ -32,10 +32,16 @@
                             <div class="card-text ml-2">
                                 <div class="recipe-details mb-2 mr-2"> <span>                              {{ recipes_document_by_recipe.recipe_description }} </span> </div>
                                 <div class="recipe-details">           <span> <strong> Author:   </strong> {{ recipes_document_by_recipe.author_name }}        </span> </div>
-                                <div class="recipe-details">           <span> <strong> Category: </strong> 
-                                    {% for category_name in recipes_document_by_recipe.category_name %}
-                                        {{ category_name }}, </span> 
-                                    {% endfor %}
+                                <div class="recipe-details">           <span> <strong> Category: </strong>
+                                    {% if recipes_document_by_recipe.category_name | length > 1 %}
+                                        {% for category_name in recipes_document_by_recipe.category_name %}
+                                            {{ category_name }}, </span> 
+                                        {% endfor %}
+                                    {% else %}
+                                        {% for category_name in recipes_document_by_recipe.category_name %}
+                                            {{ category_name }} </span> 
+                                        {% endfor %}
+                                    {% endif %}
                                 </div>
                                 <div class="recipe-details"> <span> <strong> Difficulty:       </strong> {{ recipes_document_by_recipe.difficulty_name  }} </span> </div>
                                 <div class="recipe-details"> <span> <strong> Main ingredients: </strong> {{ recipes_document_by_recipe.main_ingredient  }} </span> </div>

@@ -282,3 +282,8 @@ h3.recipe-heading, .recipe-p {
    grid-column-gap: 10px;
    color: red;
 }
+
+/*CHANGE font-size small button */
+.btn-sm {
+  font-size: .700rem;
+} 
