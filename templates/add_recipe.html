@@ -31,11 +31,11 @@
             <!-- ADD CUISINE SELECTION -->
             <div class="form-group col-md-4">
               <label for="add_cuisine_name" class="recipe-label ml-2"> <i class="far fa-map mr-2"></i> Cuisine </label>
-                <select class="custom-select cuisine-selected" id="add_cuisine_name" name="cuisine_name" required=required>
-                  <option disabled selected"> Select cuisine </option>
-                    {% for cuisine in cuisines_list %}
+                <select class="custom-select" id="add_cuisine_name" name="cuisine_name" required=required>
+                  <option disabled selected> Select cuisine </option>
+                  {% for cuisine in cuisines_list %}
                       <option value="{{ cuisine }}"> {{ cuisine }} </option> 
-                    {% endfor %}
+                  {% endfor %}
                 </select>
             </div>
             
@@ -43,17 +43,17 @@
             <div class="form-group col-md-4">
               <label for="add_category_name" class="recipe-label ml-2"> <i class="far fa-clipboard mr-2"></i> Categories </label>
                 <select multiple class="custom-select" id="add_category_name" name="category_name" required=required>
-                  <option disabled selected"> Select category(s) </option>
-                    {% for category in categories_list %}
+                  <option disabled selected> Select category(s) </option>
+                  {% for category in categories_list %}
                       <option value="{{ category }}"> {{ category }} </option> 
-                    {% endfor %}
+                  {% endfor %}
                 </select>
             </div>
             
-            <!-- ADD AUTHOR INPUT -->
+            <!-- ADD AUTHOR NAME -->
             <div class="form-group col-md-4">
               <label for="add_author_name" class="recipe-label ml-2"> <i class="far fa-user mr-2"></i> Author </label>
-                <input type="input" class="form-control" id="add_author_name" name="author_name" placeholder="Original recipe author">
+                <input type="text" class="form-control" id="add_author_name" name="author_name" placeholder="Original recipe author">
             </div>
           </div>
           
@@ -61,7 +61,7 @@
           <!-- ADD RECIPE NAME -->
           <div class="form-group col-md-8"> 
             <label for="add_recipe_name" class="recipe-label ml-2"> <i class="fas fa-utensils mr-2"></i> Recipe name </label>
-              <input type="input" class="form-control" id="add_recipe_name" name="recipe_name" placeholder="Input name of recipe" required=required>
+              <input type="text" class="form-control" id="add_recipe_name" name="recipe_name" placeholder="Input name of recipe" required=required>
           </div>
             
           <!-- ADD RECIPE DESCRIPTION -->
@@ -80,13 +80,13 @@
           <!-- ADD PREPARATION TIME -->
           <div class="form-group col-md-4"> 
             <label for="add_preparation_time" class="recipe-label ml-2"> <i class="far fa-hourglass mr-2"></i> Preparation time </label>
-               <input type="input" class="form-control" id="add_preparation_time" name="preparation_time" required=required placeholder="Input preparation time">
+               <input type="text" class="form-control" id="add_preparation_time" name="preparation_time" required=required placeholder="Input preparation time">
           </div> 
           
           <!-- ADD COOKING TIME -->
           <div class="form-group col-md-4">
             <label for="add_cooking_time" class="recipe-label ml-2"> <i class="far fa-clock mr-2"></i> Cooking time </label>
-              <input type="input" class="form-control" id="add_cooking_time" name="cooking_time" placeholder=" Input cooking time" required=required>
+              <input type="text" class="form-control" id="add_cooking_time" name="cooking_time" placeholder=" Input cooking time" required=required>
           </div> 
           
           <!-- ADD SERVING -->
@@ -102,16 +102,16 @@
               <label for="add_difficulty_name" class="recipe-label ml-2"> <i class="fas fa-skiing mr-2"></i> Difficulty </label>
                 <select class="custom-select" id="add_difficulty_name" name="difficulty_name" required=required>
                   <option disabled selected> Select Difficulty </option>
-                    {% for difficulty in difficulties_list %}
+                  {% for difficulty in difficulties_list %}
                       <option value="{{ difficulty }}"> {{ difficulty }} </option> 
-                    {% endfor %}
+                  {% endfor %}
                 </select>
             </div> 
             
             <!-- ADD MAIN INGREDIENT -->
             <div class="form-group col-md-4">
               <label for="add_main_ingredient" class="recipe-label ml-2"> <i class="fas fa-mortar-pestle mr-2"></i> Main Ingredient </label>
-                <input type="input" class="form-control" id="add_main_ingredient" name="main_ingredient" placeholder="Input main ingredient" required=required>
+                <input type="text" class="form-control" id="add_main_ingredient" name="main_ingredient" placeholder="Input main ingredient" required=required>
             </div>
             
             <!-- ADD ALLERGEN SELECTION -->
@@ -119,10 +119,9 @@
               <label for="add_allergen_name" class="recipe-label ml-2"> <i class="fas fa-allergies mr-2"></i> Allergen </label>
                 <select multiple class="custom-select" id="add_allergen_name" name="allergen_name" required=required>
                   <option disabled selected> Select Allergen(s) </option>
-                    {% for allergen in allergens_list %}
+                  {% for allergen in allergens_list %}
                       <option value="{{allergen }}"> {{ allergen }} </option> 
-                    {% endfor %}
-                    
+                  {% endfor %}
                 </select>
             </div> 
         </div>
@@ -133,11 +132,11 @@
           <div class="form-group col-md-5">
             <div class="ingredients-list" id="ingredients_list">
               <label for="add_ingredients" class="recipe-label ml-2"> <i class="fas fa-shopping-cart mr-2"></i> Ingredients </label>
-              <input type="text" class="input form-control mb-2" id="add_ingredient1" name="recipe_ingredient" placeholder="Input ingredient" required=required />
-              <input type="text" class="input form-control mb-2" id="add_ingredient2" name="recipe_ingredient" placeholder="Input ingredient" />  
-              <input type="text" class="input form-control mb-2" id="add_ingredient3" name="recipe_ingredient" placeholder="Input ingredient" /> 
-              <input type="text" class="input form-control mb-2" id="add_ingredient4" name="recipe_ingredient" placeholder="Input ingredient" />
-              <input type="text" class="input form-control mb-2" id="add_ingredient5" name="recipe_ingredient" placeholder="Input ingredient" />
+              <input type="text" class="input form-control mb-2 mr-2" id="add_ingredient1" name="recipe_ingredient" placeholder="Input ingredient" required=required />
+              <input type="text" class="input form-control mb-2 mr-2" id="add_ingredient2" name="recipe_ingredient" placeholder="Input ingredient" />  
+              <input type="text" class="input form-control mb-2 mr-2" id="add_ingredient3" name="recipe_ingredient" placeholder="Input ingredient" /> 
+              <input type="text" class="input form-control mb-2 mr-2" id="add_ingredient4" name="recipe_ingredient" placeholder="Input ingredient" />
+              <input type="text" class="input form-control mb-2 mr-2" id="add_ingredient5" name="recipe_ingredient" placeholder="Input ingredient" />
               
               <div class="list-more-ingredients">
                 <button> <span class="more-ingredients"> <i class="fa fa-plus-circle"aria-hidden="true"></i> Add ingredient </span> </button>
@@ -149,10 +148,10 @@
           <div class="form-group col-md-5">
             <div class="instructions-list" id="instructions_list">
               <label for="add_instructions" class="recipe-label ml-2"> <i class="fas fa-book-reader mr-2"></i> Instructions </label>
-              <textarea class="input form-control mb-2" id="add_instructions1" rows="2" name="recipe_method" placeholder="Input instructions" required=required></textarea>
-              <textarea class="input form-control mb-2" id="add_instructions2" rows="2" name="recipe_method" placeholder="Input instructions"></textarea>
+              <textarea class="input form-control mb-2 ml-2" id="add_instructions1" rows="2" name="recipe_method" placeholder="Input instructions" required=required></textarea>
+              <textarea class="input form-control mb-2 ml-2" id="add_instructions2" rows="2" name="recipe_method" placeholder="Input instructions"></textarea>
               
-              <div class="list-more-instructions">
+              <div class="list-more-instructions ml-1">
                 <button> <span class="more-instructions"> <i class="fa fa-plus-circle"aria-hidden="true"></i> Add instruction </span> </button>
               </div>
            </div>

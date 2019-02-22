@@ -280,6 +280,7 @@ h3.recipe-heading, .recipe-p {
    display: grid;
    grid-template-columns: 1fr 25px;
    grid-column-gap: 10px;
+   font-size: 10px;
    color: red;
 }
 

@@ -82,7 +82,7 @@ def create_main_ingredients_list():
 def get_recipes_document_by_cuisine():
         recipes = mongo.db.recipes.find().sort("recipe_name", 1)
         return recipes
-        
+    
 # INDEX/HOME PAGE
 @app.route('/')
 
@@ -326,22 +326,16 @@ def delete_recipe(username, recipe_id):
 @app.route('/<username>/edit_recipe/<recipe_id>', methods=['GET','POST'])
 def edit_recipe(username, recipe_id):
     # find selected recipe
-    find_my_details_recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
-    # create required lists
-    allergens_list        = create_allergens_list()
-    categories_list       = create_categories_list()
-    cuisines_list         = create_cuisines_list()
-    difficulties_list     = create_difficulties_list()
-    main_ingredients_list = create_main_ingredients_list()
+    find_my_recipe        = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
     
     if 'username' in session:
         return render_template('edit_recipe.html',
-                                recipe = find_my_details_recipe,
-                                allergens_list         = allergens_list,
-                                categories_list        = categories_list,
-                                cuisines_list          = cuisines_list,
-                                difficulties_list      = difficulties_list,
-                                main_ingredients_list  = main_ingredients_list,
+                                recipe                 = find_my_recipe,
+                                allergens_list         = create_allergens_list(), 
+                                categories_list        = create_categories_list(),
+                                cuisines_list          = create_cuisines_list(),
+                                difficulties_list      = create_difficulties_list(),
+                                main_ingredients_list  = create_main_ingredients_list(),
                                 username  = session['username']) 
     return render_template('sign_in_user.html',
                    message='Please sign in to edit your recipe!')
