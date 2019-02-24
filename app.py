@@ -17,7 +17,7 @@ app.config["MONGO_DBNAME"] = 'task_manager'
 app.config["MONGO_URI"] = 'mongodb://admin_cookbook:project04@ds213665.mlab.com:13665/online_cookbook'
                            
 mongo = PyMongo(app)
-
+    
 # FUNCTION: GET ALLERGENS DB DOCUMENT
 def get_allergens_document():
         allergens = mongo.db.allergens.find().sort("allergen_name", 1)
@@ -284,7 +284,7 @@ def add_recipe(username):
             'recipe_name'        : request.form.get('recipe_name'),
             'recipe_url'         : request.form.get('recipe_url'),
             'ratings_score'      : int(0),
-            'servings_num'       : (request.form.get('servings_num')),
+            'servings_num'       : request.form.get('servings_num'),
             'username'           : username
            }
            print(new_recipe)
@@ -325,17 +325,32 @@ def delete_recipe(username, recipe_id):
 # EDIT RECIPE
 @app.route('/<username>/edit_recipe/<recipe_id>', methods=['GET','POST'])
 def edit_recipe(username, recipe_id):
-    # find selected recipe
-    find_my_recipe        = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
-    
     if 'username' in session:
+        
+        # find selected recipe
+        find_my_recipe   = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+        
+        # split allergen_name into separate variables
+        allergens_recipe = find_my_recipe['allergen_name']
+        allergens_list   = create_allergens_list()
+        print(allergens_recipe)
+        print(allergens_list)
+   
+        # split category_name into separate variables
+        categories_recipe = find_my_recipe['category_name']
+        categories_list   = create_categories_list()
+        print(categories_recipe)
+        print(categories_list)
+    
         return render_template('edit_recipe.html',
-                                recipe                 = find_my_recipe,
-                                allergens_list         = create_allergens_list(), 
-                                categories_list        = create_categories_list(),
-                                cuisines_list          = create_cuisines_list(),
-                                difficulties_list      = create_difficulties_list(),
-                                main_ingredients_list  = create_main_ingredients_list(),
+                                recipe                = find_my_recipe,
+                                allergens_list        = allergens_list,
+                                allergens_recipe      = allergens_recipe,
+                                categories_list       = categories_list,
+                                categories_recipe     = categories_recipe,
+                                cuisines_list         = create_cuisines_list(),
+                                difficulties_list     = create_difficulties_list(),
+                                main_ingredients_list = create_main_ingredients_list(),
                                 username  = session['username']) 
     return render_template('sign_in_user.html',
                    message='Please sign in to edit your recipe!')

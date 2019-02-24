@@ -25,7 +25,7 @@
         {% include 'messaging.html' %} 
         
         <!-- EDIT RECIPE FORM --> 
-        <form method="POST" action="{{ url_for('update_recipe', recipe_id=recipe._id) }}" id="update_recipe_form" name="update_recipe_form" autocomplete="off"> <!-- Disabled autocompletion --> 
+        <form method="POST" action="{{ url_for('update_recipe', recipe_id=recipe._id) }}" id="update_recipe_form" autocomplete="off"> <!-- Disabled autocompletion --> 
            
           <div class="form-row">
             <!-- EDIT CUISINE SELECTION -->
@@ -48,15 +48,20 @@
               <label for="edit_category_name" class="recipe-label ml-2"> <i class="far fa-clipboard mr-2"></i> Categories </label>
                 <select multiple class="custom-select" id="edit_category_name" name="category_name">
                   <option disabled selected> Select category(s) </option>
-                  {% for category in categories_list %}
-                      {% if  category == recipe.category_name %}
-                        <option selected value="{{ category }}"> {{ category }} </option> 
-                      {% else %}
-                        <option value="{{ category }}"> {{ category }} </option>
-                      {% endif %}  
+                  {% for category_recipe in categories_recipe: %}
+                    {% if true: %}
+                      {% for category in categories_list: %}
+                        {% if category == category_recipe %}
+                          <option selected value="{{ category }}"> {{ category }} </option> 
+                        {% else %}  
+                          <option value="{{ category }}"> {{ category }} </option>
+                        {% endif %} 
+                      {% endfor %}
+                    {% endif %}
                   {% endfor %}
                 </select>
             </div>
+                 
             
             <!-- EDIT AUTHOR NAME -->
             <div class="form-group col-md-4">
@@ -139,12 +144,16 @@
               <label for="edit_allergen_name" class="recipe-label ml-2"> <i class="fas fa-allergies mr-2"></i> Allergen </label>
                 <select multiple class="custom-select" id="edit_allergen_name" name="allergen_name" required>
                   <option disabled selected> Select Allergen(s) </option>
-                  {% for allergen in allergens_list %}
-                      {% if  allergen == recipe.allergens_name %}
-                        <option selected value="{{ allergen }}"> {{ allergen }} </option> 
-                      {% else %}  
-                        <option value="{{ allergen }}"> {{ allergen }} </option>
-                      {% endif %}  
+                  {% for allergen_recipe in allergens_recipe: %}
+                  <!-- {% if loop.first %} -->
+                      {% for allergen in allergens_list: %}
+                        {% if allergen == allergen_recipe: %}
+                          <option selected value="{{ allergen }}"> {{ allergen }} </option> 
+                        {% else %}  
+                          <option value="{{ allergen }}"> {{ allergen }} </option>
+                        {% endif %}
+                      {% endfor %} 
+                   <!--{% endif %}-->
                   {% endfor %}
                 </select>
             </div> 

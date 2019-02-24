@@ -14,6 +14,8 @@ function addIngredients() {
     $(option).insertBefore('.list-more-ingredients');
 }
 
+console.log()
+
 // Remove ingredients form
 $('.ingredients-list').on('click', 'span', function () {
     var rem = $(this).closest('div.ing-del');
