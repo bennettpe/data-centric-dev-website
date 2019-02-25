@@ -53,7 +53,7 @@
             <!-- ADD AUTHOR NAME -->
             <div class="form-group col-md-4">
               <label for="add_author_name" class="recipe-label ml-2"> <i class="far fa-user mr-2"></i> Author </label>
-                <input type="text" class="form-control" id="add_author_name" name="author_name" placeholder="Original recipe author">
+                <input type="text" class="form-control text-capitalize" id="add_author_name" name="author_name" placeholder="Original recipe author">
             </div>
           </div>
           
@@ -79,20 +79,20 @@
         <div class="form-row">        
           <!-- ADD PREPARATION TIME -->
           <div class="form-group col-md-4"> 
-            <label for="add_preparation_time" class="recipe-label ml-2"> <i class="far fa-hourglass mr-2"></i> Preparation time </label>
-               <input type="text" class="form-control" id="add_preparation_time" name="preparation_time" required=required placeholder="Input preparation time">
+            <label for="add_preparation_time" class="recipe-label ml-2"> <i class="far fa-hourglass mr-2"></i> Preparation time (hh:mm) </label>
+               <input type="time" class="form-control" id="add_preparation_time" name="preparation_time" required=required placeholder="Input preparation time">
           </div> 
           
           <!-- ADD COOKING TIME -->
           <div class="form-group col-md-4">
-            <label for="add_cooking_time" class="recipe-label ml-2"> <i class="far fa-clock mr-2"></i> Cooking time </label>
-              <input type="text" class="form-control" id="add_cooking_time" name="cooking_time" placeholder=" Input cooking time" required=required>
+            <label for="add_cooking_time" class="recipe-label ml-2"> <i class="far fa-clock mr-2"></i> Cooking time (hh:mm) </label>
+              <input type="time" class="form-control" id="add_cooking_time" name="cooking_time" required=required placeholder=" Input cooking time">
           </div> 
           
           <!-- ADD SERVING -->
           <div class="form-group col-md-4">
             <label for="add_servings_num" class="recipe-label ml-2"> <i class="fas fa-utensil-spoon mr-2"></i> Serves </label>
-              <input type="number" min="1" class="form-control" id="add_servings_num"  name="servings_num" placeholder="Select servings" required=required>
+              <input type="number" min="1" class="form-control" id="add_servings_num"  name="servings_num" required=required placeholder="Select servings">
           </div> 
         </div>
         
@@ -111,7 +111,7 @@
             <!-- ADD MAIN INGREDIENT -->
             <div class="form-group col-md-4">
               <label for="add_main_ingredient" class="recipe-label ml-2"> <i class="fas fa-mortar-pestle mr-2"></i> Main Ingredient </label>
-                <input type="text" class="form-control" id="add_main_ingredient" name="main_ingredient" placeholder="Input main ingredient" required=required>
+                <input type="text" class="form-control text-capitalize" id="add_main_ingredient" name="main_ingredient" placeholder="Input main ingredient" required=required>
             </div>
             
             <!-- ADD ALLERGEN SELECTION -->

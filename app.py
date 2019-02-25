@@ -195,7 +195,7 @@ def by_recipes():
 # NOT BY ALLERGENS
 @app.route('/not_by_allergen/<allergen_name>')
 def not_by_allergen(allergen_name):
-        recipes_document_by_allergen = mongo.db.recipes.find({"allergen_name": {'$nin': [allergen_name]}})
+        recipes_document_by_allergen = mongo.db.recipes.find({"allergen_name": {'$nin': [allergen_name]}}).sort("cuisine_name", 1)
         # Counts total amount of recipes not by allergen selected
         recipe_allergen_count = mongo.db.recipes.find({"allergen_name": {'$nin': [allergen_name]}}).count()
         return render_template("not_by_allergen.html",
@@ -207,7 +207,7 @@ def not_by_allergen(allergen_name):
 # BY CATEGORY
 @app.route('/by_category/<category_name>')
 def by_category(category_name):
-        recipes_document_by_category = mongo.db.recipes.find({"category_name": category_name})
+        recipes_document_by_category = mongo.db.recipes.find({"category_name": category_name}).sort("cuisine_name", 1)
         # Counts total amount of recipes by category selected
         recipe_category_count = mongo.db.recipes.find({ "category_name": category_name }).count()
         return render_template("by_category.html",
@@ -231,7 +231,7 @@ def by_cuisine(cuisine_name):
 # BY DIFFICULTY
 @app.route('/by_difficulty/<difficulty_name>')
 def by_difficulty(difficulty_name):
-        recipes_document_by_difficulty = mongo.db.recipes.find({"difficulty_name": difficulty_name})
+        recipes_document_by_difficulty = mongo.db.recipes.find({"difficulty_name": difficulty_name}).sort("cuisine_name", 1)
         # Counts total amount of recipes by difficulty selected
         recipe_difficulty_count = mongo.db.recipes.find({ "difficulty_name": difficulty_name }).count()
         return render_template("by_difficulty.html",
@@ -243,7 +243,7 @@ def by_difficulty(difficulty_name):
 # BY MAIN INGREDIENT
 @app.route('/by_main_ingredient/<main_ingredient>')
 def by_main_ingredient(main_ingredient):
-        recipes_document_by_main_ingredient = mongo.db.recipes.find({"main_ingredient": main_ingredient})
+        recipes_document_by_main_ingredient = mongo.db.recipes.find({"main_ingredient": main_ingredient}).sort("cuisine_name", 1)
         # Counts total amount of recipes by main ingredient selected
         recipe_main_ingredient_count = mongo.db.recipes.find({ "main_ingredient": main_ingredient }).count()
         return render_template("by_main_ingredient.html",
@@ -257,7 +257,7 @@ def by_main_ingredient(main_ingredient):
 def by_my_recipes(username):
     if 'username' in session:
         user_document_by_signed_in_username = mongo.db.users.find_one({"username": username})
-        recipes_document_by_signed_in       = mongo.db.recipes.find({"username": session['username']})
+        recipes_document_by_signed_in       = mongo.db.recipes.find({"username": session['username']}).sort("cuisine_name", 1)
         recipes_document_by_signed_in_count = recipes_document_by_signed_in.count()
         return render_template("by_my_recipes.html",
                                 recipes_document_by_signed_in_count = recipes_document_by_signed_in_count,

@@ -44,11 +44,11 @@
                                         {% endfor %}
                                    {% endif %}     
                                 </div>
-                                <div class="recipe-details"> <span> <strong> Difficulty:       </strong> {{ recipes_document_by_recipe.difficulty_name  }} </span> </div>
-                                <div class="recipe-details"> <span> <strong> Main ingredients: </strong> {{ recipes_document_by_recipe.main_ingredient  }} </span> </div>
-                                <div class="recipe-details"> <span> <strong> Preparation time: </strong> {{ recipes_document_by_recipe.preparation_time }} </span> </div>
-                                <div class="recipe-details"> <span> <strong> Cooking time:     </strong> {{ recipes_document_by_recipe.cooking_time     }} </span> </div>
-                                <div class="recipe-details"> <span> <strong> Servings:         </strong> {{ recipes_document_by_recipe.servings_num     }} </span> </div>
+                                <div class="recipe-details"> <span> <strong> Difficulty:               </strong> {{ recipes_document_by_recipe.difficulty_name  }} </span> </div>
+                                <div class="recipe-details"> <span> <strong> Main ingredients:         </strong> {{ recipes_document_by_recipe.main_ingredient  }} </span> </div>
+                                <div class="recipe-details"> <span> <strong> Preparation time (hh:mm): </strong> {{ recipes_document_by_recipe.preparation_time }} </span> </div>
+                                <div class="recipe-details"> <span> <strong> Cooking time (hh:mm):     </strong> {{ recipes_document_by_recipe.cooking_time     }} </span> </div>
+                                <div class="recipe-details"> <span> <strong> Servings:                 </strong> {{ recipes_document_by_recipe.servings_num     }} </span> </div>
                                 <div class="recipe-details mb-2">   <span> <strong> Allergens: </strong>
                                 <!-- If more than one allergen selected add comma between them -->
                                     {% if recipes_document_by_recipe.allergen_name|length > 1 %} 
