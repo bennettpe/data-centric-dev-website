@@ -82,6 +82,7 @@ def create_main_ingredients_list():
 def get_recipes_document_by_cuisine():
         recipes = mongo.db.recipes.find().sort("recipe_name", 1)
         return recipes
+  
     
 # INDEX/HOME PAGE
 @app.route('/')
@@ -190,16 +191,65 @@ def by_recipes():
                                 main_ingredients_list = main_ingredients_list,
                                 welcome_message ='Welcome ' + str(session['username'])) 
 
+
+# NOT BY ALLERGENS
+@app.route('/not_by_allergen/<allergen_name>')
+def not_by_allergen(allergen_name):
+        recipes_document_by_allergen = mongo.db.recipes.find({"allergen_name": {'$nin': [allergen_name]}})
+        # Counts total amount of recipes not by allergen selected
+        recipe_allergen_count = mongo.db.recipes.find({"allergen_name": {'$nin': [allergen_name]}}).count()
+        return render_template("not_by_allergen.html",
+                                recipe_allergen_count        = recipe_allergen_count,
+                                allergen_name                = allergen_name,
+                                recipes_document_by_allergen = recipes_document_by_allergen)
+
+                                
+# BY CATEGORY
+@app.route('/by_category/<category_name>')
+def by_category(category_name):
+        recipes_document_by_category = mongo.db.recipes.find({"category_name": category_name})
+        # Counts total amount of recipes by category selected
+        recipe_category_count = mongo.db.recipes.find({ "category_name": category_name }).count()
+        return render_template("by_category.html",
+                                recipe_category_count        = recipe_category_count,
+                                category_name                = category_name,
+                                recipes_document_by_category = recipes_document_by_category)
+
+
 # BY CUISINE
 @app.route('/by_cuisine/<cuisine_name>')
 def by_cuisine(cuisine_name):
         recipes_document_by_cuisine = mongo.db.recipes.find({"cuisine_name": cuisine_name})
-        # Counts total amount of recipes by cuisine
+        # Counts total amount of recipes by cuisine seleted
         recipe_cuisine_count = mongo.db.recipes.find({ "cuisine_name": cuisine_name }).count()
         return render_template("by_cuisine.html", 
                                 recipe_cuisine_count        = recipe_cuisine_count,
                                 cuisine_name                = cuisine_name,
                                 recipes_document_by_cuisine = recipes_document_by_cuisine)    
+                                
+
+# BY DIFFICULTY
+@app.route('/by_difficulty/<difficulty_name>')
+def by_difficulty(difficulty_name):
+        recipes_document_by_difficulty = mongo.db.recipes.find({"difficulty_name": difficulty_name})
+        # Counts total amount of recipes by difficulty selected
+        recipe_difficulty_count = mongo.db.recipes.find({ "difficulty_name": difficulty_name }).count()
+        return render_template("by_difficulty.html",
+                                recipe_difficulty_count        = recipe_difficulty_count,
+                                difficulty_name                = difficulty_name,
+                                recipes_document_by_difficulty = recipes_document_by_difficulty)
+
+
+# BY MAIN INGREDIENT
+@app.route('/by_main_ingredient/<main_ingredient>')
+def by_main_ingredient(main_ingredient):
+        recipes_document_by_main_ingredient = mongo.db.recipes.find({"main_ingredient": main_ingredient})
+        # Counts total amount of recipes by main ingredient selected
+        recipe_main_ingredient_count = mongo.db.recipes.find({ "main_ingredient": main_ingredient }).count()
+        return render_template("by_main_ingredient.html",
+                                recipe_main_ingredient_count        = recipe_main_ingredient_count,
+                                main_ingredient                     = main_ingredient,
+                                recipes_document_by_main_ingredient = recipes_document_by_main_ingredient)
 
 
 # BY MY RECIPES
@@ -226,6 +276,7 @@ def view_details_recipe(recipe_id):
        return render_template("view_details_recipe.html",
                                 recipes_document_by_recipe = recipes_document_by_recipe)
 
+
 # VIEW MY DETAILS RECIPE
 @app.route('/view_my_details_recipe/<recipe_id>')
 def view_my_details_recipe(recipe_id):
@@ -241,6 +292,7 @@ def by_test(cuisine_name):
         return render_template("test.html", 
                                 cuisine_name = cuisine_name,
                                 recipes_document_by_cuisine = recipes_document_by_cuisine)
+
                                 
 # ADD RECIPE
 @app.route('/<username>/add_recipe',methods=['GET', 'POST'])
@@ -288,7 +340,7 @@ def add_recipe(username):
             'username'           : username
            }
            print(new_recipe)
-           #insert new recipe into mongoDB recipies document
+           #insert new recipe into mongoDB recipes document
            recipes.insert_one(new_recipe)
            
            # Check main_ingredients document to see if main_ingredient added in recipe
@@ -355,6 +407,7 @@ def edit_recipe(username, recipe_id):
     return render_template('sign_in_user.html',
                    message='Please sign in to edit your recipe!')
 
+
 # UPDATE RECIPE
 @app.route('/update_recipe/<recipe_id>', methods=['POST'])
 def update_recipe(recipe_id):
@@ -384,24 +437,6 @@ def update_recipe(recipe_id):
         return redirect(url_for('view_my_details_recipe', recipe_id=recipe_id, username=session['username'])) 
                                         
                                         
-# LIST CATEGORY RECIPES
-@app.route('/list_category_recipes/<category>')
-def list_category_recipes(category):
-    return render_template("list_category_recipes.html")
-
-        
-# LIST CUISINE RECIPES
-@app.route('/list_cuisine_recipes/<cuisine>')
-def list_cuisine_recipes(cusine):
-    return render_template("list_cuisine_recipes.html") 
-
-
-# SEARCH RECIPES
-@app.route('/search_recipes')
-def search_recipes():
-    return render_template("search_recipes.html")
-
-
 # SITE STATISICS
 @app.route('/site_statistics')
 def site_statistics():

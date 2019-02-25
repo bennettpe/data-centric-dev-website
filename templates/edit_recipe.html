@@ -49,15 +49,13 @@
                 <select multiple class="custom-select" id="edit_category_name" name="category_name">
                   <option disabled selected> Select category(s) </option>
                   {% for category_recipe in categories_recipe: %}
-                    {% if true: %}
-                      {% for category in categories_list: %}
-                        {% if category == category_recipe %}
-                          <option selected value="{{ category }}"> {{ category }} </option> 
+                      {% for category_list in categories_list: %}
+                        {% if category_list == category_recipe %}
+                          <option selected value="{{ category_list }}"> {{ category_list }} </option> 
                         {% else %}  
-                          <option value="{{ category }}"> {{ category }} </option>
+                          <option value="{{ category_list }}"> {{ category_list }} </option>
                         {% endif %} 
                       {% endfor %}
-                    {% endif %}
                   {% endfor %}
                 </select>
             </div>
@@ -147,7 +145,7 @@
                   {% for allergen_recipe in allergens_recipe: %}
                   <!-- {% if loop.first %} -->
                       {% for allergen in allergens_list: %}
-                        {% if allergen == allergen_recipe: %}
+                        {% if allergen == allergen_recipe %}
                           <option selected value="{{ allergen }}"> {{ allergen }} </option> 
                         {% else %}  
                           <option value="{{ allergen }}"> {{ allergen }} </option>

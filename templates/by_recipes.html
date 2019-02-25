@@ -21,7 +21,7 @@
                 <div class="intro-text-background">
                 <div class=" h3 text-dark"> Search recipes by: </div>
                 <p class="text-dark mb-2"> Click on image below to view cusine. </p> </br>
-    
+        
                 <div class="btn-group">
                   <!-- Button Dropdown using allergens list-->
                     <div class="dropdown">
@@ -30,7 +30,7 @@
                            </button> 
                         <div class="dropdown-menu dropdown-menu-lg-right" aria-labelledby="dropdownMenuLink">
                          {% for allergen in allergens_list %}
-                          <option <a class="dropdown-item" href="{{url_for('by_recipes')}}"> {{ allergen }} </a> </option>
+                          <a href="{{url_for('not_by_allergen', allergen_name=allergen)}}"> <option class="dropdown-item"> {{allergen}} </option></a>
                          {% endfor %}
                         </div>     
                     </div> 
@@ -42,23 +42,23 @@
                           </button>
                         <div class="dropdown-menu dropdown-menu-lg-right" aria-labelledby="dropdownMenuLink">
                           {% for category in categories_list %}
-                           <option <a class="dropdown-item" href="{{url_for('by_recipes')}}"> {{ category }} </a> </option>
+                           <a href="{{url_for('by_category', category_name=category)}}"> <option class="dropdown-item"> {{category}} </option></a>
                           {% endfor %}
                         </div>     
                     </div>
-              
-                    <!-- Button Dropdown using difficulty list-->
+                    
+                   <!-- Button Dropdown using difficulty list-->
                     <div class="dropdown">
-                          <button class="btn btn-primary btn-md btn-rounded dropdown-toggle m-1" id="dropdownMenuLink" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
+                          <button class="btn btn-primary btn-md btn-rounded dropdown-toggle m-1" id="dropdownMenuLink" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false"> 
                            Difficulty
                           </button>
                         <div class="dropdown-menu dropdown-menu-lg-right" aria-labelledby="dropdownMenuLink">
                           {% for difficulty in difficulties_list %}
-                           <option <a class="dropdown-item" href="{{url_for('by_recipes')}}"> {{ difficulty }} </a> </option>
+                            <a href="{{url_for('by_difficulty', difficulty_name=difficulty)}}"> <option class="dropdown-item"> {{difficulty}} </option></a>
                           {% endfor %}
                         </div>     
-                    </div>
-              
+                    </div> 
+               
                     <!-- Button Dropdown using main ingredient list-->
                     <div class="dropdown">
                           <button class="btn btn-primary btn-md btn-rounded dropdown-toggle m-1" id="dropdownMenuLink" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
@@ -66,7 +66,7 @@
                           </button>
                         <div class="dropdown-menu dropdown-menu-lg-right" aria-labelledby="dropdownMenuLink">
                           {% for main_ingredient in main_ingredients_list %}
-                           <option <a class="dropdown-item" href="{{url_for('by_recipes')}}"> {{ main_ingredient }} </a> </option>
+                           <a href="{{url_for('by_main_ingredient', main_ingredient=main_ingredient)}}"> <option class="dropdown-item"> {{main_ingredient}} </option></a>
                           {% endfor %}
                         </div>     
                     </div>
