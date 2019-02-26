@@ -36,10 +36,13 @@
                         <div class="card-body">
                          <a href="{{ url_for('view_my_details_recipe', recipe_id=recipe._id) }}">
                          <img src="{{ recipe.recipe_url }}" class="img-fluid" alt="bbcgoodfood" style="border-bottom:1px solid black!important;"> </a>
-                         <h5 class="card-title text-muted text-center mt-3"> {{ recipe.recipe_name }}        </h5> 
-                         <p class="card-text text-left m-3">                 {{ recipe.recipe_description }} </p>
+                         <h5 class="card-title text-muted text-center mt-2"> {{ recipe.recipe_name }} </h5> 
+                         <button type="button" class="btn-sm btn-info">
+                            ratings <span class="badge badge-pill badge-light"> {{ recipe.ratings_score}} </span>
+                         </button>  
+                         <p class="card-text m-2"> {{ recipe.recipe_description }} </p>
                          <a href="{{ url_for('delete_recipe', recipe_id=recipe._id, username=session['username']) }}" class="btn btn-outline-danger btn-sm text-center mb-3 ml-2"> <i class="far fa-trash-alt"></i> Delete recipe </a>
-                         <a href="{{ url_for('edit_recipe', recipe_id=recipe._id, username=session['username']) }}"   class="btn btn-outline-secondary btn-sm text-center mb-3 ml-2"> <i class="fas fa-edit"></i>     Edit recipe </a>
+                         <a href="{{ url_for('edit_recipe', recipe_id=recipe._id,   username=session['username']) }}" class="btn btn-outline-secondary btn-sm text-center mb-3 ml-2"> <i class="fas fa-edit"></i>     Edit recipe </a>
                          
                         </div>
                     </div>

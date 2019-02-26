@@ -89,14 +89,14 @@
         <div class="form-row">        
           <!-- EDIT PREPARATION TIME -->
           <div class="form-group col-md-4"> 
-            <label for="edit_preparation_time" class="recipe-label ml-2"> <i class="far fa-hourglass mr-2"></i> Preparation time </label>
-               <input type="text" class="form-control" id="edit_preparation_time" name="preparation_time" placeholder="Input preparation time" required=required value="{{ recipe.preparation_time }}">
+            <label for="edit_preparation_time" class="recipe-label ml-2"> <i class="far fa-hourglass mr-2"></i> Preparation time (hh:mm) </label>
+               <input type="time" class="form-control" id="edit_preparation_time" name="preparation_time" placeholder="Input preparation time" required=required value="{{ recipe.preparation_time }}">
           </div> 
           
           <!-- EDIT COOKING TIME -->
           <div class="form-group col-md-4">
-            <label for="edit_cooking_time" class="recipe-label ml-2"> <i class="far fa-clock mr-2"></i> Cooking time </label>
-              <input type="text" class="form-control" id="edit_cooking_time" name="cooking_time" placeholder="Input cooking time" required=required value="{{ recipe.cooking_time }}">
+            <label for="edit_cooking_time" class="recipe-label ml-2"> <i class="far fa-clock mr-2"></i> Cooking time (hh:mm) </label>
+              <input type="time" class="form-control" id="edit_cooking_time" name="cooking_time" placeholder="Input cooking time" required=required value="{{ recipe.cooking_time }}">
           </div> 
           
           <!-- EDIT SERVING -->

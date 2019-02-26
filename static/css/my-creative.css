@@ -140,7 +140,12 @@ border-top: 1px solid rgba(0,0,0,.125);
 
 /* CHANGE font size and height for Card text */
 .card-text {
-  font-size: 14px;
+  font-size: 13px;
+}
+
+/* CHANGE line-height for Card text */
+p.card-text {
+  line-height: normal;
 }
 
 /* CHANGE margin for Card title */
@@ -148,6 +153,12 @@ border-top: 1px solid rgba(0,0,0,.125);
   margin-bottom: 1rem;
   color: #6c757d; /* Raven */
 }
+
+/*CHANGE h5 margin Card title to  */
+h5.card-title {
+  margin: 0.25rem;
+}  
+
 
 /* CHANGE margin for Card title */
 .card-title:hover {
@@ -256,7 +267,12 @@ padding: .25rem;
 
 /* CHANGE font-size to */
 .cuisines-p, .recipe-p, .form-control, .form-group, .form-row, .custom-select {
-font-size: 14px;  
+font-size: 13px;  
+}
+
+/* CHANGE line-height to */
+.recipe-p {
+  line-height: normal;
 }
 
 /*CHANGE text-align to */

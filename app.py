@@ -284,15 +284,6 @@ def view_my_details_recipe(recipe_id):
        return render_template("view_my_details_recipe.html",
                                 recipes_document_by_recipe = recipes_document_by_recipe)
                                 
-# TEST
-@app.route('/by_test/<cuisine_name>')
-def by_test(cuisine_name):
-# Recipes document
-        recipes_document_by_cuisine = mongo.db.recipes.find({"cuisine_name": cuisine_name})
-        return render_template("test.html", 
-                                cuisine_name = cuisine_name,
-                                recipes_document_by_cuisine = recipes_document_by_cuisine)
-
                                 
 # ADD RECIPE
 @app.route('/<username>/add_recipe',methods=['GET', 'POST'])
@@ -435,8 +426,34 @@ def update_recipe(recipe_id):
                     'username': session['username']
                 })
         return redirect(url_for('view_my_details_recipe', recipe_id=recipe_id, username=session['username'])) 
+
                                         
-                                        
+# VOTE LIKE RECIPE
+@app.route('/vote_like_recipe/<recipe_id>/<cuisine_name>', methods=["GET", "POST"])
+def vote_like_recipe(recipe_id, cuisine_name):
+    recipe = mongo.db.recipes
+    recipe.update(
+            {'_id': ObjectId(recipe_id)}, 
+            {
+                '$inc': {'ratings_score': 1} #Increment by +1
+            })
+    return redirect(url_for('by_cuisine',
+                             cuisine_name=cuisine_name))
+
+
+# VOTE DISLIKE RECIPE
+@app.route('/vote_dislike_recipe/<recipe_id>/<cuisine_name>', methods=["GET", "POST"])
+def vote_dislike_recipe(recipe_id, cuisine_name):
+    recipe = mongo.db.recipes
+    recipe.update(
+            {'_id': ObjectId(recipe_id)}, 
+            {
+                '$inc': {'ratings_score': -1} #Increment by -1
+            })    
+    return redirect(url_for('by_cuisine',
+                             cuisine_name=cuisine_name))   
+ 
+
 # SITE STATISICS
 @app.route('/site_statistics')
 def site_statistics():
