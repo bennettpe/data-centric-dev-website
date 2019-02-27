@@ -437,7 +437,7 @@ def vote_like_recipe(recipe_id, cuisine_name):
             {
                 '$inc': {'ratings_score': 1} #Increment by +1
             })
-    return redirect(url_for('by_cuisine',
+    return redirect(url_for('vote_if_negative',
                              cuisine_name=cuisine_name))
 
 
@@ -450,10 +450,23 @@ def vote_dislike_recipe(recipe_id, cuisine_name):
             {
                 '$inc': {'ratings_score': -1} #Increment by -1
             })    
-    return redirect(url_for('by_cuisine',
+    return redirect(url_for('vote_if_negative',
                              cuisine_name=cuisine_name))   
  
-
+ 
+# CHECK IF ANY VOTES ARE NEGATIVE AND SET TO ZERO
+@app.route('/vote_if_negative/<cuisine_name>', methods=["GET", "POST"])
+def vote_if_negative(cuisine_name):
+    recipe = mongo.db.recipes
+    recipe.update(
+            {'ratings_score': { '$lt': 0 }}, 
+            {
+                 '$set': {'ratings_score': 0 }
+            })
+    return redirect(url_for('by_cuisine',
+                             cuisine_name=cuisine_name))
+                             
+                             
 # SITE STATISICS
 @app.route('/site_statistics')
 def site_statistics():

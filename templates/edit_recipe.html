@@ -43,24 +43,22 @@
                 </select>
             </div>
             
-            <!-- EDIT CATEGORY SELECTION -->
-            <div class="form-group col-md-4">
-              <label for="edit_category_name" class="recipe-label ml-2"> <i class="far fa-clipboard mr-2"></i> Categories </label>
-                <select multiple class="custom-select" id="edit_category_name" name="category_name">
-                  <option disabled selected> Select category(s) </option>
-                  {% for category_recipe in categories_recipe: %}
-                      {% for category_list in categories_list: %}
-                        {% if category_list == category_recipe %}
-                          <option selected value="{{ category_list }}"> {{ category_list }} </option> 
-                        {% else %}  
-                          <option value="{{ category_list }}"> {{ category_list }} </option>
-                        {% endif %} 
-                      {% endfor %}
-                  {% endfor %}
-                </select>
-            </div>
+           <!-- EDIT CATEGORY SELECTION(s)  -->
+           <div class="form-group col-md-4">
+             <label for="edit_category_name" class="recipe-label ml-2"> <i class="far fa-clipboard mr-2"></i> Categories </label>
+              <select multiple class="custom-select" id="edit_category_name" name="category_name" required>
+                <option disabled selected> Select category(s) </option>
+                {% for category in categories_list: %}
+                  <option 
+                  {% if category in categories_recipe %} 
+                    selected 
+                  {% endif %} 
+                    value="{{ category }}"> {{ category }} 
+                  </option> 
+                {% endfor %}
+              </select>
+           </div> 
                  
-            
             <!-- EDIT AUTHOR NAME -->
             <div class="form-group col-md-4">
               <label for="edit_author_name" class="recipe-label ml-2"> <i class="far fa-user mr-2"></i> Author </label>
@@ -137,25 +135,22 @@
                 </select>
             </div> 
             
-            <!-- EDIT ALLERGEN SELECTION  -->
-            <div class="form-group col-md-4">
-              <label for="edit_allergen_name" class="recipe-label ml-2"> <i class="fas fa-allergies mr-2"></i> Allergen </label>
-                <select multiple class="custom-select" id="edit_allergen_name" name="allergen_name" required>
-                  <option disabled selected> Select Allergen(s) </option>
-                  {% for allergen_recipe in allergens_recipe: %}
-                  <!-- {% if loop.first %} -->
-                      {% for allergen in allergens_list: %}
-                        {% if allergen == allergen_recipe %}
-                          <option selected value="{{ allergen }}"> {{ allergen }} </option> 
-                        {% else %}  
-                          <option value="{{ allergen }}"> {{ allergen }} </option>
-                        {% endif %}
-                      {% endfor %} 
-                   <!--{% endif %}-->
-                  {% endfor %}
-                </select>
-            </div> 
-        </div>
+           <!-- EDIT ALLERGEN SELECTION(s)  -->
+           <div class="form-group col-md-4">
+             <label for="edit_allergen_name" class="recipe-label ml-2"> <i class="fas fa-allergies mr-2"></i> Allergen </label>
+              <select multiple class="custom-select" id="edit_allergen_name" name="allergen_name" required>
+                <option disabled selected> Select Allergen(s) </option>
+                {% for allergen in allergens_list: %}
+                  <option 
+                  {% if allergen in allergens_recipe %} 
+                    selected 
+                  {% endif %} 
+                    value="{{ allergen }}"> {{ allergen }} 
+                  </option> 
+                {% endfor %}
+              </select>
+           </div> 
+         </div>
         
         
         <!-- EDIT INGREDIENT(S) -->
