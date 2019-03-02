@@ -1,24 +1,19 @@
 /*-----------------------------------*/
-
 /* main.css: Add and override styles */
-
 /*-----------------------------------*/
 
 /* CHANGE background color */
-
 .bg-primary {
   background-color: #ffe37a9e!important;
   padding: 20px;
 }
 
 /* ADD background */
-
 .header.masthead {
   background-image: url("../static/img/header.jpg");
 }
 
 /* ADD background color to intro text background */
-
 .intro-text-background {
   padding: 35px;
   background-color: rgba(245, 245, 245, 0.8);
@@ -26,27 +21,23 @@
 }
 
 /* CHANGE padding to intro text */
-
 .intro-text {
   padding-top: 400px;
   padding-bottom: 200px;
 }
 
 /* CHANGE color to text */
-
 .intro-lead-in {
   color: #6c757d/* Raven */
 }
 
 /* CHANGE color to text */
-
 .intro-heading {
   color: #6c757d;
   /* Raven */
 }
 
 /* ----- Changes to Buttons ----- */
-
 /* ADD radius to buttons */
 
 .btn {
@@ -54,20 +45,17 @@
 }
 
 /* CHANGE color on button border */
-
 .btn-primary {
   border-color: #6c757d;
   /* Raven */
 }
 
 /* CHANGE color on button hover */
-
 .btn-primary:hover {
   color: black !important;
 }
 
 /* ADD spacing to Top of page Button */
-
 .btn-space {
   margin: 10px;
 }
@@ -75,14 +63,12 @@
 /* ----- Changes to Card ----- */
 
 /* Equal-height card images, cf. https://stackoverflow.com/a/47698201/1375163*/
-
 .card-img-top {
   /*height: 11vw;*/
   object-fit: cover;
 }
 
 /* Small devices (landscape phones, 576px and up) */
-
 @media (min-width: 576px) {
   .card-img-top {
     height: 19vw;
@@ -90,7 +76,6 @@
 }
 
 /* Medium devices (tablets, 768px and up) */
-
 @media (min-width: 768px) {
   .card-img-top {
     height: 16vw;
@@ -98,7 +83,6 @@
 }
 
 /* Large devices (desktops, 992px and up) */
-
 @media (min-width: 992px) {
   .card-img-top {
     height: 11vw;
@@ -106,7 +90,6 @@
 }
 
 /* Extra large devices (large desktops, 1200px and up) */
-
 @media (min-width: 992px) {
   .card-img-top {
     height: 11vw;
@@ -114,7 +97,6 @@
 }
 
 /* ADD Background to cuisines heading */
-
 .cuisines-heading {
   padding: 35px;
   background-color: rgba(245, 245, 245, 0.8);
@@ -123,20 +105,17 @@
 }
 
 /* CHANGE border for Card */
-
 .card {
   border: 1.25px solid rgba(0, 0, 0, .50);
   background-color: rgba(245, 245, 245, 0.9);
 }
 
 /* Add Shadow for Card hover */
-
 .card:hover {
   box-shadow: 2px 5px 20px #6c757d;
 }
 
 /* CHANGE border for Recipe Card */
-
 .recipe-card.card {
   border: 1.25px solid rgba(0, 0, 0, .50);
   background-color: rgba(245, 245, 245, 0.9);
@@ -144,43 +123,36 @@
 }
 
 /* CHANGE font size for Card subtitle */
-
 h5.card-subtitle {
   font-size: 1.2em;
 }
 
 /* CHANGE padding for Card body */
-
 .card-body {
   padding: 0rem;
 }
 
 /* ADD top border for Card header */
-
 .card-header {
   border-bottom: 1px solid rgba(0, 0, 0, .125);
 }
 
 /* ADD top border for Card header */
-
 .card-header-method {
   border-top: 1px solid rgba(0, 0, 0, .125);
 }
 
 /* CHANGE font size and height for Card text */
-
 .card-text {
   font-size: 13px;
 }
 
 /* CHANGE line-height for Card text */
-
 p.card-text {
   line-height: normal;
 }
 
 /* CHANGE margin for Card title */
-
 .card-title {
   margin-bottom: 1rem;
   color: #6c757d;
@@ -188,47 +160,39 @@ p.card-text {
 }
 
 /*CHANGE h5 margin Card title to  */
-
 h5.card-title {
   margin: 0.25rem;
 }
 
 
 /* CHANGE margin for Card title */
-
 .card-title:hover {
   color: #fed136;
 }
 
 /* ADD top border for Card header */
-
 recipe-url.card-header {
   border-top: 1px solid rgba(0, 0, 0, .125);
 }
 
 /*CHANGE text align of recipe-details*/
-
 .recipe-details {
   text-align: center!important;
 }
 
 /*CHANGE padding of ratings button*/
-
 .btn-sm {
   padding: .25rem;
 }
 
 /* ----- Changes to Dropdown ----- */
-
 /* CHANGE  to dropdown padding */
-
 .dropdown-item {
   padding: 0 0 0 5px;
 }
 
 
 /* CHANGES to dropdown menu */
-
 .dropdown-menu {
   text-align: left;
   background-color: rgba(245, 245, 245, 0.9);
@@ -239,27 +203,23 @@ recipe-url.card-header {
 }
 
 /* CHANGE color of dropdown menu when hover */
-
 .dropdown-menu:hover {
   background-color: #fed136;
 }
 
 /* ADD to dropdown menu */
-
 .dropdown-menu {
   max-height: 500px;
   overflow-y: auto;
 }
 
 /* CHANGE colour of dropdown toggle */
-
 .dropdown-toggle[aria-expanded="true"] {
   background: #FFF !important;
   color: #000 !important;
 }
 
 /* CHANGE colour of dropdown-item when active */
-
 .dropdown-item:active {
   color: #000;
   background-color: #fff;
@@ -272,9 +232,7 @@ recipe-url.card-header {
 }
 
 /* ----- Changes to Back To Top Button ----- */
-
 /* Back to top button */
-
 .bttop {
   width: 65px;
   background: #fed136d4;
@@ -287,14 +245,12 @@ recipe-url.card-header {
 }
 
 /* Back to top button hover */
-
 .bttop:hover {
   background: #fed136;
   box-shadow: 5px 10px 25px #555;
 }
 
 /* Back to top button icon */
-
 .bttop i {
   color: #ffffffd4;
   font-size: 45px;
@@ -302,13 +258,11 @@ recipe-url.card-header {
 }
 
 /* Back to top button icon hover */
-
 .bttop i:hover {
   color: #fff;
 }
 
 /* ADD Background to */
-
 .recipe-heading {
   padding: 35px;
   background-color: rgba(245, 245, 245, 0.8);
@@ -317,7 +271,6 @@ recipe-url.card-header {
 }
 
 /* CHANGE font-size to */
-
 .cuisines-p,
 .recipe-p,
 .form-control,
@@ -328,35 +281,29 @@ recipe-url.card-header {
 }
 
 /* CHANGE line-height to */
-
 .recipe-p {
   line-height: normal;
 }
 
 /*CHANGE text-align to */
-
 .recipe-label {
   text-align: left;
 }
 
 /*CHANGE text-align to  */
-
 h3.recipe-heading,
 .recipe-p {
   text-align: center;
 }
 
 /*CHANGE padding to */
-
 .form-group {
   padding: 0px;
   ;
 }
 
 /* Put the X at end of input form */
-
 /* for ingredients & instructions */
-
 .ing-del {
   display: grid;
   grid-template-columns: 1fr 25px;
@@ -366,21 +313,41 @@ h3.recipe-heading,
 }
 
 /*CHANGE font-size small button */
-
 .btn-sm {
   font-size: .700rem;
 }
 
 /*CHANGE text-align alert */
-
 .alert {
   text-align: center;
   border: 1px solid;
 }
 
 /* CHANGE font-size small button */
-
 .recipe-count {
   font-size: 18px;
   color: #17a2b8;
 }
+
+/* CHANGE background color */
+.bg-primary-welcome {
+  background-color: #ffe37a9e!important;
+  padding-top: 0px;
+  padding-bottom: 20px;
+  padding-right: 20px;
+  padding-left: 20px; 
+  
+}
+
+/* CHANGE font-size small button */
+.userwelcome {
+    min-width: 25%;
+    width: 50%;
+    margin: 0 auto;
+    color: #6c757d; /* Raven */
+    background-color: #fed136;
+    border: 1px solid transparent;
+    border-radius: 1rem;
+    border-top-left-radius: 0rem;
+    border-top-right-radius: 0rem;
+  }

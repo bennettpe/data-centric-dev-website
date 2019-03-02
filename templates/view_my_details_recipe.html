@@ -32,7 +32,7 @@
                                 </div>
                                 <div class="recipe-details mb-2"> <span> <strong> Added by: </strong> {{ recipes_document_by_recipe.username }} </span> </div>
                                 <div class="card-text ml-2">
-                                    <div class="recipe-details mb-2 mr-2"> <span>                              {{ recipes_document_by_recipe.recipe_description }} </span> </div>
+                                    <div class="recipe-details mb-2 mr-2"> <span>                    {{ recipes_document_by_recipe.recipe_description }} </span> </div>
                                     <div class="recipe-details"> <span> <strong> Author:   </strong> {{ recipes_document_by_recipe.author_name }}        </span> </div>
                                     <div class="recipe-details"> <span> <strong> Category: </strong>
                                     <!-- If more than one category selected add comma between them -->
@@ -47,7 +47,7 @@
                                     <div class="recipe-details"> <span> <strong> Cooking time (hh:mm):     </strong> {{ recipes_document_by_recipe.cooking_time     }} </span> </div>
                                     <div class="recipe-details"> <span> <strong> Servings:                 </strong> {{ recipes_document_by_recipe.servings_num     }} </span> </div>
                                     <div class="recipe-details mb-2"> <span> <strong> Allergens: </strong>
-                                <!-- If more than one category selected add comma between them -->
+                                    <!-- If more than one category selected add comma between them -->
                                     {% if recipes_document_by_recipe.allergen_name | length > 1 %} 
                                         {% for allergen_name in recipes_document_by_recipe.allergen_name %}
                                             {{ allergen_name }}, </span> {% endfor %} {% else %} {% for allergen_name in recipes_document_by_recipe.allergen_name %} {{ allergen_name }} </span>
