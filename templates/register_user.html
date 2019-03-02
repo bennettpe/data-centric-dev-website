@@ -2,100 +2,92 @@
 <html lang="en">
 
 <head>
-                                                          <title> Data Centric Development Project "REGISTER_USER.HTML" (Paul Bennett) </title>
-    <!-- Include standard links                       --> {% include 'head.html' %}                                                       
-    <!-- My Custom styles for this template           --> <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/my-creative.css') }}"> 
+    <title> Data Centric Development Project "REGISTER_USER.HTML" (Paul Bennett) </title>
+    <!-- Include standard links                       -->{% include 'head.html' %}
+    <!-- My Custom styles for this template           -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/my-creative.css') }}">
 </head>
- 
+
 <!-- Bootstrap theme (Creative) downloaded from  https://github.com/BlackrockDigital/startbootstrap-agency -->
+
 <body id="page-top">
 
-  <!-- Navigation Navbar -->
-  {% include 'navbar_recipes.html' %} 
-    
- <section>
-    <div class="container">
-        <div class="row">
-            <div class="content-section mx-auto">
-                <h3 class="text-center text-muted"> Register an account </h3> <br>
-                
-                <!-- Flash Messaging -->
-                {% include 'messaging.html' %}
-                
-                <form method="POST" action="" autocomplete="off"> <!-- Disabled autocompletion --> 
-                    {{ form.hidden_tag() }}
-                    <fieldset class="form-group"
-                        <!-- Username -->
-                        <div class="form-group">
-                            {{ form.username.label(class="form-control-label") }}
-                            <!--Check if form had Errors -->
-                            {% if form.username.errors %}
-                                {{ form.username(class="form-control form-control-lg is-invalid") }}
-                                <div class="invalid-feedback" >
+    <!-- Navigation Navbar -->
+    {% include 'navbar.html' %}
+
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="content-section mx-auto">
+                    <h3 class="text-center text-muted"> Register an account </h3> <br>
+
+
+
+                    <form method="POST" action="" autocomplete="off">
+                        <!-- Disabled autocompletion -->
+                        {{ form.hidden_tag() }}
+                        <fieldset class="form-group" <!-- Username -->
+                            <div class="form-group">
+                                {{ form.username.label(class="form-control-label") }}
+                                <!--Check if form had Errors -->
+                                {% if form.username.errors %} {{ form.username(class="form-control form-control-lg is-invalid") }}
+                                <div class="invalid-feedback">
                                     {% for error in form.username.errors %}
-                                        <span> {{ error }} </span>
-                                    {% endfor %}
+                                    <span> {{ error }} </span> {% endfor %}
                                 </div>
-                            {% else %}  
-                                {{ form.username(class="form-control form-control-lg") }}
-                            {% endif %}
-                        </div>
-                        
-                        <!-- Password -->
-                        <div class="form-group">
-                            {{ form.password.label(class="form-control-label") }}
-                            <!--Check if form had Errors -->
-                            {% if form.password.errors %}
-                                {{ form.password(class="form-control form-control-lg is-invalid") }}
-                                <div class="invalid-feedback" >
+                                {% else %} {{ form.username(class="form-control form-control-lg") }} {% endif %}
+                            </div>
+
+                            <!-- Password -->
+                            <div class="form-group">
+                                {{ form.password.label(class="form-control-label") }}
+                                <!--Check if form had Errors -->
+                                {% if form.password.errors %} {{ form.password(class="form-control form-control-lg is-invalid") }}
+                                <div class="invalid-feedback">
                                     {% for error in form.password.errors %}
-                                        <span> {{ error }} </span>
-                                    {% endfor %}
+                                    <span> {{ error }} </span> {% endfor %}
                                 </div>
-                            {% else %}  
-                                {{ form.password(class="form-control form-control-lg") }}
-                            {% endif %}
-                        </div>
-                        
-                        <!-- Confirm Password -->
-                        <div class="form-group">
-                            {{ form.confirm_password.label(class="form-control-label") }}
-                            <!--Check if form had Errors -->
-                            {% if form.confirm_password.errors %}
-                                {{ form.confirm_password(class="form-control form-control-lg is-invalid") }}
-                                <div class="invalid-feedback" >
+                                {% else %} {{ form.password(class="form-control form-control-lg") }} {% endif %}
+                            </div>
+
+                            <!-- Confirm Password -->
+                            <div class="form-group">
+                                {{ form.confirm_password.label(class="form-control-label") }}
+                                <!--Check if form had Errors -->
+                                {% if form.confirm_password.errors %} {{ form.confirm_password(class="form-control form-control-lg is-invalid") }}
+                                <div class="invalid-feedback">
                                     {% for error in form.confirm_password.errors %}
-                                        <span> {{ error }} </span>
-                                    {% endfor %}
+                                    <span> {{ error }} </span> {% endfor %}
                                 </div>
-                            {% else %}  
-                                {{ form.confirm_password(class="form-control form-control-lg") }}
-                            {% endif %}
+                                {% else %} {{ form.confirm_password(class="form-control form-control-lg") }} {% endif %}
+                            </div>
+
+                        </fieldset>
+                        <div class="form-group">
+                            {{ form.submit(class="btn btn-outline-warning mx-5") }}
+                            <a class="btn btn-outline-warning mx-5" href="/base"> Cancel <i class="far fa-times-circle"></i> </a>
                         </div>
-                        
-                    </fieldset>
-                    <div class="form-group">
-                        {{ form.submit(class="btn btn-outline-warning mx-5") }} 
-                        <a class="btn btn-outline-warning mx-5" href="/base"> Cancel <i class="far fa-times-circle"></i> </a>
-                    </div>
-                    
-                    <div class="mt-3 text-center"> <br>
-                        <small class="text-muted">
+
+                        <div class="mb-2 mt-2 text-center"> <br>
+                            <small class="text-muted">
                         Already Have An Account? <a class="ml-2" href="{{ url_for('sign_in_user') }}"> Sign In </a>
                         </small>
-                    </div>
-                </form>
-                
+                        </div>
+                        <!-- Flash Messaging -->
+                        {% include 'messaging.html' %}
+                    </form>
+
+                </div>
             </div>
         </div>
-    </div> 
-  </section>
+    </section>
 
-  <!-- Footer -->
-  {% include 'footer.html' %}
-          
-  <!-- Script -->
-  {% include 'script.html' %}
-  
+    <!-- Footer -->
+    {% include 'footer.html' %}
+
+    <!-- Script -->
+    {% include 'script.html' %}
+
 </body>
-</html>      
+
+</html>

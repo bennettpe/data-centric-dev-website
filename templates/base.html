@@ -1,126 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
-                                              <title> Data Centric Development Project (Paul Bennett) </title>
-  <!-- Required mega tags                 --> <meta   charset="utf-8">
-  <!-- Include standard links             --> {% include 'head.html' %} 
-  <!-- My Custom styles for this template --> <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/my-creative.css') }}"> 
-  </head>
+<head>
+  <title> Data Centric Development Project (Paul Bennett) </title>
+  <!-- Required mega tags                 -->
+  <meta charset="utf-8">
+  <!-- Include standard links             -->{% include 'head.html' %}
+  <!-- My Custom styles for this template -->
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/my-creative.css') }}">
+</head>
 
-  <!-- Bootstrap theme (Agency) downloaded from  https://github.com/BlackrockDigital/startbootstrap-agency -->
-  <body>
+<!-- Bootstrap theme (Agency) downloaded from  https://github.com/BlackrockDigital/startbootstrap-agency -->
 
-    <!-- NAVIGATION -->
-    <nav class="navbar navbar-expand-md navbar-dark bg-secondary fixed-top" id="mainNav">
-      <div class="container">
-        <a class="navbar-brand js-scroll-trigger" href="#"> 
-          <img src="../static/images/website/cooking_pot_logo.png" alt="Logo" class="img-responsive"> 
-          The Recipe Collection 
-        </a>
-        <button class="navbar-toggler 
-                navbar-toggler-right" 
-                type="button"
-                data-toggle="collapse" 
-                data-target="#navbarResponsive" 
-                aria-controls="navbarResponsive" 
-                aria-expanded="false" 
-                aria-label="Toggle navigation">
-                Menu
-                <i class="fas fa-bars"> </i>
-        </button>
-        
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ml-auto">
-              <li class="nav-item"> <a class="nav-link js-scroll-trigger" href="{{ url_for('base') }}"> Home <i class="fas fa-home fa-lg"> </i></a></li>
-              <li class="nav-item"> <a class="nav-link js-scroll-trigger" href="{{ url_for('by_recipes') }}"> All Recipes <i class="fas fa-utensils fa-lg"> </i></a></li>
-            {% if 'username' in session %}
-              <li class="nav-item"> <a class="nav-link js-scroll-trigger" href="{{ url_for('add_recipe', username=session['username']) }}"> Add Recipes <i class="fas fa-folder-plus fa-lg"></i></a></li>
-              <li class="nav-item"> <a class="nav-link js-scroll-trigger" href="{{ url_for('by_my_recipes', username=session['username']) }}"> My Recipes <i class="fas fa-book fa-lg"> </i></a></li>
-              <li class="nav-item"> <a class="nav-link js-scroll-trigger" href="{{ url_for('sign_out_user') }}"> Sign Out <i class="fas fa-sign-out-alt fa-lg"></i></a></li> 
-            {% else %}   
-              <li class="nav-item"> <a class="nav-link js-scroll-trigger" href="{{ url_for('sign_in_user') }}"> Sign In  <i class="fas fa-sign-in-alt fa-lg"> </i></a></li>
-              <li class="nav-item"> <a class="nav-link js-scroll-trigger" href="{{ url_for('register_user') }}"> Register <i class="fas fa-user-plus fa-lg"> </i></a></li>
-            {% endif %}
-              <li class="nav-item"> <a class="nav-link js-scroll-trigger" href="{{ url_for('site_statistics') }}"> Site Stats <i class="fas fa-chart-line fa-lg"> </i></a></li>
-          </ul>
-        </div>
-      </div> 
-    </nav>
-    
-    
-    <!-- Header -->
-    <header class="masthead text-center">
-      <div class="container">
-        <div class="intro-text">
-          <div class="intro-text-background">
-            <div class="intro-lead-in"> {{ welcome_message }} </div>
-            <div class="intro-heading text-uppercase"> The Recipe Collection </div>
-            
-             {% if 'username' in session %}
-               <a class="btn btn-primary btn-lg btn-rounded" href="{{ url_for('add_recipe', username=session['username']) }}"> Add Recipes </a>
-               <a class="btn btn-primary btn-lg btn-rounded" href="{{ url_for('by_recipes') }}"> All Recipes </a>
-               <a class="btn btn-primary btn-lg btn-rounded" href="{{ url_for('by_my_recipes', username=session['username']) }}"> My Recipes </a>
-             {% else %}
-               <p class="text-dark mb-2"> SIGN IN to add your own recipe(s) </p> <br>
-               <a class="btn btn-primary btn-lg btn-rounded" href="/register_user"> Register </a>
-               <a class="btn btn-primary btn-lg btn-rounded" href="/sign_in_user"> Sign In </a>
-             {% endif %}
-             
-          </div>
-        </div> 
-      </div>
-    </header>
- 
-    
-    <!-- Flash Messaging -->
-    {% include 'messaging.html' %}
+<body>
 
-    
-    <!-- Filter -->
-    <section id="filter-by">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-lg-12 text-center">
-            <h2 class="section-heading text-uppercase"> Filter Recipes By </h2>
-            <h3 class="section-subheading text-muted"> Click on icons below to filter recipies. </h3>
-          </div>
-        </div>
-        <div class="row text-center">
-          <div class="col-md-4">
-            <span class="fa-stack fa-4x">
-              <i class="fas fa-circle fa-stack-2x text-primary"> </i>
-              <i class="fas fa-utensils fa-stack-1x fa-inverse"> </i>
-            </span>
-            <h4 class="service-heading"> Find Recipes </h4>
-            <p class="text-muted"> Search and View recipes. </p>
-          </div>
-          <div class="col-md-4">
-            <span class="fa-stack fa-4x">
-              <i class="fas fa-circle fa-stack-2x text-primary"> </i>
-              <i class="fas fa-plus fa-stack-1x fa-inverse"> </i>
-            </span>
-            <h4 class="service-heading"> Add New Recipes </h4>
-            <p class="text-muted"> Once you have been register you can add your favourite recipes.</p>
-          </div>
-          <div class="col-md-4">
-            <span class="fa-stack fa-4x">
-              <i class="fas fa-circle fa-stack-2x text-primary"></i>
-              <i class="far fa-address-book fa-stack-1x fa-inverse"></i>
-            </span>
-            <h4 class="service-heading"> Edit Recipes </h4>
-            <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
-          </div>
+  <!-- NAVIGATION -->
+  {% include 'navbar.html' %}
+
+  <!-- HEADER -->
+  <header class="masthead text-center">
+    <div class="container">
+      <div class="intro-text">
+        <div class="intro-text-background">
+          <div class="intro-lead-in"> {{ welcome_message }} </div>
+          <div class="intro-heading text-uppercase"> The Recipe Collection </div>
+
+          {% if 'username' in session %}
+          <a class="btn btn-primary btn-lg btn-rounded mb-2" href="{{ url_for('add_recipe', username=session['username']) }}"> Add Recipes </a>
+          <a class="btn btn-primary btn-lg btn-rounded mb-2" href="{{ url_for('by_recipes') }}"> All Recipes </a>
+          <a class="btn btn-primary btn-lg btn-rounded mb-2" href="{{ url_for('by_my_recipes', username=session['username']) }}"> My Recipes </a> {% else %}
+          <p class="text-dark mb-2"> SIGN IN to add your own recipe(s) </p> <br>
+          <a class="btn btn-primary btn-lg btn-rounded mb-2" href="/register_user"> Register </a>
+          <a class="btn btn-primary btn-lg btn-rounded mb-2" href="/sign_in_user">  Sign In  </a> {% endif %}
+
+          <!-- Flash Messaging -->
+          {% include 'messaging.html' %}
         </div>
       </div>
-    </section>
+    </div>
+  </header>
 
-    <!-- Footer -->
-    {% include 'footer.html' %}
+  <!-- FIND OUT MORE SECTION -->
+  <section class="bg-primary" id="findoutmore">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 mx-auto text-center">
+          <h5 class="section-title text-muted"> The recipe collection provides the following: </h5>
+          <hr class="dark"> </hr>
+          <ul class="text-dark text-left">
+            <ul>
+              <li style="list-style-image: url(../static/images/website/recipes-cooking-book.png);"> Register / Sign-in users. </li>
+              <li style="list-style-image: url(../static/images/website/recipes-cooking-book.png);"> View recipes. </li>
+              <li style="list-style-image: url(../static/images/website/recipes-cooking-book.png);"> View my recipes by user. </li>
+              <li style="list-style-image: url(../static/images/website/recipes-cooking-book.png);"> Search recipes by without an allergen. </li>
+              <li style="list-style-image: url(../static/images/website/recipes-cooking-book.png);"> Search recipes by category, cuisine, difficulty and main ingredient. </li>
+              <li style="list-style-image: url(../static/images/website/recipes-cooking-book.png);"> Add recipe (registered user). </li>
+              <li style="list-style-image: url(../static/images/website/recipes-cooking-book.png);"> Delete recipe (registered user). </li>
+              <li style="list-style-image: url(../static/images/website/recipes-cooking-book.png);"> Edit recipe (registered user). </li>
+              <li style="list-style-image: url(../static/images/website/recipes-cooking-book.png);"> Vote to like / dislike recipe. </li>
+            </ul>
+        </div>
+      </div>
+    </div>
+    </div>
+  </section>
 
-          
-    <!-- Script -->
-    {% include 'script.html' %} 
-    
-  </body>
-</html>    
+  <!-- FOOTER -->
+  {% include 'footer.html' %}
+
+  <!-- SCRIPT -->
+  {% include 'script.html' %}
+
+</body>
+
+</html>

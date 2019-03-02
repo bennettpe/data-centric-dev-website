@@ -1,233 +1,280 @@
 /*-----------------------------------*/
+
 /* main.css: Add and override styles */
+
 /*-----------------------------------*/
 
 /* CHANGE background color */
+
 .bg-primary {
   background-color: #ffe37a9e!important;
   padding: 20px;
 }
 
 /* ADD background */
+
 .header.masthead {
   background-image: url("../static/img/header.jpg");
 }
 
 /* ADD background color to intro text background */
+
 .intro-text-background {
-  padding: 35px; 
+  padding: 35px;
   background-color: rgba(245, 245, 245, 0.8);
   border-radius: 6rem;
 }
 
 /* CHANGE padding to intro text */
+
 .intro-text {
-  padding-top: 400px;  
-  padding-bottom: 200px;      
+  padding-top: 400px;
+  padding-bottom: 200px;
 }
 
 /* CHANGE color to text */
+
 .intro-lead-in {
-  color: #6c757d /* Raven */
+  color: #6c757d/* Raven */
 }
 
 /* CHANGE color to text */
-.intro-heading {
-  color: #6c757d; /* Raven */
-}
 
+.intro-heading {
+  color: #6c757d;
+  /* Raven */
+}
 
 /* ----- Changes to Buttons ----- */
 
 /* ADD radius to buttons */
+
 .btn {
-  border-radius: 300px;           
+  border-radius: 300px;
 }
 
 /* CHANGE color on button border */
+
 .btn-primary {
-  border-color: #6c757d; /* Raven */
+  border-color: #6c757d;
+  /* Raven */
 }
 
 /* CHANGE color on button hover */
+
 .btn-primary:hover {
   color: black !important;
 }
 
 /* ADD spacing to Top of page Button */
+
 .btn-space {
   margin: 10px;
 }
 
-
 /* ----- Changes to Card ----- */
 
 /* Equal-height card images, cf. https://stackoverflow.com/a/47698201/1375163*/
+
 .card-img-top {
-    /*height: 11vw;*/
-    object-fit: cover;
+  /*height: 11vw;*/
+  object-fit: cover;
 }
-  /* Small devices (landscape phones, 576px and up) */
-  @media (min-width: 576px) {
-    .card-img-top {
-        height: 19vw;
-    }
+
+/* Small devices (landscape phones, 576px and up) */
+
+@media (min-width: 576px) {
+  .card-img-top {
+    height: 19vw;
   }
-  /* Medium devices (tablets, 768px and up) */
-  @media (min-width: 768px) {
-    .card-img-top {
-        height: 16vw;
-    }
+}
+
+/* Medium devices (tablets, 768px and up) */
+
+@media (min-width: 768px) {
+  .card-img-top {
+    height: 16vw;
   }
-  /* Large devices (desktops, 992px and up) */
-  @media (min-width: 992px) {
-    .card-img-top {
-        height: 11vw;
-    }
+}
+
+/* Large devices (desktops, 992px and up) */
+
+@media (min-width: 992px) {
+  .card-img-top {
+    height: 11vw;
   }
-  /* Extra large devices (large desktops, 1200px and up) */
-  @media (min-width: 992px) {
-    .card-img-top {
-        height: 11vw;
-    }
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+
+@media (min-width: 992px) {
+  .card-img-top {
+    height: 11vw;
   }
+}
 
 /* ADD Background to cuisines heading */
+
 .cuisines-heading {
-  padding: 35px; 
+  padding: 35px;
   background-color: rgba(245, 245, 245, 0.8);
   border: 1.25px solid rgba(0, 0, 0, .50);
   border-radius: 6rem;
 }
 
 /* CHANGE border for Card */
+
 .card {
   border: 1.25px solid rgba(0, 0, 0, .50);
-  background-color: rgba(245, 245, 245, 0.9); 
+  background-color: rgba(245, 245, 245, 0.9);
 }
 
 /* Add Shadow for Card hover */
+
 .card:hover {
- box-shadow: 2px 5px 20px #6c757d; 
+  box-shadow: 2px 5px 20px #6c757d;
 }
 
 /* CHANGE border for Recipe Card */
+
 .recipe-card.card {
   border: 1.25px solid rgba(0, 0, 0, .50);
-  background-color: rgba(245, 245, 245, 0.9); 
-  box-shadow: 2px 5px 20px #6c757d; 
+  background-color: rgba(245, 245, 245, 0.9);
+  box-shadow: 2px 5px 20px #6c757d;
 }
 
 /* CHANGE font size for Card subtitle */
+
 h5.card-subtitle {
-    font-size: 1.2em; 
+  font-size: 1.2em;
 }
 
 /* CHANGE padding for Card body */
+
 .card-body {
   padding: 0rem;
 }
 
 /* ADD top border for Card header */
+
 .card-header {
-border-bottom: 1px solid rgba(0,0,0,.125);  
+  border-bottom: 1px solid rgba(0, 0, 0, .125);
 }
 
 /* ADD top border for Card header */
+
 .card-header-method {
-border-top: 1px solid rgba(0,0,0,.125);
+  border-top: 1px solid rgba(0, 0, 0, .125);
 }
 
 /* CHANGE font size and height for Card text */
+
 .card-text {
   font-size: 13px;
 }
 
 /* CHANGE line-height for Card text */
+
 p.card-text {
   line-height: normal;
 }
 
 /* CHANGE margin for Card title */
+
 .card-title {
   margin-bottom: 1rem;
-  color: #6c757d; /* Raven */
+  color: #6c757d;
+  /* Raven */
 }
 
 /*CHANGE h5 margin Card title to  */
+
 h5.card-title {
   margin: 0.25rem;
-}  
+}
 
 
 /* CHANGE margin for Card title */
+
 .card-title:hover {
   color: #fed136;
 }
 
 /* ADD top border for Card header */
+
 recipe-url.card-header {
-border-top: 1px solid rgba(0,0,0,.125);
+  border-top: 1px solid rgba(0, 0, 0, .125);
 }
 
 /*CHANGE text align of recipe-details*/
+
 .recipe-details {
   text-align: center!important;
 }
 
 /*CHANGE padding of ratings button*/
+
 .btn-sm {
-padding: .25rem;  
+  padding: .25rem;
 }
 
 /* ----- Changes to Dropdown ----- */
 
 /* CHANGE  to dropdown padding */
+
 .dropdown-item {
   padding: 0 0 0 5px;
 }
 
 
 /* CHANGES to dropdown menu */
+
 .dropdown-menu {
-  text-align: left; 
+  text-align: left;
   background-color: rgba(245, 245, 245, 0.9);
-  border: 2px solid rgba(0, 0, 0, .25rem); 
-  border-color: #6c757d; /* Raven */
+  border: 2px solid rgba(0, 0, 0, .25rem);
+  border-color: #6c757d;
+  /* Raven */
   border-radius: 15px;
 }
 
 /* CHANGE color of dropdown menu when hover */
+
 .dropdown-menu:hover {
   background-color: #fed136;
 }
 
 /* ADD to dropdown menu */
+
 .dropdown-menu {
-  max-height:500px;
-  overflow-y:auto;    
+  max-height: 500px;
+  overflow-y: auto;
 }
 
 /* CHANGE colour of dropdown toggle */
+
 .dropdown-toggle[aria-expanded="true"] {
-  background:#FFF !important;
-  color:#000 !important;
+  background: #FFF !important;
+  color: #000 !important;
 }
 
 /* CHANGE colour of dropdown-item when active */
+
 .dropdown-item:active {
   color: #000;
   background-color: #fff;
 }
 
 #dropdownMenuLink {
-  cursor: pointer; /* not necessary for Bootstrap */
-  color: white /* change if you want */
+  cursor: pointer;
+  /* not necessary for Bootstrap */
+  color: white/* change if you want */
 }
 
 /* ----- Changes to Back To Top Button ----- */
 
 /* Back to top button */
+
 .bttop {
   width: 65px;
   background: #fed136d4;
@@ -240,67 +287,100 @@ padding: .25rem;
 }
 
 /* Back to top button hover */
+
 .bttop:hover {
-   background: #fed136;
-   box-shadow: 5px 10px 25px #555;
+  background: #fed136;
+  box-shadow: 5px 10px 25px #555;
 }
 
 /* Back to top button icon */
+
 .bttop i {
   color: #ffffffd4;
   font-size: 45px;
-  padding: 7px;   
+  padding: 7px;
 }
 
 /* Back to top button icon hover */
+
 .bttop i:hover {
- color: #fff; 
+  color: #fff;
 }
 
 /* ADD Background to */
+
 .recipe-heading {
-  padding: 35px; 
+  padding: 35px;
   background-color: rgba(245, 245, 245, 0.8);
   border: 1.25px solid rgba(0, 0, 0, .50);
   border-radius: 6rem;
 }
 
 /* CHANGE font-size to */
-.cuisines-p, .recipe-p, .form-control, .form-group, .form-row, .custom-select {
-font-size: 13px;  
+
+.cuisines-p,
+.recipe-p,
+.form-control,
+.form-group,
+.form-row,
+.custom-select {
+  font-size: 13px;
 }
 
 /* CHANGE line-height to */
+
 .recipe-p {
   line-height: normal;
 }
 
 /*CHANGE text-align to */
+
 .recipe-label {
   text-align: left;
 }
 
 /*CHANGE text-align to  */
-h3.recipe-heading, .recipe-p {
+
+h3.recipe-heading,
+.recipe-p {
   text-align: center;
-}  
+}
 
 /*CHANGE padding to */
+
 .form-group {
-  padding: 0px;;
+  padding: 0px;
+  ;
 }
 
 /* Put the X at end of input form */
-/* for ingredients & instructions */ 
+
+/* for ingredients & instructions */
+
 .ing-del {
-   display: grid;
-   grid-template-columns: 1fr 25px;
-   grid-column-gap: 10px;
-   font-size: 10px;
-   color: red;
+  display: grid;
+  grid-template-columns: 1fr 25px;
+  grid-column-gap: 10px;
+  font-size: 10px;
+  color: red;
 }
 
 /*CHANGE font-size small button */
+
 .btn-sm {
   font-size: .700rem;
-} 
+}
+
+/*CHANGE text-align alert */
+
+.alert {
+  text-align: center;
+  border: 1px solid;
+}
+
+/* CHANGE font-size small button */
+
+.recipe-count {
+  font-size: 18px;
+  color: #17a2b8;
+}

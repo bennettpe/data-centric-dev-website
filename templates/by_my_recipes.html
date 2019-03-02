@@ -1,64 +1,69 @@
-{<!DOCTYPE html>
+{
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-                                                          <title> Data Centric Development Project "BY_MY_RECIPES.HTML" (Paul Bennett) </title>
-    <!-- Include standard links                       --> {% include 'head.html' %}                                                       
-    <!-- My Custom styles for this template           --> <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/my-creative.css') }}"> 
+    <title> Data Centric Development Project "BY_MY_RECIPES.HTML" (Paul Bennett) </title>
+    <!-- Include standard links                       -->{% include 'head.html' %}
+    <!-- My Custom styles for this template           -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/my-creative.css') }}">
 </head>
- 
+
 <!-- Bootstrap theme (Creative) downloaded from  https://github.com/BlackrockDigital/startbootstrap-agency -->
+
 <body>
 
- <!-- Navigation Navbar  -->
-  {% include 'navbar_recipes.html' %}
-  
- <!-- Header -->
-    <header class="masthead text-center text-white d-flex">  
+    <!-- Navigation Navbar  -->
+    {% include 'navbar.html' %}
+
+    <!-- Header -->
+    <header class="masthead text-center text-white d-flex">
         <div class="container">
             <div class="intro-text">
                 <div class="intro-text-background">
-                <div class=" h3 text-dark"> My Recipes </div> 
-                <p class="text-dark mb-2"> Click on image below to view the recipe. </p> </br>
-                <a class="btn btn-primary btn-lg btn-rounded" href="{{ url_for('by_recipes') }}"> Return to all recipes </a>
+                    <div class=" h3 text-dark"> My Recipes </div>
+                    <p class="text-dark mb-2"> Click on image below to view the recipe. </p>
+                    </br>
+                    <a class="btn btn-primary btn-lg btn-rounded mb-2" href="{{ url_for('by_recipes') }}"> Return to all recipes </a>
+                    <!-- Flash Messaging -->
+                    {% include 'messaging.html' %}
     </header>
-    
-  <!-- Recipe cards by username -->
+
+    <!-- Recipe cards by username -->
     <section class="bg-primary">
         <div class="container cuisine-cards mt-4">
-            <h3 class="text-dark text-center cuisines-heading"> {{ user_document_by_signed_in_username.username }} Recipes 
-            <p  class="text-center cuisines-p mt-2">            {{ recipes_document_by_signed_in_count }} &nbsp; Recipe(s) found &nbsp; (Sorted by cuisine) </p>
-            
-            <div class="row mt-3">
-              {% for recipe in recipes_document_by_signed_in %} 
-                <div class="col-md-4 col-sm-6">
-                    <div class="card mb-4">
-                        <div class="card-body">
-                         <a href="{{ url_for('view_my_details_recipe', recipe_id=recipe._id) }}">
+            <h3 class="text-dark text-center cuisines-heading"> {{ user_document_by_signed_in_username.username }} Recipes
+                <p class="text-center cuisines-p mt-2"> <span class="recipe-count"> {{ recipes_document_by_signed_in_count }}  </span> Recipes found </p>
+
+                <div class="row mt-3">
+                    {% for recipe in recipes_document_by_signed_in %}
+                    <div class="col-md-4 col-sm-6">
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <a href="{{ url_for('view_my_details_recipe', recipe_id=recipe._id) }}">
                          <img src="{{ recipe.recipe_url }}" class="img-fluid" alt="bbcgoodfood" style="border-bottom:1px solid black!important;"> </a>
-                         <h5 class="card-title text-muted text-center mt-2"> {{ recipe.recipe_name }} </h5> 
-                         <button type="button" class="btn-sm btn-info">
+                                <h5 class="card-title text-muted text-center mt-2"> {{ recipe.recipe_name }} </h5>
+                                <button type="button" class="btn-sm btn-info">
                             ratings <span class="badge badge-pill badge-light"> {{ recipe.ratings_score}} </span>
-                         </button>  
-                         <p class="card-text m-2"> {{ recipe.recipe_description }} </p>
-                         <a href="{{ url_for('delete_recipe', recipe_id=recipe._id, username=session['username']) }}" class="btn btn-outline-danger btn-sm text-center mb-3 ml-2"> <i class="far fa-trash-alt"></i> Delete recipe </a>
-                         <a href="{{ url_for('edit_recipe', recipe_id=recipe._id,   username=session['username']) }}" class="btn btn-outline-secondary btn-sm text-center mb-3 ml-2"> <i class="fas fa-edit"></i>     Edit recipe </a>
-                         
+                         </button>
+                                <p class="card-text m-2"> {{ recipe.recipe_description }} </p>
+                                <a href="{{ url_for('delete_recipe', recipe_id=recipe._id, username=session['username']) }}" class="btn btn-outline-danger btn-sm text-center mb-3 ml-2"> <i class="far fa-trash-alt"></i> Delete recipe </a>
+                                <a href="{{ url_for('edit_recipe', recipe_id=recipe._id,   username=session['username']) }}" class="btn btn-outline-secondary btn-sm text-center mb-3 ml-2"> <i class="fas fa-edit"></i>     Edit recipe </a>
+                            </div>
                         </div>
                     </div>
+                    {% endfor %}
                 </div>
-              {% endfor %}
-            </div>
         </div>
-    </section> 
-  
-    
-  <!-- Footer -->
-   {% include 'footer.html' %}
+    </section>
 
-          
-  <!-- Script -->
-   {% include 'script.html' %} 
-    
+    <!-- Footer -->
+    {% include 'footer.html' %}
+
+
+    <!-- Script -->
+    {% include 'script.html' %}
+
 </body>
-</html>       
+
+</html>

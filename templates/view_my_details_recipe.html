@@ -2,89 +2,81 @@
 <html lang="en">
 
 <head>
-                                                          <title> Data Centric Development Project "VIEW_MY_DETAILS_RECIPE.HTML" (Paul Bennett) </title>
-    <!-- Include standard links                       --> {% include 'head.html' %}                                                       
-    <!-- My Custom styles for this template           --> <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/my-creative.css') }}"> 
+    <title> Data Centric Development Project "VIEW_MY_DETAILS_RECIPE.HTML" (Paul Bennett) </title>
+    <!-- Include standard links                       -->{% include 'head.html' %}
+    <!-- My Custom styles for this template           -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/my-creative.css') }}">
 </head>
- 
-<!-- Bootstrap theme (Creative) downloaded from  https://github.com/BlackrockDigital/startbootstrap-agency -->
-<body>
-    
-  <!-- Navigation Navbar -->
-  {% include 'navbar_recipes.html' %} 
 
-  <!-- Recipe card by recipe_id -->
-<div class="bg-primary">
-<section>    
-    <div class="container">
-        <div class="row">
-            <!-- First recipe card -->
-            <div class="col-sm-6">
-                <div class="card recipe-card mb-4">
-                    <div class="card-header recipe-url"> <img src="{{ recipes_document_by_recipe.recipe_url }}" class="img-fluid"> </div>
-                        <div class="card-body">
-                            <div class="h4 card-header text-center mb-2"> <strong> {{ recipes_document_by_recipe.recipe_name}} </strong> </h4>
-                                <button type="button" class="btn-sm btn-info m-2">
+<!-- Bootstrap theme (Creative) downloaded from  https://github.com/BlackrockDigital/startbootstrap-agency -->
+
+<body>
+
+    <!-- Navigation Navbar -->
+    {% include 'navbar.html' %}
+
+    <!-- Recipe card by recipe_id -->
+    <div class="bg-primary">
+        <section>
+            <div class="container">
+                <div class="row">
+                    <!-- First recipe card -->
+                    <div class="col-sm-6">
+                        <div class="card recipe-card mb-4">
+                            <div class="card-header recipe-url"> <img src="{{ recipes_document_by_recipe.recipe_url }}" class="img-fluid"> </div>
+                            <div class="card-body">
+                                <div class="h4 card-header text-center mb-2"> <strong> {{ recipes_document_by_recipe.recipe_name}} </strong> </h4>
+                                    <button type="button" class="btn-sm btn-info m-2">
                                   ratings <span class="badge badge-pill badge-light"> {{ recipes_document_by_recipe.ratings_score}} </span>
-                                </button>                                                                     
-                            </div>
-                            <div class="recipe-details mb-2"> <span> <strong> Added by: </strong> {{ recipes_document_by_recipe.username }} </span> </div>
-                            <div class="card-text ml-2">
-                                <div class="recipe-details mb-2 mr-2"> <span>                              {{ recipes_document_by_recipe.recipe_description }} </span> </div>
-                                <div class="recipe-details">           <span> <strong> Author:   </strong> {{ recipes_document_by_recipe.author_name }}        </span> </div>
-                                <div class="recipe-details">           <span> <strong> Category: </strong>
+                                </button>
+                                </div>
+                                <div class="recipe-details mb-2"> <span> <strong> Added by: </strong> {{ recipes_document_by_recipe.username }} </span> </div>
+                                <div class="card-text ml-2">
+                                    <div class="recipe-details mb-2 mr-2"> <span>                              {{ recipes_document_by_recipe.recipe_description }} </span> </div>
+                                    <div class="recipe-details"> <span> <strong> Author:   </strong> {{ recipes_document_by_recipe.author_name }}        </span> </div>
+                                    <div class="recipe-details"> <span> <strong> Category: </strong>
                                     <!-- If more than one category selected add comma between them -->
                                     {% if recipes_document_by_recipe.category_name | length > 1 %}
                                         {% for category_name in recipes_document_by_recipe.category_name %}
-                                            {{ category_name }}, </span> 
-                                        {% endfor %}
-                                    {% else %}
-                                        {% for category_name in recipes_document_by_recipe.category_name %}
-                                            {{ category_name }} </span> 
-                                        {% endfor %}
-                                    {% endif %}
-                                </div>
-                                <div class="recipe-details"> <span> <strong> Difficulty:               </strong> {{ recipes_document_by_recipe.difficulty_name  }} </span> </div>
-                                <div class="recipe-details"> <span> <strong> Main ingredients:         </strong> {{ recipes_document_by_recipe.main_ingredient  }} </span> </div>
-                                <div class="recipe-details"> <span> <strong> Preparation time (hh:mm): </strong> {{ recipes_document_by_recipe.preparation_time }} </span> </div>
-                                <div class="recipe-details"> <span> <strong> Cooking time (hh:mm):     </strong> {{ recipes_document_by_recipe.cooking_time     }} </span> </div>
-                                <div class="recipe-details"> <span> <strong> Servings:                 </strong> {{ recipes_document_by_recipe.servings_num     }} </span> </div>
-                                <div class="recipe-details mb-2">   <span> <strong> Allergens: </strong>
+                                            {{ category_name }}, </span> {% endfor %} {% else %} {% for category_name in recipes_document_by_recipe.category_name %} {{ category_name }} </span>
+                                        {% endfor %} {% endif %}
+                                    </div>
+                                    <div class="recipe-details"> <span> <strong> Difficulty:               </strong> {{ recipes_document_by_recipe.difficulty_name  }} </span> </div>
+                                    <div class="recipe-details"> <span> <strong> Main ingredients:         </strong> {{ recipes_document_by_recipe.main_ingredient  }} </span> </div>
+                                    <div class="recipe-details"> <span> <strong> Preparation time (hh:mm): </strong> {{ recipes_document_by_recipe.preparation_time }} </span> </div>
+                                    <div class="recipe-details"> <span> <strong> Cooking time (hh:mm):     </strong> {{ recipes_document_by_recipe.cooking_time     }} </span> </div>
+                                    <div class="recipe-details"> <span> <strong> Servings:                 </strong> {{ recipes_document_by_recipe.servings_num     }} </span> </div>
+                                    <div class="recipe-details mb-2"> <span> <strong> Allergens: </strong>
                                 <!-- If more than one category selected add comma between them -->
                                     {% if recipes_document_by_recipe.allergen_name | length > 1 %} 
                                         {% for allergen_name in recipes_document_by_recipe.allergen_name %}
-                                            {{ allergen_name }}, </span> 
-                                        {% endfor %}
-                                    {% else %}
-                                        {% for allergen_name in recipes_document_by_recipe.allergen_name %}
-                                            {{ allergen_name }} </span> 
-                                        {% endfor %}
-                                    {% endif %}
+                                            {{ allergen_name }}, </span> {% endfor %} {% else %} {% for allergen_name in recipes_document_by_recipe.allergen_name %} {{ allergen_name }} </span>
+                                        {% endfor %} {% endif %}
+                                    </div>
+
+                                    <div class="row justify-content-center">
+                                        <a class="btn btn-primary btn-sm btn-rounded mb-2" href="{{ url_for('by_my_recipes', username=session['username']) }}"> Return to my recipes </a>
+                                    </div>
                                 </div>
-                                
-                                <div class="row justify-content-center">
-                                    <a class="btn btn-primary btn-sm btn-rounded mb-2" href="{{ url_for('by_my_recipes', username=session['username']) }}"> Return to my recipes </a>
-                                </div>    
-                            </div> 
+                            </div>
                         </div>
-                </div>
-            </div>
-            
-            <!-- Second recipe card -->
-            <div class="col-sm-6">
-                <div class="card recipe-card">
-                    <div class=card-body">
-                        <div class="h4 card-header text-center"> <strong> Ingredients </strong> </h4> </div>
-                            <div class="card-text mt-2">
-                                <ul style="list-style-image: url(../static/images/website/font-awesome_4-7-0_pencil_20_0_fed136_none.png);">
+                    </div>
+
+                    <!-- Second recipe card -->
+                    <div class="col-sm-6">
+                        <div class="card recipe-card">
+                            <div class=card-body ">
+                        <div class="h4 card-header text-center "> <strong> Ingredients </strong> </h4> </div>
+                            <div class="card-text mt-2 ">
+                                <ul style="list-style-image: url(../static/images/website/font-awesome_4-7-0_pencil_20_0_fed136_none.png); ">
                                     {% for recipe_ingredient in recipes_document_by_recipe.recipe_ingredients %}
                                         <li> {{ recipe_ingredient }} </li> 
                                     {% endfor %}
                                 </ul>
                             </div>
-                        <div class="h4 card-header card-header-method text-center"> <strong> Method </strong> </h4> </div>
-                            <div class="card-text mt-2 mr-2">
-                                <ul style="list-style-image: url(../static/images/website/font-awesome_4-7-0_check_20_0_fed136_none.png);">
+                        <div class="h4 card-header card-header-method text-center "> <strong> Method </strong> </h4> </div>
+                            <div class="card-text mt-2 mr-2 ">
+                                <ul style="list-style-image: url(../static/images/website/font-awesome_4-7-0_check_20_0_fed136_none.png); ">
                                     {% for recipe_method in recipes_document_by_recipe.recipe_method %}
                                         <li> {{ recipe_method }} </li> 
                                     {% endfor %}
@@ -106,4 +98,4 @@
   {% include 'script.html' %} 
     
 </body>
-</html>         
+</html>

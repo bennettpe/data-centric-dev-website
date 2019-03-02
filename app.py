@@ -56,7 +56,7 @@ def create_cuisines_list():
       
 # FUNCTION: GET DIFFICULTIES DB DOCUMENT
 def get_difficulties_document():
-        difficulties = mongo.db.difficulties.find().sort("difficulty_name", -1)
+        difficulties = mongo.db.difficulties.find()
         return difficulties
         
 # FUNCTION: CREATE DIFFICULTIES LIST
@@ -65,6 +65,7 @@ def create_difficulties_list():
         difficulties_list = [difficulties_record["difficulty_name"]
                              for difficulties_record in difficulties_document] 
         return difficulties_list 
+        
         
 # FUNCTION: GET MAIN INGREDIENTS DB DOCUMENT
 def get_main_ingredients_document():
@@ -113,10 +114,9 @@ def register_user():
             # insert username & hashed password into mongo.db.users
             users.insert({'username':  request.form['username'], 'password' : hashed_password})
             session['username'] = request.form['username']
-            return redirect(url_for('sign_in_user'))
+            return redirect(url_for('base'))
         else:
             flash("Username already registered", 'danger')     
-        
     return render_template("register_user.html", title='Register', form=form)
 
     
@@ -127,7 +127,7 @@ def sign_in_user():
     
     if form.validate_on_submit(): 
          if 'username' in session:
-              flash("You are already signed in!")
+              flash("You are already signed in!", 'danger')
          else:      
              users = mongo.db.users
              user_signin   = users.find_one({'username' : request.form['username']})
@@ -137,10 +137,9 @@ def sign_in_user():
                  # Check if hashed password in mongo.db.users = password entered in WTForm.
                   if bcrypt.check_password_hash(user_signin['password'],(request.form['password']).encode('utf-8')):
                       session['username'] = request.form['username']
-                      return redirect(url_for('search_recipes'))
+                      return redirect(url_for('base'))
                   else: 
                       flash("Invalid username or password", 'danger')    
-        
     return render_template("sign_in_user.html", title='Signin', form=form)
 
 
@@ -150,7 +149,7 @@ def sign_out_user():
     if request.method == 'GET':
         session.pop('username', None)
         session.pop('_flashes', None)
-        flash("you have signed out", 'success')
+        flash("You have signed out", 'success')
     return render_template("base.html")    
 
         
@@ -162,40 +161,40 @@ def by_recipes():
         # list comprehensions used to create list
         allergens_list = [allergens_record["allergen_name"]
                              for allergens_record in allergens_document]
-                             
         # categories
         categories_document = get_categories_document()
         categories_list = [categories_record["category_name"]
                              for categories_record in categories_document] 
-                            
         # cuisines
         cuisines_document = get_cuisines_document()
-        
         # difficulties                     
         difficulties_document = get_difficulties_document()
         difficulties_list = [difficulties_record["difficulty_name"]
-                             for difficulties_record in difficulties_document]
-        # Reverse difficulties_list
-        difficulties_list = difficulties_list[::-1] 
-        
+                         for difficulties_record in difficulties_document]
         # main_ingredients
         main_ingredients_document = get_main_ingredients_document()
         main_ingredients_list = [main_ingredients_record["main_ingredient"]
                              for main_ingredients_record in main_ingredients_document] 
-
+        if 'username' in session:                     
+            return render_template("by_recipes.html", 
+                                    cuisines_document = cuisines_document,
+                                    allergens_list    = allergens_list,
+                                    categories_list   = categories_list,
+                                    difficulties_list = difficulties_list,
+                                    main_ingredients_list = main_ingredients_list,
+                                    welcome_message ='Welcome ' + str(session['username'])) 
         return render_template("by_recipes.html", 
-                                cuisines_document = cuisines_document,
-                                allergens_list    = allergens_list,
-                                categories_list   = categories_list,
-                                difficulties_list = difficulties_list,
-                                main_ingredients_list = main_ingredients_list,
-                                welcome_message ='Welcome ' + str(session['username'])) 
-
+                                    cuisines_document = cuisines_document,
+                                    allergens_list    = allergens_list,
+                                    categories_list   = categories_list,
+                                    difficulties_list = difficulties_list,
+                                    main_ingredients_list = main_ingredients_list,                            
+                                    welcome_message ='Welcome To')
 
 # NOT BY ALLERGENS
 @app.route('/not_by_allergen/<allergen_name>')
 def not_by_allergen(allergen_name):
-        recipes_document_by_allergen = mongo.db.recipes.find({"allergen_name": {'$nin': [allergen_name]}}).sort("cuisine_name", 1)
+        recipes_document_by_allergen = mongo.db.recipes.find({"allergen_name": {'$nin': [allergen_name]}}).sort("ratings_score", -1)
         # Counts total amount of recipes not by allergen selected
         recipe_allergen_count = mongo.db.recipes.find({"allergen_name": {'$nin': [allergen_name]}}).count()
         return render_template("not_by_allergen.html",
@@ -207,7 +206,7 @@ def not_by_allergen(allergen_name):
 # BY CATEGORY
 @app.route('/by_category/<category_name>')
 def by_category(category_name):
-        recipes_document_by_category = mongo.db.recipes.find({"category_name": category_name}).sort("cuisine_name", 1)
+        recipes_document_by_category = mongo.db.recipes.find({"category_name": category_name}).sort("ratings_score", -1)
         # Counts total amount of recipes by category selected
         recipe_category_count = mongo.db.recipes.find({ "category_name": category_name }).count()
         return render_template("by_category.html",
@@ -219,7 +218,7 @@ def by_category(category_name):
 # BY CUISINE
 @app.route('/by_cuisine/<cuisine_name>')
 def by_cuisine(cuisine_name):
-        recipes_document_by_cuisine = mongo.db.recipes.find({"cuisine_name": cuisine_name})
+        recipes_document_by_cuisine = mongo.db.recipes.find({"cuisine_name": cuisine_name}).sort("ratings_score", -1)
         # Counts total amount of recipes by cuisine seleted
         recipe_cuisine_count = mongo.db.recipes.find({ "cuisine_name": cuisine_name }).count()
         return render_template("by_cuisine.html", 
@@ -231,7 +230,7 @@ def by_cuisine(cuisine_name):
 # BY DIFFICULTY
 @app.route('/by_difficulty/<difficulty_name>')
 def by_difficulty(difficulty_name):
-        recipes_document_by_difficulty = mongo.db.recipes.find({"difficulty_name": difficulty_name}).sort("cuisine_name", 1)
+        recipes_document_by_difficulty = mongo.db.recipes.find({"difficulty_name": difficulty_name}).sort("ratings_score", -1)
         # Counts total amount of recipes by difficulty selected
         recipe_difficulty_count = mongo.db.recipes.find({ "difficulty_name": difficulty_name }).count()
         return render_template("by_difficulty.html",
@@ -243,7 +242,7 @@ def by_difficulty(difficulty_name):
 # BY MAIN INGREDIENT
 @app.route('/by_main_ingredient/<main_ingredient>')
 def by_main_ingredient(main_ingredient):
-        recipes_document_by_main_ingredient = mongo.db.recipes.find({"main_ingredient": main_ingredient}).sort("cuisine_name", 1)
+        recipes_document_by_main_ingredient = mongo.db.recipes.find({"main_ingredient": main_ingredient}).sort("ratings_score",-1)
         # Counts total amount of recipes by main ingredient selected
         recipe_main_ingredient_count = mongo.db.recipes.find({ "main_ingredient": main_ingredient }).count()
         return render_template("by_main_ingredient.html",
@@ -257,16 +256,16 @@ def by_main_ingredient(main_ingredient):
 def by_my_recipes(username):
     if 'username' in session:
         user_document_by_signed_in_username = mongo.db.users.find_one({"username": username})
-        recipes_document_by_signed_in       = mongo.db.recipes.find({"username": session['username']}).sort("cuisine_name", 1)
+        recipes_document_by_signed_in       = mongo.db.recipes.find({"username": session['username']}).sort("ratings_score", -1)
         recipes_document_by_signed_in_count = recipes_document_by_signed_in.count()
+        if recipes_document_by_signed_in_count == 0: flash("You don't have any recipes !", 'info')
         return render_template("by_my_recipes.html",
                                 recipes_document_by_signed_in_count = recipes_document_by_signed_in_count,
                                 user_document_by_signed_in_username = user_document_by_signed_in_username,
                                 recipes_document_by_signed_in       = recipes_document_by_signed_in,
                                 message = "Your recipes")
     else:
-        return redirect(url_for('index',
-                        message="You don't have any recipes!"))
+        return redirect(url_for('base'))
                                     
                                     
 # VIEW DETAILS RECIPE
@@ -292,8 +291,6 @@ def add_recipe(username):
     categories_list       = create_categories_list()
     cuisines_list         = create_cuisines_list()
     difficulties_list     = create_difficulties_list()
-    # Reverse difficulties_list
-    #difficulties_list = difficulties_list[::-1] 
     main_ingredients_list = create_main_ingredients_list()
     
     if 'username in session':
@@ -302,28 +299,30 @@ def add_recipe(username):
            recipes = mongo.db.recipes
         
            # create required lists
-           allergen_name_getlist         = request.form.getlist('allergen_name')
-           allergen_name_list            = [i for i in allergen_name_getlist]
-           category_name_getlist         = request.form.getlist('category_name')
-           category_name_list            = [i for i in category_name_getlist]
-           recipe_ingredients_list       = request.form.getlist('recipe_ingredient')
-           recipe_ingredients_list_empty = [i for i in recipe_ingredients_list if i != ""]
-           recipe_method_list            = request.form.getlist('recipe_method')
-           recipe_method_list_empty      = [i for i in recipe_method_list if i != ""]
+           allergen_name_getlist            = request.form.getlist('allergen_name')
+           allergen_name_list               = [i for i in allergen_name_getlist]
+           author_name_cap                  = request.form.get('author_name').capitalize()
+           category_name_getlist            = request.form.getlist('category_name')
+           category_name_list               = [i for i in category_name_getlist]
+           main_ingredient_cap              = request.form.get('main_ingredient').capitalize()
+           recipe_ingredients_list          = request.form.getlist('recipe_ingredient')
+           recipe_ingredients_list_notempty = [i for i in recipe_ingredients_list if i != ""]
+           recipe_method_list               = request.form.getlist('recipe_method')
+           recipe_method_list_notempty      = [i for i in recipe_method_list if i != ""]
     
            # create new recipe
            new_recipe = {
             'allergen_name'      : allergen_name_list,
-            'author_name'        : request.form.get('author_name'),
+            'author_name'        : author_name_cap,
             'category_name'      : category_name_list,
             'cooking_time'       : request.form.get('cooking_time'),
             'cuisine_name'       : request.form.get('cuisine_name'),
             'difficulty_name'    : request.form.get('difficulty_name'),
-            'main_ingredient'    : request.form.get('main_ingredient'),
+            'main_ingredient'    : main_ingredient_cap,
             'preparation_time'   : request.form.get('preparation_time'),
             'recipe_description' : request.form.get('recipe_description'),
-            'recipe_ingredients' : recipe_ingredients_list,
-            'recipe_method'      : recipe_method_list,
+            'recipe_ingredients' : recipe_ingredients_list_notempty,
+            'recipe_method'      : recipe_method_list_notempty,
             'recipe_name'        : request.form.get('recipe_name'),
             'recipe_url'         : request.form.get('recipe_url'),
             'ratings_score'      : int(0),
@@ -337,21 +336,22 @@ def add_recipe(username):
            # Check main_ingredients document to see if main_ingredient added in recipe
            # already exists, if not add to main_ingredients document
            main_ingredient     = mongo.db.main_ingredients
-           current_ingredients = main_ingredient.find_one({'main_ingredient': request.form.get('main_ingredient')})
+           current_ingredients = main_ingredient.find_one({'main_ingredient': request.form.get('main_ingredient').capitalize()})
            if request.form['main_ingredient']: 
                 if current_ingredients is None:
                    main_ingredient.insert({
-                   'main_ingredient': request.form.get('main_ingredient')
+                   'main_ingredient': request.form.get('main_ingredient').capitalize()
                    })
-                return redirect(url_for('base'))    
+                flash("Your recipe has been added", 'success')  
+                return redirect(url_for('base'))  
+                
         return render_template("add_recipe.html",
                                 allergens_list        = allergens_list,
                                 categories_list       = categories_list, 
                                 cuisines_list         = cuisines_list,
                                 difficulties_list     = difficulties_list,
                                 main_ingredients_list = main_ingredients_list)
-    return render_template('sign_in_user.html',
-                   message='Please sign in to add your recipe!')                            
+    return render_template('sign_in_user.html')                           
 
 
 # DELETE RECIPE
@@ -361,9 +361,8 @@ def delete_recipe(username, recipe_id):
         # Delete selected recipe
         mongo.db.recipes.remove({'_id': ObjectId(recipe_id)})
         return redirect(url_for('by_my_recipes', username=session['username']))
-    return render_template('sign_out_user.html',
-                    message='Please sign in to delete your recipe!')
-
+    return render_template('sign_in_user.html')
+    
 
 # EDIT RECIPE
 @app.route('/<username>/edit_recipe/<recipe_id>', methods=['GET','POST'])
@@ -376,14 +375,9 @@ def edit_recipe(username, recipe_id):
         # split allergen_name into separate variables
         allergens_recipe = find_my_recipe['allergen_name']
         allergens_list   = create_allergens_list()
-        print(allergens_recipe)
-        print(allergens_list)
-   
         # split category_name into separate variables
         categories_recipe = find_my_recipe['category_name']
         categories_list   = create_categories_list()
-        print(categories_recipe)
-        print(categories_list)
     
         return render_template('edit_recipe.html',
                                 recipe                = find_my_recipe,
@@ -395,8 +389,7 @@ def edit_recipe(username, recipe_id):
                                 difficulties_list     = create_difficulties_list(),
                                 main_ingredients_list = create_main_ingredients_list(),
                                 username  = session['username']) 
-    return render_template('sign_in_user.html',
-                   message='Please sign in to edit your recipe!')
+    return render_template('sign_in_user.html')
 
 
 # UPDATE RECIPE
@@ -404,26 +397,36 @@ def edit_recipe(username, recipe_id):
 def update_recipe(recipe_id):
     if 'username' in session:
         recipe = mongo.db.recipes
+        
+        # create required lists
+        recipe_ingredients_list          = request.form.getlist('recipe_ingredient')
+        recipe_ingredients_list_notempty = [i for i in recipe_ingredients_list if i != ""]
+        recipe_method_list               = request.form.getlist('recipe_method')
+        recipe_method_list_notempty      = [i for i in recipe_method_list if i != ""] 
+        author_name_cap                  = request.form.get('author_name').capitalize()
+        
         # Update selected edited recipe
-        recipe.update(
-                {'_id': ObjectId(recipe_id)}, 
-                {
-                    'allergen_name': request.form.getlist('allergen_name'),
-                    'author_name': request.form.get('author_name'),
-                    'category_name': request.form.getlist('category_name'),
-                    'cooking_time': request.form.get('cooking_time'),
-                    'cuisine_name': request.form.get('cuisine_name'),
-                    'difficulty_name': request.form.get('difficulty_name'),
-                    'main_ingredient': request.form.get('main_ingredient'),
-                    'preparation_time': request.form.get('preparation_time'),
-                    'recipe_description': request.form.get('recipe_description'),
-                    'recipe_ingredients': request.form.getlist('recipe_ingredients'),
-                    'recipe_method': request.form.getlist('recipe_method'),
-                    'recipe_name': request.form.get('recipe_name'),
-                    'recipe_url': request.form.get('recipe_url'),
-                    'ratings_score': request.form.get('ratings_score'),
-                    'servings_num': request.form.get('servings_num'),
-                    'username': session['username']
+        recipe.update_one(
+                {'_id': ObjectId(recipe_id)},
+                {'$set':
+                    {
+                    'allergen_name'      : request.form.getlist('allergen_name'),
+                    'author_name'        : author_name_cap,
+                    'category_name'      : request.form.getlist('category_name'),
+                    'cooking_time'       : request.form.get('cooking_time'),
+                    'cuisine_name'       : request.form.get('cuisine_name'),
+                    'difficulty_name'    : request.form.get('difficulty_name'),
+                    'main_ingredient'    : request.form.get('main_ingredient'),
+                    'preparation_time'   : request.form.get('preparation_time'),
+                    'recipe_description' : request.form.get('recipe_description'),
+                    'recipe_ingredients' : recipe_ingredients_list_notempty,
+                    'recipe_method'      : recipe_method_list_notempty,
+                    'recipe_name'        : request.form.get('recipe_name'),
+                    'recipe_url'         : request.form.get('recipe_url'),
+                    'ratings_score'      : int(request.form.get('ratings_score')),
+                    'servings_num'       : request.form.get('servings_num'),
+                    'username'           : session['username']
+                    }
                 })
         return redirect(url_for('view_my_details_recipe', recipe_id=recipe_id, username=session['username'])) 
 

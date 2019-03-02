@@ -12,7 +12,8 @@
                  aria-controls="navbarResponsive" 
                  aria-expanded="false" 
                  aria-label="Toggle navigation">
-          <i class="fas fa-bars"></i>
+                 Menu
+                 <i class="fas fa-bars"></i>
         </button>
         
         <div class="collapse navbar-collapse" id="navbarResponsive">
@@ -27,7 +28,6 @@
               <li class="nav-item"> <a class="nav-link js-scroll-trigger" href="{{ url_for('sign_in_user') }}"> Sign In  <i class="fas fa-sign-in-alt fa-lg"> </i></a></li>
               <li class="nav-item"> <a class="nav-link js-scroll-trigger" href="{{ url_for('register_user') }}"> Register <i class="fas fa-user-plus fa-lg"> </i></a></li>
             {% endif %}
-              <li class="nav-item"> <a class="nav-link js-scroll-trigger" href="{{ url_for('site_statistics') }}"> Site Stats <i class="fas fa-chart-line fa-lg"> </i></a></li>
           </ul>
         </div>
       </div> 
