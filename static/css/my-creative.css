@@ -171,10 +171,10 @@ h5.card-title {
 }
 
 
-/* CHANGE margin for Card title */
+/* CHANGE margin for Card title  
 .card-title:hover {
-  color: #fed136;
-}
+  color: #fed136; 
+}*/
 
 /* ADD top border for Card header */
 recipe-url.card-header {
@@ -382,8 +382,3 @@ header.masthead .intro-text .intro-heading {
 .register-user-form {
   padding: 20px;
 }
-
-/* CHANGE padding to ul 
-.base-list {
-  padding: 0px;
-}*/

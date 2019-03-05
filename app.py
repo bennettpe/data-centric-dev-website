@@ -183,7 +183,7 @@ def by_recipes():
         # cuisines
         cuisines_document = get_cuisines_document()
         cuisines_counted  = cuisine_in_recipes()
-        #print(cuisines_counted)
+        print(cuisines_counted)
         
         # difficulties                     
         difficulties_document = get_difficulties_document()

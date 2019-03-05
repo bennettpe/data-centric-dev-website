@@ -19,6 +19,13 @@
                 </div>  
               {% endif %}
               
+              <!-- Primary Message -->
+              {% if category == 'primary' %}
+                <div class="alert alert-info m2" role="alert">
+                  {{ message }} 
+                </div>  
+              {% endif %}
+              
               <!-- Success Message -->
               {% if category == 'success' %}
                 <div class="alert alert-success m2" role="alert">
