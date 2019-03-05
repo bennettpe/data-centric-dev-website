@@ -38,7 +38,7 @@
                         <div class="card mb-4">
                             <div class="card-body">
                                 <a href="{{ url_for('view_details_recipe', recipe_id=recipe._id) }}">
-                         <img src="{{ recipe.recipe_url }}" class="img-fluid" alt="bbcgoodfood" style="border-bottom:1px solid black!important;"> </a>
+                                <img src="{{ recipe.recipe_url }}" class="img-fluid" alt="bbcgoodfood" style="border-bottom:1px solid black!important;"> </a>
                                 <h5 class="card-title text-muted text-center mt-2"> {{ recipe.recipe_name }} </h5>
                                 <a href="{{ url_for('vote_like_recipe', recipe_id=recipe._id, cuisine_name=cuisine_name) }}" class="btn btn-outline-success btn-sm mt-2 data-toggle=" tooltip " title="Vote like "> <i class="fa fa-arrow-up "></i> 
                          </a>

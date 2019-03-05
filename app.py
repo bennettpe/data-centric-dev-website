@@ -52,7 +52,8 @@ def create_cuisines_list():
         cuisines_document = get_cuisines_document()
         cuisines_list = [cuisines_record["cuisine_name"]
                              for cuisines_record in cuisines_document] 
-        return cuisines_list         
+        return cuisines_list
+        
       
 # FUNCTION: GET DIFFICULTIES DB DOCUMENT
 def get_difficulties_document():
@@ -80,11 +81,22 @@ def create_main_ingredients_list():
         return main_ingredients_list 
         
 # FUNCTION: GET RECIPES DB DOCUMENT
-def get_recipes_document_by_cuisine():
+def get_recipes_document():
         recipes = mongo.db.recipes.find().sort("recipe_name", 1)
         return recipes
-  
-    
+        
+# FUNCTION BY RECIPES_CUISINE_COUNT
+def cuisine_in_recipes():
+    cuisine_in_recipe = []
+    cuisine_list = create_cuisines_list()
+    # count recipes by cuisine
+    for cuisine in cuisine_list:
+        count = mongo.db.recipes.find({"cuisine_name": cuisine}).count()
+        count_obj = {"cuisine_name": cuisine, "count": count}
+        cuisine_in_recipe.append(count_obj)
+    return cuisine_in_recipe
+
+        
 # INDEX/HOME PAGE
 @app.route('/')
 
@@ -152,7 +164,10 @@ def sign_out_user():
         flash("You have signed out", 'success')
     return render_template("base.html")    
 
-        
+
+# BY RECIPES_CUISINE_COUNT
+
+
 # BY RECIPE(S)
 @app.route('/by_recipes')
 def by_recipes():
@@ -167,6 +182,9 @@ def by_recipes():
                              for categories_record in categories_document] 
         # cuisines
         cuisines_document = get_cuisines_document()
+        cuisines_counted  = cuisine_in_recipes()
+        #print(cuisines_counted)
+        
         # difficulties                     
         difficulties_document = get_difficulties_document()
         difficulties_list = [difficulties_record["difficulty_name"]
@@ -174,22 +192,17 @@ def by_recipes():
         # main_ingredients
         main_ingredients_document = get_main_ingredients_document()
         main_ingredients_list = [main_ingredients_record["main_ingredient"]
-                             for main_ingredients_record in main_ingredients_document] 
-        if 'username' in session:                     
-            return render_template("by_recipes.html", 
-                                    cuisines_document = cuisines_document,
-                                    allergens_list    = allergens_list,
-                                    categories_list   = categories_list,
-                                    difficulties_list = difficulties_list,
-                                    main_ingredients_list = main_ingredients_list,
-                                    welcome_message ='Welcome ' + str(session['username'])) 
+                             for main_ingredients_record in main_ingredients_document]
+                 
         return render_template("by_recipes.html", 
                                     cuisines_document = cuisines_document,
+                                    cuisines_counted   = cuisines_counted,
                                     allergens_list    = allergens_list,
                                     categories_list   = categories_list,
                                     difficulties_list = difficulties_list,
-                                    main_ingredients_list = main_ingredients_list,                            
-                                    welcome_message ='Welcome To')
+                                    main_ingredients_list = main_ingredients_list)
+
+                                    
 
 # NOT BY ALLERGENS
 @app.route('/not_by_allergen/<allergen_name>')
@@ -329,7 +342,7 @@ def add_recipe(username):
             'servings_num'       : request.form.get('servings_num'),
             'username'           : username
            }
-           print(new_recipe)
+           #print(new_recipe)
            #insert new recipe into mongoDB recipes document
            recipes.insert_one(new_recipe)
            
@@ -343,7 +356,7 @@ def add_recipe(username):
                    'main_ingredient': request.form.get('main_ingredient').capitalize()
                    })
                 flash("Your recipe has been added", 'success')  
-                return redirect(url_for('base'))  
+                return redirect(url_for('by_my_recipes', username=session['username']))  
                 
         return render_template("add_recipe.html",
                                 allergens_list        = allergens_list,
@@ -468,12 +481,6 @@ def vote_if_negative(cuisine_name):
             })
     return redirect(url_for('by_cuisine',
                              cuisine_name=cuisine_name))
-                             
-                             
-# SITE STATISICS
-@app.route('/site_statistics')
-def site_statistics():
-    return render_template("site_statistics.html")
 
     
 if __name__ == '__main__':

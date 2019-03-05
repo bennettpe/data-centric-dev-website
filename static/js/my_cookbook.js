@@ -8,7 +8,7 @@ function addIngredients() {
     var option = `<div class="ing-del">
                     <input type="text" class="form-control mb-2 mr-2" id="ingredient" name="recipe_ingredient" placeholder="Input ingredient" />
                     <span class="delete">
-                        <i class="fas fa-times-circle"></i> Remove 
+                        <i class="fas fa-times-circle"></i> Del 
                     </span>
                 </div>`;
     $(option).insertBefore('.list-more-ingredients');
@@ -31,7 +31,7 @@ function addInstructions() {
     var option = `<div class="ing-del">
                     <textarea class="form-control mb-2 ml-2" id="method" rows="2" name="recipe_method" placeholder="Input instructions"></textarea>
                     <span class="delete">
-                        <i class="fas fa-times-circle"></i> Remove 
+                        <i class="fas fa-times-circle"></i> Del 
                     </span>
                 </div>`;
     $(option).insertBefore('.list-more-instructions');

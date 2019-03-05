@@ -16,15 +16,17 @@
     {% include 'navbar.html' %}
 
     <section>
-        <div class="container">
-            <div class="row">
+        <div class="container sign-in-form">
+            <div class="form-row">
                 <div class="content-section mx-auto">
                     <h3 class="text-center text-muted"> Sign-in to account </h3> <br>
 
-                    <form method="POST" action="" autocomplete="off">
+                    <form method="POST" action="" id="sign_in_form" autocomplete="off">
+                        
                         <!-- Disabled autocompletion -->
                         {{ form.hidden_tag() }}
-                        <fieldset class="form-group" <!-- Username -->
+                        <fieldset class="form-group"> 
+                            <!-- Username -->
                             <div class="form-group">
                                 {{ form.username.label(class="form-control-label") }}
                                 <!--Check if form had Errors -->
@@ -49,18 +51,21 @@
                             </div>
                         </fieldset>
 
-                        <!-- Sign in  -->
-                        <div class=class="form-group">
-                            {{ form.submit(class="btn btn-outline-warning mx-5") }}
-                            <a class="btn btn-outline-warning mx-5" href="/base"> Cancel <i class="far fa-times-circle"></i> </a>
+                        <!-- Sign in / Cancel buttons -->
+                        <div class="row justify-content-center">
+                            <div class=class="form-group">
+                                {{ form.submit(class="btn btn-outline-warning") }}
+                                <a class="btn btn-outline-warning ml-4" href="/base"> Cancel <i class="far fa-times-circle"></i> </a>
+                            </div>
                         </div>
 
                         <!-- Not Registered? -->
                         <div class="mb-2 mt-2 text-center"> <br>
-                            <small class="text-muted">
+                            <a small class="text-muted">
                             Not Registered? <a class="ml-2" href="{{ url_for('register_user') }}"> Click Here To Register Account </a>
-                        </small>
+                            </small>
                         </div>
+                        
                         <!-- Flash Messaging -->
                         {% include 'messaging.html' %}
                     </form>
@@ -77,5 +82,4 @@
     {% include 'script.html' %}
 
 </body>
-
 </html>

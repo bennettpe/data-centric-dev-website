@@ -38,8 +38,8 @@
                         <div class="card mb-4">
                             <div class="card-body">
                                 <a href="{{ url_for('view_details_recipe', recipe_id=recipe._id) }}">
-                         <img src="{{ recipe.recipe_url }}" class="img-fluid" alt="bbcgoodfood" style="border-bottom:1px solid black!important;"> </a>
-                                <h5 class="card-title text-muted text-center mt-3"> {{ recipe.recipe_name }} </h5>
+                                 <img src="{{ recipe.recipe_url }}" class="img-fluid" alt="bbcgoodfood" style="border-bottom:1px solid black!important;"> </a>
+                                <h5 class="card-title text-muted text-center mt-3"> {{ recipe.recipe_name }} {{ recipe_category_count }}</h5>
                                 <p class="card-text text-left m-3"> {{ recipe.recipe_description }} </p>
                             </div>
                         </div>

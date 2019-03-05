@@ -159,7 +159,7 @@
 
             <!-- EDIT INGREDIENT(S) -->
             <div class="form-row">
-              <div class="form-group col-md-5">
+              <div class="form-group col-md-6">
                 <div class="ingredients-list" id="ingredients_list">
                   <label for="edit_ingredients" class="recipe-label ml-2"> <i class="fas fa-shopping-cart mr-2"></i> Ingredients </label> {% for ingredient in recipe.recipe_ingredients %}
                   <input type="text" class="form-control mb-2 mr-2" id="edit_ingredients" name="recipe_ingredient" placeholder="Input ingredient" value="{{ ingredient }}" /> {% endfor %}
@@ -171,12 +171,12 @@
               </div>
 
               <!-- EDIT INSTRUCTION(S) -->
-              <div class="form-group col-md-5">
+              <div class="form-group col-md-6">
                 <div class="instructions-list" id="instructions_list">
-                  <label for="edit_instructions" class="recipe-label ml-2"> <i class="fas fa-book-reader mr-2"></i> Instructions </label> {% for method in recipe.recipe_method %}
+                  <label for="edit_instructions" class="recipe-label ml-3"> <i class="fas fa-book-reader mr-2"></i> Instructions </label> {% for method in recipe.recipe_method %}
                   <textarea class="form-control mb-2 ml-2" id="edit_instructions" name="recipe_method" placeholder="Input instructions">{{ method }}</textarea> {% endfor %}
 
-                  <div class="list-more-instructions">
+                  <div class="list-more-instructions ml-2">
                     <button> <span class="more-instructions"> <i class="fa fa-plus-circle"aria-hidden="true"></i> Add instruction </span> </button>
                   </div>
                 </div>

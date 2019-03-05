@@ -18,13 +18,13 @@
 
     <!-- HEADER -->
     <header class="masthead text-center text-white d-flex" style=”background-image: url(‘static/img/header.jpg’)"> <!-- Add Style= to override header background image -->  
-        <div class="container ">
+        <div class="container">
             <div class="intro-text">
                 <div class="intro-text-background">
                 <div class=" h3 text-dark"> Search recipes by: </div>
                 <p class="text-dark mb-2"> Click on image below to view cusine. </p> </br>
         
-                <div class="btn-group flex-wrap">
+                <div class="btn-group my-btn-group flex-wrap">
                   <!-- Button Dropdown using allergens list -->
                     <div class="dropdown">
                           <button class="btn btn-primary btn-md btn-rounded dropdown-toggle m-1" id="dropdownMenuLink" data-toggle="dropdown" data-display="static" aria-haspopup="true " aria-expanded="false"> 
@@ -74,17 +74,19 @@
                     </div>
                     
                 </div>
-                </div>
             </div> 
         </div>
     </header>
 
+    
     <!-- WELCOME USER -->
+    {% if 'username' in session %}
     <section class="bg-primary-welcome">
     <div class="col-sm-6 userwelcome mx-auto text-center"> <span> Welcome {{ session['username'] }} </span> </div>
     </section>
+    {% endif %}
     
-    <!-- CUISINE CARDS -->
+   <!-- CUISINE CARDS -->
     <section class="bg-primary">
         <div class="container cuisine-cards mt-4">
             <h3 class=" text-dark text-center cusines-heading"> Cuisines 
@@ -95,7 +97,7 @@
                         <div class="card-body">
                          <a href="{{ url_for( 'by_cuisine', cuisine_name=cuisine.cuisine_name) }}">
                          <img src="{{ cuisine.cuisine_image }}" class="img-fluid" alt="bbcgoodfood" style="border-bottom: 1px solid black!important;"> </a>
-                         <h5 class="card-title mt-3"> {{ cuisine.cuisine_name }} {{cuisine.cuisine_count }} </h5> 
+                         <h5 class="card-title mt-3"> {{ cuisine.cuisine_name }} </h5> 
                         </div>
                     </div>
                 </div>
@@ -107,7 +109,6 @@
     <!-- FOOTER -->
     {% include 'footer.html' %}
 
-          
     <!-- SCRIPT -->
     {% include 'script.html' %} 
     

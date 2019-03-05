@@ -18,20 +18,22 @@
   {% include 'navbar.html' %}
 
   <!-- HEADER -->
-  <header class="masthead text-center">
+  <header class="masthead text-center d-flex">
     <div class="container">
       <div class="intro-text">
         <div class="intro-text-background">
-          <div class="intro-lead-in"> {{ welcome_message }} </div>
-          <div class="intro-heading text-uppercase"> The Recipe Collection </div>
+          <div class="intro-heading"> The Recipe Collection </div>
 
           {% if 'username' in session %}
-          <a class="btn btn-primary btn-lg btn-rounded mb-2" href="{{ url_for('add_recipe', username=session['username']) }}"> Add Recipes </a>
-          <a class="btn btn-primary btn-lg btn-rounded mb-2" href="{{ url_for('by_recipes') }}"> All Recipes </a>
-          <a class="btn btn-primary btn-lg btn-rounded mb-2" href="{{ url_for('by_my_recipes', username=session['username']) }}"> My Recipes </a> {% else %}
-          <p class="text-dark mb-2"> SIGN IN to add your own recipe(s) </p> <br>
-          <a class="btn btn-primary btn-lg btn-rounded mb-2" href="/register_user"> Register </a>
-          <a class="btn btn-primary btn-lg btn-rounded mb-2" href="/sign_in_user">  Sign In  </a> {% endif %}
+            <div class="row justify-content-center">
+            <a class="btn btn-primary btn-lg btn-rounded mt-2 mb-2 mr-1" href="{{ url_for('add_recipe', username=session['username']) }}"> Add Recipes </a>
+            <a class="btn btn-primary btn-lg btn-rounded mt-2 mb-2 mr-1" href="{{ url_for('by_recipes') }}"> All Recipes </a>
+            <a class="btn btn-primary btn-lg btn-rounded mt-2 mb-2 mr-1" href="{{ url_for('by_my_recipes', username=session['username']) }}"> My Recipes </a> {% else %}
+            <p class="text-dark mt-2 mb-2"> SIGN IN to add your own recipe(s) </p> <br>
+            <a class="btn btn-primary btn-lg btn-rounded mt-2 mb-2 mr-1" href="/register_user"> Register </a>
+            <a class="btn btn-primary btn-lg btn-rounded mt-2 mb-2 mr-1" href="/sign_in_user">  Sign In  </a> 
+            </div>
+          {% endif %}
 
           <!-- Flash Messaging -->
           {% include 'messaging.html' %}
@@ -39,15 +41,22 @@
       </div>
     </div>
   </header>
+  
+  <!-- WELCOME USER -->
+  {% if 'username' in session %}
+    <section class="bg-primary-welcome">
+      <div class="col-sm-6 userwelcome mx-auto text-center"> <span> Welcome {{ session['username'] }} </span> </div>
+    </section>
+  {% endif %}
 
   <!-- FIND OUT MORE SECTION -->
   <section class="bg-primary" id="findoutmore">
     <div class="container">
       <div class="row">
-        <div class="col-lg-8 mx-auto text-center">
+        <div class="col-sm-8 mx-auto text-center">
           <h5 class="section-title text-muted"> The recipe collection provides the following: </h5>
           <hr class="dark"> </hr>
-          <ul class="text-dark text-left">
+          <ul class="text-dark findoutmore-list text-left pl-3">
             <ul>
               <li style="list-style-image: url(../static/images/website/recipes-cooking-book.png);"> Register / Sign-in users. </li>
               <li style="list-style-image: url(../static/images/website/recipes-cooking-book.png);"> View recipes. </li>

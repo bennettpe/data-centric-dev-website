@@ -126,14 +126,13 @@
                                     {% for allergen in allergens_list %}
                                     <option value="{{allergen }}"> {{ allergen }} </option>
                                     {% endfor %}
-                                </select>
+                                 </select>
               </div>
             </div>
 
-
             <!-- ADD INGREDIENT(S) -->
             <div class="form-row">
-              <div class="form-group col-md-5">
+              <div class="form-group col-md-6">
                 <div class="ingredients-list" id="ingredients_list">
                   <label for="add_ingredients" class="recipe-label ml-2"> <i class="fas fa-shopping-cart mr-2"></i> Ingredients </label>
                   <input type="text" class="input form-control mb-2 mr-2" id="add_ingredient1" name="recipe_ingredient" placeholder="Input ingredient" required=required />
@@ -149,13 +148,13 @@
               </div>
 
               <!-- ADD INSTRUCTION(S) -->
-              <div class="form-group col-md-5">
+              <div class="form-group col-md-6">
                 <div class="instructions-list" id="instructions_list">
-                  <label for="add_instructions" class="recipe-label ml-2"> <i class="fas fa-book-reader mr-2"></i> Instructions </label>
+                  <label for="add_instructions" class="recipe-label ml-3"> <i class="fas fa-book-reader mr-2"></i> Instructions </label>
                   <textarea class="input form-control mb-2 ml-2" id="add_instructions1" rows="2" name="recipe_method" placeholder="Input instructions" required=required></textarea>
                   <textarea class="input form-control mb-2 ml-2" id="add_instructions2" rows="2" name="recipe_method" placeholder="Input instructions"></textarea>
 
-                  <div class="list-more-instructions ml-1">
+                  <div class="list-more-instructions ml-2">
                     <button> <span class="more-instructions"> <i class="fa fa-plus-circle" aria-hidden="true"></i> Add instruction </span> </button>
                   </div>
                 </div>
@@ -164,7 +163,7 @@
 
             <!-- BUTTONS -->
             <div class="form-group text-center">
-              <button class="btn btn-outline-warning" type="submit" name="action"> <i class="fa  fa-plus-circle"></i> Add Recipe </button>
+              <button class="btn btn-outline-warning" type="submit" name="action"> <i class="fa fa-plus-circle"></i> Add Recipe </button>
               <a class="btn btn-outline-warning ml-4" href="/base"> <i class="fas fa-times-circle"></i> Cancel </a>
             </div>
 
