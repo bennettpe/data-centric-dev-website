@@ -3,8 +3,9 @@
 
 <head>
     <title> Data Centric Development Project "BY_RECIPES.HTML" (Paul Bennett) </title>
-    <!-- Include standard links                       -->{% include 'head.html' %}
-    <!-- My Custom styles for this template           -->
+    <!-- Include standard links -->
+    {% include 'head.html' %}
+    <!-- My Custom styles for this template -->
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/my-creative.css') }}">
 </head>
 
@@ -17,7 +18,7 @@
 
 
     <!-- HEADER -->
-    <header class="masthead text-center text-white d-flex" style=”background-image: url(‘static/img/header.jpg’)"> <!-- Add Style= to override header background image -->  
+    <header class="masthead text-center text-white d-flex"> 
         <div class="container">
             <div class="intro-text">
                 <div class="intro-text-background">
@@ -72,7 +73,6 @@
                           {% endfor %}
                         </div>     
                     </div>
-                    
                 </div>
             </div> 
         </div>
@@ -110,6 +110,7 @@
                      </div>
                    {% endif %}
                  {% endfor %}
+                 
                {% endfor %}
              {% endfor %}
             </div>

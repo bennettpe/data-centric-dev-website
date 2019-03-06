@@ -1,11 +1,11 @@
-{
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <title> Data Centric Development Project "BY_MY_RECIPES.HTML" (Paul Bennett) </title>
-    <!-- Include standard links                       -->{% include 'head.html' %}
-    <!-- My Custom styles for this template           -->
+    <!-- Include standard links -->
+    {% include 'head.html' %}
+    <!-- My Custom styles for this template -->
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/my-creative.css') }}">
 </head>
 
@@ -27,6 +27,9 @@
                     <a class="btn btn-primary btn-lg btn-rounded mb-2" href="{{ url_for('by_recipes') }}"> Return to recipes </a>
                     <!-- Flash Messaging -->
                     {% include 'messaging.html' %}
+                </div>
+            </div>
+        </div>  
     </header>
 
     <!-- RECIPE CARDS BY NAME -->

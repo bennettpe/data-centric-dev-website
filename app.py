@@ -183,7 +183,7 @@ def by_recipes():
         # cuisines
         cuisines_document = get_cuisines_document()
         cuisines_counted  = cuisine_in_recipes()
-        print(cuisines_counted)
+        #print(cuisines_counted)
         
         # difficulties                     
         difficulties_document = get_difficulties_document()
@@ -265,7 +265,7 @@ def by_main_ingredient(main_ingredient):
 
 
 # BY MY RECIPES
-@app.route('/by_my_recipes/<username>')
+@app.route('/<username>/by_my_recipes')
 def by_my_recipes(username):
     if 'username' in session:
         user_document_by_signed_in_username = mongo.db.users.find_one({"username": username})
