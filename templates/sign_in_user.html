@@ -3,13 +3,13 @@
 
 <head>
     <title> Data Centric Development Project "SIGN_IN_USER.HTML" (Paul Bennett) </title>
-    <!-- Include standard links                       -->{% include 'head.html' %}
-    <!-- My Custom styles for this template           -->
+    <!-- Include standard links -->
+    {% include 'head.html' %}
+    <!-- My Custom styles for this template -->
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/my-creative.css') }}">
 </head>
 
 <!-- Bootstrap theme (Creative) downloaded from  https://github.com/BlackrockDigital/startbootstrap-agency -->
-
 <body id="page-top">
 
     <!-- NAVIGATION NAVBAR -->
@@ -20,9 +20,7 @@
             <div class="form-row">
                 <div class="content-section mx-auto">
                     <h3 class="text-center text-muted"> Sign-in to account </h3> <br>
-
                     <form method="POST" action="" id="sign_in_form" autocomplete="off">
-                        
                         <!-- Disabled autocompletion -->
                         {{ form.hidden_tag() }}
                         <fieldset class="form-group"> 
@@ -37,7 +35,6 @@
                                 </div>
                                 {% else %} {{ form.username(class="form-control form-control-lg") }} {% endif %}
                             </div>
-
                             <!-- Password -->
                             <div class="form-group">
                                 {{ form.password.label(class="form-control-label") }}
@@ -50,7 +47,6 @@
                                 {% else %} {{ form.password(class="form-control form-control-lg") }} {% endif %}
                             </div>
                         </fieldset>
-
                         <!-- Sign in / Cancel buttons -->
                         <div class="row justify-content-center">
                             <div class=class="form-group">
@@ -58,7 +54,6 @@
                                 <a class="btn btn-outline-warning ml-4" href="/base"> Cancel <i class="far fa-times-circle"></i> </a>
                             </div>
                         </div>
-
                         <!-- Not Registered? -->
                         <div class="mb-2 mt-2 text-center"> <br>
                             <a small class="text-muted">
@@ -68,8 +63,8 @@
                         
                         <!-- Flash Messaging -->
                         {% include 'messaging.html' %}
+                        
                     </form>
-
                 </div>
             </div>
         </div>

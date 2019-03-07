@@ -10,12 +10,10 @@
 </head>
 
 <!-- Bootstrap theme (Creative) downloaded from  https://github.com/BlackrockDigital/startbootstrap-agency -->
-
 <body>
 
     <!-- NAVIGATION NAVBAR -->
     {% include 'navbar.html' %}
-
 
     <!-- HEADER -->
     <header class="masthead text-center text-white d-flex"> 
@@ -24,7 +22,6 @@
                 <div class="intro-text-background">
                 <div class=" h3 text-dark"> Search recipes by: </div>
                 <p class="text-dark mb-2"> Click on image below to view cusine. </p> </br>
-        
                 <div class="btn-group my-btn-group flex-wrap">
                   <!-- Button Dropdown using allergens list -->
                     <div class="dropdown">
@@ -37,7 +34,6 @@
                          {% endfor %}
                         </div>     
                     </div> 
-             
                    <!-- Button Dropdown using category list -->
                     <div class="dropdown">
                           <button class="btn btn-primary btn-md btn-rounded dropdown-toggle m-1" id="dropdownMenuLink" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false"> 
@@ -49,7 +45,6 @@
                           {% endfor %}
                         </div>     
                     </div>
-                    
                    <!-- Button Dropdown using difficulty list -->
                     <div class="dropdown">
                           <button class="btn btn-primary btn-md btn-rounded dropdown-toggle m-1" id="dropdownMenuLink" data-toggle="dropdown" data-display="static" aria-haspopup="true " aria-expanded="false"> 
@@ -61,7 +56,6 @@
                           {% endfor %}
                         </div>     
                     </div> 
-               
                     <!-- Button Dropdown using main ingredient list -->
                     <div class="dropdown">
                           <button class="btn btn-primary btn-md btn-rounded dropdown-toggle m-1" id="dropdownMenuLink" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
@@ -78,11 +72,10 @@
         </div>
     </header>
 
-    
     <!-- WELCOME USER -->
     {% if 'username' in session %}
     <section class="bg-primary-welcome">
-    <div class="col-sm-6 userwelcome mx-auto text-center"> <span> Welcome {{ session['username'] }} </span> </div>
+        <div class="col-sm-6 userwelcome mx-auto text-center"> <span> Welcome {{ session['username'] }} </span> </div>
     </section>
     {% endif %}
     
@@ -110,7 +103,6 @@
                      </div>
                    {% endif %}
                  {% endfor %}
-                 
                {% endfor %}
              {% endfor %}
             </div>

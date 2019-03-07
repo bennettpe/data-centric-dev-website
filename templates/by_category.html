@@ -3,15 +3,14 @@
 
 <head>
     <title> Data Centric Development Project "BY_CATEGORY.HTML" (Paul Bennett) </title>
-    <!-- Include standard links                       -->{% include 'head.html' %}
+    <!-- Include standard links                       -->
+    {% include 'head.html' %}
     <!-- My Custom styles for this template           -->
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/my-creative.css') }}">
 </head>
 
 <!-- Bootstrap theme (Creative) downloaded from  https://github.com/BlackrockDigital/startbootstrap-agency -->
-
 <body>
-
     <!-- NAVIGATION NAVBAR  -->
     {% include 'navbar.html' %}
 
@@ -25,13 +24,11 @@
                     </br>
                     <a class="btn btn-primary btn-lg btn-rounded" href="/by_recipes"> Return to Recipes </a>
     </header>
-
     <!-- CUISINE CARDS BY CUSINE NAME -->
     <section class="bg-primary">
         <div class="container cuisine-cards mt-4">
             <h3 class="text-dark text-center cuisines-heading"> {{ category_name }} Recipes
-                <p class="text-center cuisines-p mt-2"> <span class="recipe-count"> {{ recipe_category_count }}  </span> Recipes found </p>
-
+                <p class="text-center cuisines-p mt-2"> <span class="recipe-count"> {{ recipe_category_count }} </span> Recipes found </p>
                 <div class="row mt-3">
                     {% for recipe in recipes_document_by_category %}
                     <div class="col-md-4 col-sm-6">

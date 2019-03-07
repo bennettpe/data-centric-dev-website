@@ -25,8 +25,10 @@
                     <p class="text-dark mb-2"> Click on image below to view the recipe. </p>
                     </br>
                     <a class="btn btn-primary btn-lg btn-rounded mb-2" href="{{ url_for('by_recipes') }}"> Return to recipes </a>
+                    
                     <!-- Flash Messaging -->
                     {% include 'messaging.html' %}
+                    
                 </div>
             </div>
         </div>  
@@ -36,8 +38,7 @@
     <section class="bg-primary">
         <div class="container cuisine-cards mt-4">
             <h3 class="text-dark text-center cuisines-heading"> {{ user_document_by_signed_in_username.username }} Recipes
-                <p class="text-center cuisines-p mt-2"> <span class="recipe-count"> {{ recipes_document_by_signed_in_count }}  </span> Recipes found </p>
-
+                <p class="text-center cuisines-p mt-2"> <span class="recipe-count"> {{ recipes_document_by_signed_in_count }} </span> Recipes found </p>
                 <div class="row mt-3">
                     {% for recipe in recipes_document_by_signed_in %}
                     <div class="col-md-4 col-sm-6">
@@ -51,7 +52,7 @@
                          </button>
                                 <p class="card-text m-2"> {{ recipe.recipe_description }} </p>
                                 <a href="{{ url_for('delete_recipe', recipe_id=recipe._id, username=session['username']) }}" class="btn btn-outline-danger btn-sm text-center mb-3 ml-2"> <i class="far fa-trash-alt"></i> Delete recipe </a>
-                                <a href="{{ url_for('edit_recipe', recipe_id=recipe._id,   username=session['username']) }}" class="btn btn-outline-secondary btn-sm text-center mb-3 ml-2"> <i class="fas fa-edit"></i>     Edit recipe </a>
+                                <a href="{{ url_for('edit_recipe', recipe_id=recipe._id, username=session['username']) }}" class="btn btn-outline-secondary btn-sm text-center mb-3 ml-2"> <i class="fas fa-edit"></i> Edit recipe </a>
                             </div>
                         </div>
                     </div>

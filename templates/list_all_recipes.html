@@ -3,13 +3,13 @@
 
 <head>
   <title> Data Centric Development Project "BY_RECIPE.HTML" (Paul Bennett) </title>
-  <!-- Include standard links                       -->{% include 'head.html' %}
-  <!-- My Custom styles for this template           -->
+  <!-- Include standard links -->
+  {% include 'head.html' %}
+  <!-- My Custom styles for this template -->
   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/my-creative.css') }}">
 </head>
 
 <!-- Bootstrap theme (Creative) downloaded from  https://github.com/BlackrockDigital/startbootstrap-agency -->
-
 <body>
 
   <!-- NAVIGATION NAVBAR -->
@@ -21,26 +21,21 @@
       <div class="intro-text">
         <div class="intro-text-background">
           <div class=" h3 text-dark"> Search recipes by: </div> <br>
-
           <a class="btn btn-primary btn-lg btn-rounded m-1" href="#"> Allergens </a>
           <a class="btn btn-primary btn-lg btn-rounded m-1" href="#"> Category </a>
           <a class="btn btn-primary btn-lg btn-rounded m-1" href="{{url_for('by_recipe')}}"> Difficulty </a>
           <a class="btn btn-primary btn-lg btn-rounded m-1" href="#"> Main Ingredient </a>
-
         </div>
       </div>
     </div>
   </header>
 
-
   <!-- FLASH MESSAGING -->
   {% include 'messaging.html' %}
-
 
   <!-- CARDS -->
   <div class="container">
     <div class="card-deck text-center ">
-
       <div class="card text-muted">
         <div class="card-body">
           <img src="https://www.bbcgoodfood.com/sites/default/files/Collections_British_4.jpg" class="img-fluid" alt=< "bbcgoodfood"/>
@@ -48,7 +43,6 @@
           <a href="#" class="btn btn-primary btn-rounded"> <i class="fas fa-book fa-lg mr-1"> </i> View Recipes </a>
         </div>
       </div>
-
       <div class="card text-muted">
         <div class="card-body">
           <img src="https://www.bbcgoodfood.com/sites/default/files/recipe-collections/collection-image/2013/05/blood-orange-madeleines.jpg" class="img-fluid" alt=< "bbcgoodfood"/>
@@ -56,7 +50,6 @@
           <a href="#" class="btn btn-primary btn-rounded"> <i class="fas fa-book fa-lg mr-1"> </i> View Recipes </a>
         </div>
       </div>
-
       <div class="card text-muted ">
         <div class="card-body">
           <img src="https://www.bbcgoodfood.com/sites/default/files/recipe-collections/collection-image/2013/05/canoli3.jpg" class="img-fluid" alt=< "bbcgoodfood"/>
@@ -64,7 +57,6 @@
           <a href="#" class="btn btn-primary btn-rounded"> <i class="fas fa-book fa-lg mr-1"> </i> View Recipes </a>
         </div>
       </div>
-
       <div class="card text-muted">
         <div class="card-body">
           <img src="https://www.bbcgoodfood.com/sites/default/files/recipe-collections/collection-image/2013/05/canoli3.jpg" class="img-fluid" alt=< "bbcgoodfood"/>
@@ -72,7 +64,6 @@
           <a href="#" class="btn btn-primary btn-rounded"> <i class="fas fa-book fa-lg mr-1"> </i> View Recipes </a>
         </div>
       </div>
-
     </div>
   </div>
 

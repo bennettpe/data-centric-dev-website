@@ -3,13 +3,13 @@
 
 <head>
     <title> Data Centric Development Project "REGISTER_USER.HTML" (Paul Bennett) </title>
-    <!-- Include standard links                       -->{% include 'head.html' %}
-    <!-- My Custom styles for this template           -->
+    <!-- Include standard links -->
+    {% include 'head.html' %}
+    <!-- My Custom styles for this template -->
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/my-creative.css') }}">
 </head>
 
 <!-- Bootstrap theme (Creative) downloaded from  https://github.com/BlackrockDigital/startbootstrap-agency -->
-
 <body id="page-top">
 
     <!-- NAVIGATION NAVBAR -->
@@ -20,9 +20,6 @@
             <div class="form-row">
                 <div class="content-section mx-auto">
                     <h3 class="text-center text-muted"> Register an account </h3> <br>
-
-
-
                     <form method="POST" action="" id="register_user_form" autocomplete="off">
                         <!-- Disabled autocompletion -->
                         {{ form.hidden_tag() }}
@@ -38,7 +35,6 @@
                                 </div>
                                 {% else %} {{ form.username(class="form-control form-control-lg") }} {% endif %}
                             </div>
-
                             <!-- Password -->
                             <div class="form-group">
                                 {{ form.password.label(class="form-control-label") }}
@@ -50,7 +46,6 @@
                                 </div>
                                 {% else %} {{ form.password(class="form-control form-control-lg") }} {% endif %}
                             </div>
-
                             <!-- Confirm Password -->
                             <div class="form-group">
                                 {{ form.confirm_password.label(class="form-control-label") }}
@@ -63,7 +58,6 @@
                                 {% else %} {{ form.confirm_password(class="form-control form-control-lg") }} {% endif %}
                             </div>
                         </fieldset>
-                        
                         <!-- Register / Cancel buttons -->
                         <div class="row justify-content-center">
                             <div class="form-group">
@@ -71,7 +65,6 @@
                                 <a class="btn btn-outline-warning ml-4" href="/base"> Cancel <i class="far fa-times-circle"></i> </a>
                             </div>
                         </div>
-                        
                         <!-- Registered? -->
                         <div class="mb-2 mt-2 text-center"> <br>
                             <small class="text-muted">
@@ -81,8 +74,8 @@
                         
                         <!-- Flash Messaging -->
                         {% include 'messaging.html' %}
+                        
                     </form>
-
                 </div>
             </div>
         </div>
