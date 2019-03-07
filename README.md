@@ -1,8 +1,8 @@
 # Data Centric Development Milestone 4 Project
 
 ## Online Cookbook
-Heroku App: https:// <br>
-Heroku git: https:// <br>
+Heroku App: https://data-centric-dev-project.herokuapp.com <br>
+Heroku git: https://git.heroku.com/data-centric-dev-project.git <br>
 GitHub: https:// <br>
 
 This is the milestone project that I have created for the **“Data Centric Development”** module, which is part of  “Full Stack Web Development Course” offered by Code Institute.
@@ -868,7 +868,7 @@ If you have not Signed up to Heroku then you need to start from **Signing Up To 
         * We need to make the secret key an environment variable and its going to look for a variable called `SECRET` , the 2nd argument is the default value if Flask cannot find the variable called SECRET, so we apply the following changes in the app.secret_key method.
 
     ```python
-    app.secret_key = os.getenv("SECRET", "b'\xa0\xba+\xe5\xaa\x8b\xac\x01\x96\x1f<)86\x84\x04")
+    app.secret_key = os.getenv("SECRET", "5149fde2f2f15a6f77dddf0f319b20c6")
     ```
         * We need to add these default fallback values to our IP and port in the app.run() method, so we add `0.0.0.0` for the IP and `5000` for the port and then we won't have to set these in Heroku, also we set `debug=True` to `debug=False` in production.
 
@@ -876,8 +876,8 @@ If you have not Signed up to Heroku then you need to start from **Signing Up To 
     app.run(host=os.getenv("IP", "0.0.0.0"), port=int(os.getenv("PORT","5000")), debug=false )
     ```
       2. Type in the following command in the terminal window, which creates the **Procfile file** (Remember to use a capital P in Procfile).   
-      `echo web: python run.py > Procfile`  
-      The **Procfile** file contains `web: python run.py` which tells Heroku to start a process called web and to run `python run.py` when it starts.
+      `echo web: python app.py > Procfile`  
+      The **Procfile** file contains `web: python app.py` which tells Heroku to start a process called web and to run `python app.py` when it starts.
       3. Type in the following command in the terminanl window, which creates the pip **requirements.txt file**.   
       `sudo pip3 freeze --local > requirements.txt`  
       The **requirements.txt** file contains a list of items to be installed, defining the modules imported to Heroku:      
@@ -886,13 +886,13 @@ If you have not Signed up to Heroku then you need to start from **Signing Up To 
       6. Type in the following command into the terminal window to run the heroku login command `$ heroku login`
       7. Type into the terminal window your email address and password.
       8. Type into the terminl window `$ git remote -v` Heroku references have already been added.
-      9. Now you are logged into Heroku you need to create a new heroku app by typing the following command `$ heroku apps:create my-data-centric-development-project`,once created it will also give us a git address as well.
+      9. Now you are logged into Heroku you need to create a new heroku app by typing the following command `$ heroku apps:create data-centric-dev-project`,once created it will also give us a git address as well.
       10. Before we push our app to Heroku we need to set our enviroment variables `https://dashboard.heroku.comm/apps`
 
 
 5. ** In Heroku (Config vars)**
-      1. Refresh the Heroku dashboard and you should see your new heroku app `my-practical-python-project` has been created, Click on that and then go to `Settings` > `Reveal Config Vars`, at the moment we don't have any config vars.
-      2. So in the Key field enter `SECRET` and in the Value field enter `b'\xa0\xba+\xe5\xaa\x8b\xac\x01\x96\x1f<)86\x84\x04` and then click on Add Button.  
+      1. Refresh the Heroku dashboard and you should see your new heroku app `my-data-centric-dev-project` has been created, Click on that and then go to `Settings` > `Reveal Config Vars`, at the moment we don't have any config vars.
+      2. So in the Key field enter `SECRET` and in the Value field enter `"5149fde2f2f15a6f77dddf0f319b20c6"` and then click on Add Button.  
 
 
 6.   ** In Cloud9 (Build the source)**
@@ -902,7 +902,7 @@ If you have not Signed up to Heroku then you need to start from **Signing Up To 
 
 7. ** In Heroku (Open app)**    
      2. Click Open app
-        - Select new tab, [my data centric development project](https:// my-data-centric-development-project.herokuapp.com/)
+        - Select new tab, [my data centric development project](https:// data-centric-dev-project.herokuapp.com/)
 
 ### Credits (to be completed)
 

@@ -7,7 +7,7 @@ from flask_wtf import FlaskForm
 from forms import RegisterForm, SigninForm
 
 app = Flask(__name__)
-app.secret_key = '5149fde2f2f15a6f77dddf0f319b20c6'
+app.secret_key = os.getenv("SECRET", "5149fde2f2f15a6f77dddf0f319b20c6")
 
 # BCRYPT CONFIGURATION
 bcrypt = Bcrypt(app)
@@ -373,6 +373,7 @@ def delete_recipe(username, recipe_id):
     if 'username' in session:
         # Delete selected recipe
         mongo.db.recipes.remove({'_id': ObjectId(recipe_id)})
+        flash("Your recipe has been deleted", 'danger')  
         return redirect(url_for('by_my_recipes', username=session['username']))
     return render_template('sign_in_user.html')
     
@@ -391,7 +392,6 @@ def edit_recipe(username, recipe_id):
         # split category_name into separate variables
         categories_recipe = find_my_recipe['category_name']
         categories_list   = create_categories_list()
-    
         return render_template('edit_recipe.html',
                                 recipe                = find_my_recipe,
                                 allergens_list        = allergens_list,
@@ -484,6 +484,4 @@ def vote_if_negative(cuisine_name):
 
     
 if __name__ == '__main__':
-    app.run(host=os.environ.get('IP'),
-        port=int(os.environ.get('PORT')),
-        debug=True)
+     app.run(host=os.getenv("IP", "0.0.0.0"), port=int(os.getenv('PORT',"5000")), debug=False)  

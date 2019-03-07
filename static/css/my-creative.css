@@ -326,8 +326,7 @@ h3.recipe-heading,
 .alert {
   text-align: center;
   border: 1px solid;
-  /* min-width: 50%;
-  max-width: 50%; */
+  margin-top: 5px;
 }
 
 /* CHANGE font-size small button */
