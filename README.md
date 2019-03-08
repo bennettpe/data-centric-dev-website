@@ -3,7 +3,7 @@
 ## Online Cookbook
 Heroku App: https://data-centric-dev-project.herokuapp.com <br>
 Heroku git: https://git.heroku.com/data-centric-dev-project.git <br>
-GitHub: https:// <br>
+GitHub: https://github.com/bennettpe/data-centric-dev-website.git <br>
 
 This is the milestone project that I have created for the **“Data Centric Development”** module, which is part of  “Full Stack Web Development Course” offered by Code Institute.
 
@@ -43,19 +43,19 @@ This project will be built using data-driven application technologies which have
 A web application online cookbook , recipes for the cookbook have been gathered from the following website [**goodfood.com**](https://www.bbcgoodfood.com/recipes/category/cuisines)
 
 * The user has a choice to do the following  
-  * ** Create an account with a username and password **
-  * ** Sign-in with a registered username and password **
-  * ** Search recipes (by without an allergen) **
-  * ** Search recipes (by category) **
-  * ** Search recipes (by cuisine) **
-  * ** Search recipes (by difficulty) **
-  * ** Search recipes (by main ingredient) **
-  * ** View recipe details **
-  * ** Vote to like / dislike recipe **
-  * ** Add recipe (by registered user) **
-  * ** Delete recipe (by registered user) **
-  * ** Edit recipe (by registered user) **
-  * ** View my recipes (by registered user) **
+  * Create an account with a username and password
+  * Sign-in with a registered username and password
+  * Search recipes (by without an allergen)
+  * Search recipes (by category)
+  * Search recipes (by cuisine)
+  * Search recipes (by difficulty)
+  * Search recipes (by main ingredient)
+  * View recipe details
+  * Vote to like / dislike recipe
+  * Add recipe (by registered user)
+  * Delete recipe (by registered user)
+  * Edit recipe (by registered user)
+  * View my recipes (by registered user)
 
 ## UX  
 
@@ -75,7 +75,7 @@ To provide a online cookbook that users must be able to do the following.
 ### How the project is best way to achieve these things ? (to be completed)
    1.  A way for users to create a unique username via a login facility.
    2.  Create front-end form and back-end code to allow users to add new recipes to website.
-   3.  Create Front-end page to group and summarize recipes based on there attributes (e.g cuisine, country of origin, allergens, ingredients etc...).
+   3.  Create Front-end page to group and summarize recipes based on there attributes (e.g. cuisine, country of origin, allergens, ingredients etc...).
    4.  Create back-end code to retrieve a list of recipes and filtered on various criteria (e.g. allergens, cuisine etc...) and order them based on some reasonable aspect (e.g. number of views or votes).
    5.  Create front-end form and back-end code to allow users to edit recipes on website.    
 
@@ -87,8 +87,8 @@ For wireframe see [Wireframe documentation](static/wireframe/My_Data_Centric_Dev
 My MongoDB database consists of the following collections
 * allergens
 * categories
-* cusines
-* diffuculties
+* cuisines
+* difficulties
 * main_ingredients
 * recipes
 * users
@@ -127,7 +127,7 @@ Technologies used in the construction of this project include,
 * [GitIgnore](https://www.gitignore.io/) is a web service designed to help you create .gitignore files for your Git repositories.
 * [Heroku](https://www.heroku.com/) lets you deploy, run and manage applications written in Ruby, Node.js, Java, Python, Clojure, Scala, Go and PHP.
 * [HTML5](https://www.w3.org/TR/html52/): is code that describes web pages.
-* [JavaScript](https://www.javascript.com/) Javascript is a dynamic computer programming language. And most commonly used as a part of web pages.
+* [JavaScript](https://www.javascript.com/) JavaScript is a dynamic computer programming language. And most commonly used as a part of web pages.
 * [Jinga2](http://jinja.pocoo.org/) a full featured template engine for Python.
 * [Pencil](https://pencil.evolus.vn/) is an open-source GUI prototyping tool used to create Wireframe mockup.
 * [Python 3.4.3](https://www.python.org/) is a scripting language.
@@ -141,7 +141,7 @@ Technologies used in the construction of this project include,
 1. Make sure once the workspace has been created in Cloud9 you create the following for git by typing the following commands,  
     `git init` to create a empty Git repository. <br>
     Create `.gitignore` which specifies intentionally untracked files to ignore <br>
-    Add to `.gitignore` file the ignore file(s) for the environments you are using in your workspace i.e `Cloud9`, `Flask`, `Python` by copying ignore files from [GitIgnore](https://www.gitignore.io/) <br>
+    Add to `.gitignore` file the ignore file(s) for the environments you are using in your workspace i.e. `Cloud9`, `Flask`, `Python` by copying ignore files from [GitIgnore](https://www.gitignore.io/) <br>
     Also make sure you add your own personal non environmental file you would like to be excluded as well.
 
 ### Install Flask
@@ -199,24 +199,24 @@ Important: use os.getenv(PORT, 8080) as the port and os.getenv(IP, 0.0.0.0) as t
 * Debugger is active!
 * Debugger PIN: 381-125-642
 ```
-Click on the https://practical-python-project-bennettpe.c9users.io. and your should see the following in your browser which confirms everything is running OK.   
-````
+Click on the https://data-centric-development-project-bennettpe.c9users.io. and your should see the following in your browser which confirms everything is running OK.   
+```
 Hello Flask
-````
+```
 ### Upgrade MongoDB
 1. Clould9 comes with Mongo support built-in but is currently an old version so needs to be upgraded to the newest version (currently 3.4.18) by typing the following command,     
    `wget -q https://git.io/vFb1J -O /tmp/setupmongodb.sh && source /tmp/setupmongodb.sh`
 
    Messages from terminal
 
-   ````
+   ```
   The following extra packages will be installed:
   mongodb-org-mongos mongodb-org-shell mongodb-org-tools
   The following NEW packages will be installed:
   mongodb-org mongodb-org-mongos mongodb-org-server mongodb-org-shell
   mongodb-org-tools
   0 upgraded, 5 newly installed, 0 to remove and 298 not upgraded.
-  ````
+  ```
 
 ### Install Flask-PyMongo
   1. To connect your MongoDB database with Flask application which will  allow your application to programmatically perform CRUD operations you need to install **flask-pymongo**, This  will install the Python 3 version of Flask-PyMongo.   
@@ -225,10 +225,10 @@ Hello Flask
 
   `sudo pip3 install flask_pymongo`
 
-  ````
+  ```
   Successfully installed flask-pymongo
   Cleaning up...
-  ````
+  ```
 
   2. Add a Bson and PyMongo to your code:
 
@@ -236,7 +236,6 @@ Hello Flask
   from bson.objectid import ObjectId
   from flask_pymongo import PyMongo
   ```
-
 
 ### Install PyMongo
   1. To work with MongoDB programmatically using Python we need to install **PyMongo** which is a driver for Python to access the MongoDB database,    First we need to install some additional libraries.
@@ -246,14 +245,14 @@ Hello Flask
 
   Messages from terminal
 
-  ````
+  ```
   The following NEW packages will be installed:
   libpython-dev libpython2.7-dev python-dev python2.7-dev
   The following packages will be upgraded:
   libpython2.7 libpython2.7-minimal libpython2.7-stdlib python2.7
   python2.7-minimal
   5 upgraded, 4 newly installed, 0 to remove and 293 not upgraded.
-  ````
+  ```
 
   Then we can install **PyMongo** ,This will install the Python 3 version of PyMongo     
 
@@ -261,10 +260,10 @@ Hello Flask
   `sudo pip3 install pymongo`
 
   Messages from terminal
-  ````
+  ```
   Successfully installed pymongo
   Cleaning up...
-  ````
+  ```
 
 ### Install Flask-Bcrypt
   1. To create bBcrypt hashing facility , I decided to use Flask-Bcrypt as per pretty you tube videos.
@@ -314,17 +313,16 @@ Hello Flask
 6. Add  Database username, Database password, Confirm password and click **create**
 7. In Flask add the following configuration code after the
 `app = Flask(__name__)` line.
-````python
+```python
 app.config["MONGO_DBNAME"] = 'task_manager'
 app.config["MONGO_URI"] = 'mongodb://admin_cookbook:project04@ds213665.mlab.com:13665/online_cookbook'
 mongo = PyMongo(app)
-````
+```
 
 ### MongoDB Collections Creation
 1. So once the **database user** has been created in "Connect Flask To MongoDB section" you can create the Collection(s) as follows,
 2. Click on **Collections**
 3. Add Collection name and click **create**
-
 
 ### Downloading Bootstrap Theme
 I decide to download and use the following free one page boostrap theme (Agency) from [StartBootstrap](https://startbootstrap.com/template-overviews/agency/)
@@ -334,19 +332,19 @@ I decide to download and use the following free one page boostrap theme (Agency)
 3. In Cloud9 environment Create a folder called **static**.  
 4. In terminal window type **cd static/**
 5. Then type **wget** and then paste copied Copy link address as below,
-````python
+```python
 $ wget $ wget https://github.com/BlackrockDigital/startbootstrap-agency/archive/gh-pages.zip
-````
+```
 6. The following zipped file will be saved in the static directory.
 7. Type **unzip gh-pages.zip** which will UnZip the file.
 8. The following directory will be created **startbootstrap-agency-gh-pages**
 9. Type
-````python
+```python
 mv startbootstrap-agency-gh-pages/css startbootstrap-agency-gh-pages/img startbootstrap-agency-gh-pages/js startbootstrap-agency-gh-pages/scss startbootstrap-agency-gh-pages/vendor .
-````
+```
 which will Move the files needed into the following file directories CSS,IMG,JS,SCSS,VENDOR
-10. Type ````rm -rf startbootstrap-agency-gh-pages/ ```` to delete unwanted files etc.
-11. Type ```` rm gh-pages.zip ```` to deleted unwanted zip file.
+10. Type ```rm -rf startbootstrap-agency-gh-pages/`` to delete unwanted files etc.
+11. Type ``` rm gh-pages.zip ``` to deleted unwanted zip file.
 
 ### Styling My Templates
 Once the Bootstrap theme has been down loaded I needed to edit my templates so it picked up the downloaded theme correctly.
@@ -355,11 +353,11 @@ Once the Bootstrap theme has been down loaded I needed to edit my templates so i
 2. Copy the **link** and **script** lines from **index.html** into **base.html** and amend directory locations.
 3. Copied rest of **index.html** code into **base.html**
 4. Created **index.htm** and added the following code,  
-````html
+```html
 {% extends 'base.html' %}
 {% block content %}
 {% endblock %}
-````
+```
 
 ### Clould9 File directory structure
 The following file directory structure was created in the Clould9 environment.
@@ -403,10 +401,10 @@ The following file directory structure was created in the Clould9 environment.
 ├── app.py                          # Flask file
 ├── forms.py                        # WTF forms file    
 ├── mongo.py                        # Manual unit testing file(s)
-├── procfile                 # App dynos Heroku file
-├── README.md                # Readme file
-├── requirements.txt         # python packages file
-└── secretkey.py             # Create secretkey
+├── procfile                        # App dynos Heroku file
+├── README.md                       # Readme file
+├── requirements.txt                # python packages file
+└── secretkey.py                    # Create secretkey
 ```
 
 ### Create Json file(s)
@@ -433,45 +431,45 @@ data-centric-development-project
     Messages from terminal<br>
 
     if you get this message
-````python
+```python
 Failed: error unmarshaling bytes on document #0: JSON decoder out of sync - data changing underfoot?
-````
+```
 Then the file is an array and you need to add `--jsonArray` to end of command.
 
- ````python
+ ```python
  connected to: ds213665.mlab.com:13665
  imported 14 documents
- ````
+ ```
 
 The **.json** file(s) were created as follows,
 
 1. With the following Column variables
 
 **allergens.json**
-````json
+```json
 {"allergen_name":"Celery"}
-````
+```
 **categories.json**
-````json
+```json
 {"category_name":"Afternoon tea"}
-````
+```
 **cuisines.json**
-````json
+```json
 [{"cuisine_name":"American",
  "cuisine_image":"https://www.bbcgoodfood.com/sites/default/files/recipe-collections/collection-image/2013/05/buffalo-wings.jpg"}]
-````
+```
 
 **difficulties.json **
-````json
+```json
 {"difficulty_name":"Easy"}
-````
+```
 **main_ingredients.json**
-````json
+```json
 {"main_ingredient":"Bacon"}
-````
+```
 
 **recipe.json**
-````json
+```json
 {"allergen_name": "Peanuts",
  "author_name": "Elena Silcock",
  "category_name": ["Vegetarian", "Vegan", "Gluten-free"],
@@ -506,7 +504,7 @@ The **.json** file(s) were created as follows,
  "ratings_score": 106,
  "servings_num": 4,
  "username": "tiggerbloggs"}
-````
+```
 
 2. These files(s) were validated using the following tool [CsvJson](https://www.csvjson.com/csv2json) before loading into mongodb using `mongoimport` command.  
 
@@ -519,16 +517,16 @@ The project guidelines stated that a Test Driven Development (TDD) approach shou
 I connected to the MongoDB **Database:online_cookbook** via the mongo shell to check connect was good - <span style="color:green">PASSED</span> <br>
 I did notice that the versions of MongoDB shell and MongoDB server did not match after applying changes as per video's, <br> Have raised comment on Slack.<br>
 The following response came back on 07/02/19 when someone else raised the same question, <br> Just replace the numbers with the version you want.
-````python
+```python
 sudo apt-get install -y mongodb-org=4.0.6 mongodb-org-server=4.0.6 mongodb-org-shell=4.0.6 mongodb-org-mongos=4.0.6 mongodb-org-tools=4.0.6
-````
-````python
+```
+```python
 MongoDB shell version v3.4.18
 connecting to: mongodb://ds213665.mlab.com:13665/online_cookbook
 MongoDB server version: 3.6.9
 WARNING: shell and server versions do not match
 Welcome to the MongoDB shell.
-````
+```
 I ran the connection test as per mLab documentation <br>
 https://docs.mlab.com/#load-data <br>
 
@@ -536,14 +534,13 @@ https://docs.mlab.com/#load-data <br>
     - Created db.mynewcollection and inserted "foo" : "bar"  
     - Confirm that the shell output matches after amending "_id"
 
- ````python
+ ```python
  rs-ds213665:PRIMARY> db.mynewcollection.insert({ "foo" : "bar" })
  WriteResult({ "nInserted" : 1 })
  rs-ds213665:PRIMARY> db.mynewcollection.find()
  { "_id" : ObjectId("5c4d6817b30a5f0e694dee60"), "foo" : "bar" }
  rs-ds213665:PRIMARY>  { "_id" : ObjectId("5c4d6817b30a5f0e694dee60"), "foo" : "bar" }
- ````
-
+ ```
 
  2. **Testing Flask-Bcrypt**, I needed to make sure that the hashing the password worked and reading a hashed password worked ok.
 
@@ -558,7 +555,7 @@ https://docs.mlab.com/#load-data <br>
        To check if hashed password = password of 'testings'
      - ** >>> bcrypt.check_password_hash(hashed_pw, 'testings'.encode('utf-8'))  **
 
-    ````python
+    ```python
     >>> bennettpe:~/workspace (master) $ python3
     Python 3.4.3 (default, Nov 17 2016, 01:08:31)
     [GCC 4.8.4] on linux
@@ -580,7 +577,7 @@ https://docs.mlab.com/#load-data <br>
 
     >>> bcrypt.check_password_hash(hashed_pw, 'testings'.encode('utf-8'))
     True
-    ````
+    ```
 
 3. ** Register **    
     I tested to make sure the following worked as designed and <span style="color:green">All passed</span>
@@ -707,7 +704,7 @@ https://docs.mlab.com/#load-data <br>
 
 1. I created some Bootstrap card grids and there was an issue with different size cards , due to image size, issue was resolved by applying the following changes to the height based on size of device. <br> See https://stackoverflow.com/a/47698201/1375163  
 
-    ````css
+    ```css
 /* Equal-height card images, cf. https://stackoverflow.com/a/47698201/1375163*/
 .card-img-top {
     /*height: 11vw;*/
@@ -737,7 +734,7 @@ https://docs.mlab.com/#load-data <br>
         height: 11vw;
     }
   }
-````
+```
 - I used open source Bootstrap theme (Creative) by [Start Bootstrap](https://startbootstrap.com/) so responsive screen issues should be ok.
 - I inspected via google chrome developer each html page on the following devices <br>(Responsive, iphone 5/se, iphone 6/7/8/plus, iphone x, ipad, ipad pro) and made any corretions as required.
 
@@ -748,16 +745,16 @@ Listed below are some of the issues I have had building the website , but they h
 * I am building the view detailed recipe in a card , tried to create a list for the recipe allergens but got the message `TypeError: string indices must be integers` so how do i just show `Eggs, Milk` in the card ?
 fixed by coding the following
 
-    ````python
+    ```python
 <span> <strong> Allergens: </strong>
  {% for allergen_name in recipes_document_by_recipe.allergen_name %}
  {{ allergen_name }}, </span>
  {% endfor %}
-    ````
+    ```
 * I am building the Add recipe html page and would like to be able to click the add new buttons to add more input fields if needed for a recipe.
 fixed by adding the following javascript code
 
-    ```` javascript
+    ```javascript
     //Add ingredients form
     $('.more-ingredients').click(function () {
         addIngredients();
@@ -779,14 +776,14 @@ fixed by adding the following javascript code
         var rem = $(this).closest('div.ing-del');
         $(rem).remove();
     });
-    ````
+    ```
 * I also had an issue with scrollspy `Uncaught TypeError: $(...).scrollspy is not a function` this was due to moving `bootstrap.bundle.js` to bottom of script to fix my form issue, i resolved both issues by downloading v4.3.1 of bootstrap.
 
 * I have this code which I want to be able to select multi allergens. I can select multi allergens , but it only seems to print out a single allergen.
 
     changed from this
 
-    ````python
+    ```python
     <!-- EDIT ALLERGEN SELECTION  -->
     <div class="form-group col-md-4">
       <label for="edit_allergen_name" class="recipe-label ml-2"> <i class="fas fa-allergies mr-2"></i> Allergen </label>
@@ -804,11 +801,11 @@ fixed by adding the following javascript code
            <!--{% endif %}-->
           {% endfor %}
         </select>
-    </div> ````         
+    </div> ```         
 
     to this
 
-    ````python
+    ```python
     <!-- EDIT ALLERGEN SELECTION(s)  -->
     <div class="form-group col-md-4">
       <label for="edit_allergen_name" class="recipe-label ml-2"> <i class="fas fa-allergies mr-2"></i> Allergen </label>
@@ -824,7 +821,7 @@ fixed by adding the following javascript code
          {% endfor %}
        </select>
     </div>
-  </div> ````       
+  </div> ```       
 
 ##### Development Testing
 * Testing for this project was implemented manually and the majority of the testing was covered by building and developing flask routes.
@@ -833,6 +830,41 @@ fixed by adding the following javascript code
 * Refactoring was implemented while developing this project and I am sure there are things that can be done to streamline code even more, in an additional phase of this project.
 
 ## Deployment Instructions
+
+##### Instructions for setting up Github Remote repository
+Connecting your local repository to your remote repository and pushing the code from your local repository to your remote repository.
+
+1. **Create new remote repository**
+    1. Sign into [GitHub](https://github.com/)
+    2. **Click** on **new** button
+    3. **Enter** Repository Name `data-centric-dev-website`
+    4. **Enter** Description (optional) `My Data Centric Development Project Repository`
+    5. **Click** on Create repository button
+
+
+2. **From Clould9**
+    1. from local repository enter the following command which can be cut and pasted from the website as below:     
+    …or push an existing repository from the command line <br>
+    ``` git remote add origin https://github.com/bennettpe/data-centric-dev-website.git ```   
+    ``` git push -u origin master ```
+
+    After entering these commands you will be asked for your github **Username** and **Password** and your local repository will be pushed to your remote repository
+    ```
+    bennettpe:~/workspace (master) $ git remote add origin https://github.com/bennettpe/data-centric-dev-website.git
+    bennettpe:~/workspace (master) $ git push -u origin master
+    Username for 'https://github.com': bennettpe
+    Password for 'https://bennettpe@github.com':
+    Counting objects: 2200, done.
+    Delta compression using up to 8 threads.
+    Compressing objects: 100% (2183/2183), done.
+    Writing objects: 100% (2200/2200), 15.36 MiB | 586.00 KiB/s, done.
+    Total 2200 (delta 453), reused 0 (delta 0)
+    remote: Resolving deltas: 100% (453/453), done.
+    To https://github.com/bennettpe/data-centric-dev-website.git
+     - [new branch]      master -> master
+    Branch master set up to track remote branch master from origin.
+    ```
+
 ##### Instructions for deploying Python app onto a hosing site: [Heroku](https://www.heroku.com/) hosing site
 
 If you have not Signed up to Heroku then you need to start from **Signing Up To Heroku** , otherwise start from **In Heroku (Part One)**
@@ -904,7 +936,7 @@ If you have not Signed up to Heroku then you need to start from **Signing Up To 
      2. Click Open app
         - Select new tab, [my data centric development project](https:// data-centric-dev-project.herokuapp.com/)
 
-### Credits (to be completed)
+### Credits
 
 #### Content
 
