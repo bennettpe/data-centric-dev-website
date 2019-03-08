@@ -165,9 +165,6 @@ def sign_out_user():
     return render_template("base.html")    
 
 
-# BY RECIPES_CUISINE_COUNT
-
-
 # BY RECIPE(S)
 @app.route('/by_recipes')
 def by_recipes():
@@ -203,7 +200,6 @@ def by_recipes():
                                     main_ingredients_list = main_ingredients_list)
 
                                     
-
 # NOT BY ALLERGENS
 @app.route('/not_by_allergen/<allergen_name>')
 def not_by_allergen(allergen_name):
