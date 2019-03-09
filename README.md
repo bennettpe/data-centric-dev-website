@@ -576,7 +576,7 @@ To generate a hashed password of **'testings'** adding (.decode('utf-8')) create
 To check if hashed password = password of 'testings'
      - `>>> bcrypt.check_password_hash(hashed_pw, 'testings'.encode('utf-8'))`
 
-```python
+```
     >>> bennettpe:~/workspace (master) $ python3
     Python 3.4.3 (default, Nov 17 2016, 01:08:31)
     [GCC 4.8.4] on linux
@@ -816,7 +816,7 @@ fixed by adding the following javascript code
 
     changed from this
 
-```python
+```html
     <!--EDIT ALLERGEN SELECTION-->
     <div class="form-group col-md-4">
       <label for="edit_allergen_name" class="recipe-label ml-2"> <i class="fas fa-allergies mr-2"></i> Allergen </label>
@@ -840,7 +840,7 @@ fixed by adding the following javascript code
     to this
 
 
-```python
+```html
     <!--EDIT ALLERGEN SELECTION(s)-->
     <div class="form-group col-md-4">
       <label for="edit_allergen_name" class="recipe-label ml-2"> <i class="fas fa-allergies mr-2"></i> Allergen </label>
