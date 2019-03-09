@@ -261,13 +261,15 @@ Hello Flask
 
   Then we can install **PyMongo** ,This will install the Python 3 version of PyMongo     
 
-  by typing the following command,   `sudo pip3 install pymongo`
+  by typing the following command,   
+  `sudo pip3 install pymongo`
 
   Messages from terminal
-  ```
+  
+```
   Successfully installed pymongo
   Cleaning up...
-  ```
+```
 
 ### Install Flask-Bcrypt
 To create bBcrypt hashing facility , I decided to use Flask-Bcrypt as per pretty you tube videos.
@@ -276,7 +278,7 @@ To create bBcrypt hashing facility , I decided to use Flask-Bcrypt as per pretty
 
   Messages from terminal
   
- ```
+```
   Successfully installed bcrypt cffi pycparser
   Cleaning up...
 ```
@@ -290,7 +292,8 @@ To create bBcrypt hashing facility , I decided to use Flask-Bcrypt as per pretty
 ### Install Flask-WTF
 To create the Register and Sign in user forms , I decided to use Flask-WTF which is a Python visualization package as it seems easy to integrate into the application <br>
 
-by typing the following command   `sudo pip3 install flask-wtf`   
+by typing the following command   
+`sudo pip3 install flask-wtf`   
     
   Messages from terminal
     
@@ -342,7 +345,7 @@ I decide to download and use the following free one page boostrap theme (Agency)
 * Then type **wget** and then paste copied Copy link address as below
 
 ```python
- $ wget https://github.com/BlackrockDigital/startbootstrap-agency/archive/gh-pages.zip
+ wget https://github.com/BlackrockDigital/startbootstrap-agency/archive/gh-pages.zip
 ```
 
 The following zipped file will be saved in the static directory.   
@@ -470,7 +473,7 @@ With the following Column variables
  "cuisine_image":"https://www.bbcgoodfood.com/sites/default/files/recipe-collections/collection-image/2013/05/buffalo-wings.jpg"}]
 ```
 
-**difficulties.json **
+**difficulties.json**
 ```json
 {"difficulty_name":"Easy"}
 ```
@@ -523,7 +526,7 @@ These files(s) were validated using the following tool [CsvJson](https://www.csv
 ### Testing
 The project guidelines stated that a Test Driven Development (TDD) approach should be taken to developing the game, But all of my testing / bug fixes was done from a manual testing approach using print() method ,Building some test* python code when I wanted to create a new piece of logic / functionality or had a issue.
 
-#### Manual Testing
+### Manual Testing
 
 **Testing connection to MongoDB from Flask**  
 
@@ -543,9 +546,8 @@ WARNING: shell and server versions do not match
 Welcome to the MongoDB shell.
 ```
 
-I ran the connection test as per mLab documentation <br>
-https://docs.mlab.com/#load-data <br>
-    Ran the following commands which
+I ran the connection test as per mLab documentation https://docs.mlab.com/#load-data <br>
+    Ran the following commands which   
     - Created db.mynewcollection and inserted "foo" : "bar"  
     - Confirm that the shell output matches after amending "_id"
 
@@ -653,20 +655,20 @@ I tested to make sure the following worked as designed and <span style="color:gr
 I tested to make sure the following worked as designed and <span style="color:green">All passed</span> <br>                  
     
 The add recipe form has the following input fields:   
-**Cuisine** (Select cusine from dropdown)  
-**Categories** (Select category(s) from dropdown) to multi-select hold cntl key  
-**Author** (Input original recipe author)  
-**Recipe name** (Input recipe name)  
-**Recipe description** (Input recipe description)  
-**Recipe image** (Input recipe url)  
-**Preperation time** (Input hh:mm)  
-**Cooking time** (Input hh:mm)  
-**Serves** (Input servings)  
-**Difficulty** (Select difficulty from dropdown  
-**Main ingredient** (Input main ingredient)  
-**Allergen** (Select allergen(s) from dropdown)to multi-select hold cntl key  
-**Ingredients** (Input ingredient) Click `Add ingredent` if more ingredients required  
-**Instructions** (Input Instructions) Click `Add instructions` if more instructions required    
+    **Cuisine** (Select cusine from dropdown)  
+    **Categories** (Select category(s) from dropdown) to multi-select hold cntl key  
+    **Author** (Input original recipe author)  
+    **Recipe name** (Input recipe name)  
+    **Recipe description** (Input recipe description)  
+    **Recipe image** (Input recipe url)  
+    **Preperation time** (Input hh:mm)  
+    **Cooking time** (Input hh:mm)  
+    **Serves** (Input servings)  
+    **Difficulty** (Select difficulty from dropdown  
+    **Main ingredient** (Input main ingredient)  
+    **Allergen** (Select allergen(s) from dropdown)to multi-select hold cntl key  
+    **Ingredients** (Input ingredient) Click `Add ingredent` if more ingredients required  
+    **Instructions** (Input Instructions) Click `Add instructions` if more instructions required    
 
 * Click on **Add recipe** button <br> (route to `'url_for('add_recipe', username=session['username'])'`) <br> if field not completed then (Message saying `Please fill in this field`) <br>
   when all fields are complete recipe is added to mongodb and <br> (Message saying `Your recipe has been added`)   
@@ -694,20 +696,20 @@ I tested to make sure the following worked as designed and <span style="color:gr
 **/edit_recipe**   
 I tested to make sure the following worked as designed and <span style="color:green">All passed</span> <br>                  
 The edit recipe form has the following fields which are filled in by the recipe to be edited:   
-**Cuisine** (cusine from dropdown)  
-**Categories** (category(s) from dropdown)  
-**Author** (original recipe author)  
-**Recipe name** recipe name)  
-**Recipe description** (recipe description)  
-**Recipe image** (recipe url)  
-**Preperation time** (hh:mm)  
-**Cooking time** (hh:mm)  
-**Serves** (servings)  
-**Difficulty** (difficulty from dropdown)  
-**Main ingredient** (main ingredient)  
-**Allergen** (allergen(s) from dropdown)  
-**Ingredients** (ingredient) Click `Add ingredent` if more ingredients required.  
-**Instructions** (Instructions) Click `Add instructions` if more instructions required.
+    **Cuisine** (cusine from dropdown)  
+    **Categories** (category(s) from dropdown)  
+    **Author** (original recipe author)  
+    **Recipe name** recipe name)  
+    **Recipe description** (recipe description)  
+    **Recipe image** (recipe url)  
+    **Preperation time** (hh:mm)  
+    **Cooking time** (hh:mm)  
+    **Serves** (servings)  
+    **Difficulty** (difficulty from dropdown)  
+    **Main ingredient** (main ingredient)  
+    **Allergen** (allergen(s) from dropdown)  
+    **Ingredients** (ingredient) Click `Add ingredent` if more ingredients required.  
+    **Instructions** (Instructions) Click `Add instructions` if more instructions required.
 
 Click on **Update recipe** button <br> (route to `/update_recipe/<recipe_id>`) <br> 
 if field not completed then (Message saying `Please fill in this field`) <br>
@@ -815,7 +817,7 @@ fixed by adding the following javascript code
     changed from this
 
 ```python
-    <!-- EDIT ALLERGEN SELECTION  -->
+    <!--EDIT ALLERGEN SELECTION-->
     <div class="form-group col-md-4">
       <label for="edit_allergen_name" class="recipe-label ml-2"> <i class="fas fa-allergies mr-2"></i> Allergen </label>
         <select multiple class="custom-select" id="edit_allergen_name" name="allergen_name" required>
@@ -833,11 +835,13 @@ fixed by adding the following javascript code
           {% endfor %}
         </select>
     </div> 
-``` 
+```
+    
     to this
 
+
 ```python
-    <!-- EDIT ALLERGEN SELECTION(s)  -->
+    <!--EDIT ALLERGEN SELECTION(s)-->
     <div class="form-group col-md-4">
       <label for="edit_allergen_name" class="recipe-label ml-2"> <i class="fas fa-allergies mr-2"></i> Allergen </label>
        <select multiple class="custom-select" id="edit_allergen_name" name="allergen_name" required>
@@ -855,7 +859,7 @@ fixed by adding the following javascript code
   </div> 
 ``` 
  
-##### Development Testing
+### Development Testing
 Testing for this project was implemented manually and the majority of the testing was covered by building and developing flask routes.
 
 ### Refactoring
