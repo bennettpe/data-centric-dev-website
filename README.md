@@ -74,11 +74,11 @@ To provide a online cookbook that users must be able to do the following
 * Ensure there's a README.md.
 
 ### How the project is best way to achieve these things ? (to be completed)
-   1 A way for users to create a unique username via a login facility.   
-   2 Create front-end form and back-end code to allow users to add new recipes to website.   
-   3 Create Front-end page to group and summarize recipes based on there attributes (e.g. cuisine, country of origin, allergens, ingredients etc...).   
-   4 Create back-end code to retrieve a list of recipes and filtered on various criteria (e.g. allergens, cuisine etc...) and order them based on some reasonable aspect (e.g. number of views or votes).   
-   5 Create front-end form and back-end code to allow users to edit recipes on website.    
+* A way for users to create a unique username via a login facility.   
+* Create front-end form and back-end code to allow users to add new recipes to website.   
+* Create Front-end page to group and summarize recipes based on there attributes (e.g. cuisine, country of origin, allergens, ingredients etc...).   
+* Create back-end code to retrieve a list of recipes and filtered on various criteria (e.g. allergens, cuisine etc...) and order them based on some reasonable aspect (e.g. number of views or votes).   
+* Create front-end form and back-end code to allow users to edit recipes on website.    
 
 ### Project Game Planning & Wireframe Mockup (wireframe to do)
 For planning see [Planning documentation](static/wireframe/My_Data_Centric_Development_Milestone_Project_Recipe_Planning.pdf) <br>
@@ -140,14 +140,13 @@ Technologies used in the construction of this project include,
 * [WTforms](https://pypi.org/project/WTForms/) a framework agnostic library handling web forms in python.
 
 ### Git
-1 Make sure once the workspace has been created in Cloud9 you create the following for git by typing the following commands,  
+Make sure once the workspace has been created in Cloud9 you create the following for git by typing the following commands,  
 * `git init` to create a empty Git repository. <br>
 * Create `.gitignore` which specifies intentionally untracked files to ignore <br>
 * Add to `.gitignore` file the ignore file(s) for the environments you are using in your workspace i.e. `Cloud9`, `Flask`, `Python` by copying ignore files from [GitIgnore](https://www.gitignore.io/) <br>
 * Also make sure you add your own personal non environmental file you would like to be excluded as well.
 
 ### Install Flask
-*
 Install Flask Framework into your workspace in Cloud9 by typing the following command     
     `sudo pip3 install Flask`  
 * Once installed you will see the following message in the Terminal Window.  
@@ -184,8 +183,8 @@ if __name__ == '__main__': # __name__ will be equal to "__main__"
             debug=True)                       # # Enable reloader and debugger.
 ```
 
-Run **run.py** to check that setup and minimal flask application runs ok in Clould9 environment.  
-Click **Run** button and your see the following in the terminal window.  
+* Run **run.py** to check that setup and minimal flask application runs ok in Clould9 environment.  
+* Click **Run** button and your see the following in the terminal window.  
 Note: That Warning message is due to debug=True
 
 ```
@@ -225,7 +224,7 @@ Hello Flask
 ```
 
 ### Install Flask-PyMongo
-  * To connect your MongoDB database with Flask application which will  allow your application to programmatically perform CRUD operations you need to install **flask-pymongo**, This  will install the Python 3 version of Flask-PyMongo.   
+* To connect your MongoDB database with Flask application which will  allow your application to programmatically perform CRUD operations you need to install **flask-pymongo**, This  will install the Python 3 version of Flask-PyMongo.   
 
   by typing the following command,
 
@@ -236,7 +235,7 @@ Hello Flask
   Cleaning up...
 ```
 
-  * Add a Bson and PyMongo to your code:
+* Add a Bson and PyMongo to your code:
 
 ```python
   from bson.objectid import ObjectId
@@ -244,26 +243,25 @@ Hello Flask
 ```
 
 ### Install PyMongo
-  * To work with MongoDB programmatically using Python we need to install **PyMongo** which is a driver for Python to access the MongoDB database, First we need to install some additional libraries.
+* To work with MongoDB programmatically using Python we need to install **PyMongo** which is a driver for Python to access the MongoDB database, First we need to install some additional libraries.
 
     by typing the following command,     
     `sudo apt-get install build-essential python-dev`
 
   Messages from terminal
 
-  ```
+```
   The following NEW packages will be installed:
   libpython-dev libpython2.7-dev python-dev python2.7-dev
   The following packages will be upgraded:
   libpython2.7 libpython2.7-minimal libpython2.7-stdlib python2.7
   python2.7-minimal
   5 upgraded, 4 newly installed, 0 to remove and 293 not upgraded.
-  ```
+```
 
   Then we can install **PyMongo** ,This will install the Python 3 version of PyMongo     
 
-  by typing the following command,   
-  `sudo pip3 install pymongo`
+  by typing the following command,   `sudo pip3 install pymongo`
 
   Messages from terminal
   ```
@@ -272,10 +270,9 @@ Hello Flask
   ```
 
 ### Install Flask-Bcrypt
-  * To create bBcrypt hashing facility , I decided to use Flask-Bcrypt as per pretty you tube videos.
+To create bBcrypt hashing facility , I decided to use Flask-Bcrypt as per pretty you tube videos.
 
-  by typing the following command,     
-  `sudo pip3 install bcrypt --user`
+  by typing the following command, `sudo pip3 install bcrypt --user`
 
   Messages from terminal
   
@@ -291,9 +288,9 @@ Hello Flask
 ```
 
 ### Install Flask-WTF
-  * To create the Register and Sign in user forms , I decided to use Flask-WTF which is a Python visualization package as it seems easy to integrate into the application <br>
-  by typing the following command
-    `sudo pip3 install flask-wtf`   
+To create the Register and Sign in user forms , I decided to use Flask-WTF which is a Python visualization package as it seems easy to integrate into the application <br>
+
+by typing the following command   `sudo pip3 install flask-wtf`   
     
   Messages from terminal
     
@@ -303,27 +300,26 @@ Hello Flask
 ```
 
 ### MongoDB Database Creation
-  1 To create a new database we need to    
+To create a new database we need to    
   * log in to mLab https://mlab.com/welcome/using using your log in credentials.     
   * or create your account if you don't have a log in.   
   
-  2 New database created called `online_cookbook`  
+New database created called `online_cookbook`  
   
-  3 To connect using mongo shell       
+To connect using mongo shell       
   `mongo ds229790.mlab.com:29790/online_cookbook -u <dbuser> -p <dbpassword>`   
   
-  4 To connect using driver via the standard MongoDB URI    
+To connect using driver via the standard MongoDB URI    
   `app.config["MONGO_URI"] = 'mongodb://admin_cookbook:project04@ds213665.mlab.com:13665/online_cookbook'`
 
 ### Connect Flask To MongoDB
-1 To connect MongoDB database `online_cookbook` via flask application we need to do the following.   
-2 In your https://mlab.com/home your see **MongoDB Deployments**   
-3 Click on **deployment** for online_cookbook   
-4 Click on **Users**   
-5 Click on  **Add database user**   
-6 Add  Database username, Database password, Confirm password and click **create**   
-7 In Flask add the following configuration code after the
-`app = Flask(__name__)` line.
+To connect MongoDB database `online_cookbook` via flask application we need to do the following.   
+In your https://mlab.com/home your see **MongoDB Deployments**   
+* Click on **deployment** for online_cookbook   
+* Click on **Users**   
+* Click on  **Add database user**   
+* Add  Database username, Database password, Confirm password and click **create**   
+In Flask add the following configuration code after the `app = Flask(__name__)` line.
 
 ```python
 app.config["MONGO_DBNAME"] = 'task_manager'
@@ -332,38 +328,38 @@ mongo = PyMongo(app)
 ```
 
 ### MongoDB Collections Creation
-1 So once the **database user** has been created in "Connect Flask To MongoDB section" you can create the Collection(s) as follows   
-2 Click on **Collections**   
-3 Add Collection name and click **create**
+So once the **database user** has been created in "Connect Flask To MongoDB section" you can create the Collection(s) as follows   
+* Click on **Collections**   
+* Add Collection name and click **create**
 
 ### Downloading Bootstrap Theme
 I decide to download and use the following free one page boostrap theme (Agency) from [StartBootstrap](https://startbootstrap.com/template-overviews/agency/)
 
-1 Right click on the **Download** Button   
-2 Click on **Copy link address**   
-3 In Cloud9 environment Create a folder called **static**  
-4 In terminal window type `cd static/`   
-5 Then type **wget** and then paste copied Copy link address as below
+* Right click on the **Download** Button   
+* Click on **Copy link address**   
+* In Cloud9 environment Create a folder called **static**  
+* In terminal window type `cd static/`   
+* Then type **wget** and then paste copied Copy link address as below
 
 ```python
-$ wget https://github.com/BlackrockDigital/startbootstrap-agency/archive/gh-pages.zip
+ $ wget https://github.com/BlackrockDigital/startbootstrap-agency/archive/gh-pages.zip
 ```
 
-6 The following zipped file will be saved in the static directory.   
-7 Type **unzip gh-pages.zip** which will UnZip the file.   
-8 The following directory will be created **startbootstrap-agency-gh-pages**   
-9 Type `mv startbootstrap-agency-gh-pages/css startbootstrap-agency-gh-pages/img startbootstrap-agency-gh-pages/js startbootstrap-agency-gh-pages/scss startbootstrap-agency-gh-pages/vendor`
-which will Move the files needed into the following file directories CSS,IMG,JS,SCSS,VENDOR   
-10 Type `rm -rf startbootstrap-agency-gh-pages/` to delete unwanted files etc.   
-11 Type ` rm gh-pages.zip ` to deleted unwanted zip file.
+The following zipped file will be saved in the static directory.   
+* Type **unzip gh-pages.zip** which will UnZip the file.   
+The following directory will be created **startbootstrap-agency-gh-pages**   
+* Type `mv startbootstrap-agency-gh-pages/css startbootstrap-agency-gh-pages/img startbootstrap-agency-gh-pages/js startbootstrap-agency-gh-pages/scss startbootstrap-agency-gh-pages/vendor`   
+  which will Move the files needed into the following file directories CSS,IMG,JS,SCSS,VENDOR   
+* Type `rm -rf startbootstrap-agency-gh-pages/` to delete unwanted files etc.   
+* Type ` rm gh-pages.zip ` to deleted unwanted zip file.
 
 ### Styling My Templates
 Once the Bootstrap theme has been down loaded I needed to edit my templates so it picked up the downloaded theme correctly.
 
-1 Go to the github page of the theme (Creative) https://github.com/BlackrockDigital/startbootstrap-creative  
-2 Copy the **link** and **script** lines from **index.html** into **base.html** and amend directory locations.   
-3 Copied rest of **index.html** code into **base.html**   
-4 Created **index.htm** and added the following code
+* Go to the github page of the theme (Creative) https://github.com/BlackrockDigital/startbootstrap-creative  
+* Copy the **link** and **script** lines from **index.html** into **base.html** and amend directory locations.   
+* Copied rest of **index.html** code into **base.html**   
+* Created **index.htm** and added the following code
 
 ```html
 {% extends 'base.html' %}
@@ -436,7 +432,7 @@ data-centric-development-project
 ```
 
 ### Connect Flask To MongoDB to load .json files
-1 Connect MongoDB database `online_cookbook` via flask application. <br>
+Connect MongoDB database `online_cookbook` via flask application. <br>
 
     by typing the following command which imports the .json file,     
     `mongoimport -h ds213665.mlab.com:13665 -d online_cookbook -c cuisines -u <user> -p <password> --file ./static/data/json/cuisines.json` 
@@ -456,7 +452,7 @@ Then the file is an array and you need to add `--jsonArray` to end of command.
 
 The **.json** file(s) were created as follows,
 
-1 With the following Column variables
+With the following Column variables
 
 **allergens.json**
 ```json
@@ -522,14 +518,15 @@ The **.json** file(s) were created as follows,
  "username": "tiggerbloggs"}
 ```
 
-2 These files(s) were validated using the following tool [CsvJson](https://www.csvjson.com/csv2json) before loading into mongodb using `mongoimport` command.  
+These files(s) were validated using the following tool [CsvJson](https://www.csvjson.com/csv2json) before loading into mongodb using `mongoimport` command.  
 
 ### Testing
 The project guidelines stated that a Test Driven Development (TDD) approach should be taken to developing the game, But all of my testing / bug fixes was done from a manual testing approach using print() method ,Building some test* python code when I wanted to create a new piece of logic / functionality or had a issue.
 
 #### Manual Testing
 
-1 **Testing connection to MongoDB from Flask**   
+**Testing connection to MongoDB from Flask**  
+
 I connected to the MongoDB **Database:online_cookbook** via the mongo shell to check connect was good - <span style="color:green">PASSED</span> <br>
 I did notice that the versions of MongoDB shell and MongoDB server did not match after applying changes as per video's <br> Have raised comment on Slack.<br>
 The following response came back on 07/02/19 when someone else raised the same question, <br> Just replace the numbers with the version you want.
@@ -560,7 +557,8 @@ https://docs.mlab.com/#load-data <br>
  rs-ds213665:PRIMARY>  { "_id" : ObjectId("5c4d6817b30a5f0e694dee60"), "foo" : "bar" }
 ```
 
- 2 **Testing Flask-Bcrypt**   
+**Testing Flask-Bcrypt**   
+
  I needed to make sure that the hashing the password worked and reading a hashed password worked ok.
 
  I ran the following checks as per Corey Schafer youtube video `Python Flask Tutorial: Full-Featured Web App Part 6 - User Authentication`
@@ -600,8 +598,8 @@ To check if hashed password = password of 'testings'
     True
 ```
 
-3 **Register**    
-    I tested to make sure the following worked as designed and <span style="color:green">All passed</span>
+**Register**    
+I tested to make sure the following worked as designed and <span style="color:green">All passed</span>
 
 * Enter **username** (Field must be between 5 and 15 characters long)  
 * Enter **password** (Field must be 8 charaters long)                 
@@ -611,8 +609,8 @@ To check if hashed password = password of 'testings'
 * Click on `Already Have An Account Sign` link (route to `/sign_in_user`)
 
 
-4 **Sign-in**    
-    I tested to make sure the following worked as designed and <span style="color:green">All passed</span>    
+**Sign-in**    
+I tested to make sure the following worked as designed and <span style="color:green">All passed</span>    
     
 * Enter **username**   
 * Enter **invalid username** (Does not sign-in)   
@@ -623,107 +621,115 @@ To check if hashed password = password of 'testings'
 * Click on **sign-in button** (route to `/base`) 
 
 
-5 **Sign-out**   
-    I tested to make sure the following worked as designed and <span style="color:green">All passed</span>
+**Sign-out**   
+I tested to make sure the following worked as designed and <span style="color:green">All passed</span>
 
-* When click on **sign out icon** (Message saying `You have signed out`)
+* When click on **sign out icon** <br> (Message saying `You have signed out`)
 
 
-6 **NavBar**    
-    I tested to make sure the following worked as designed and <span style="color:green">All passed</span>
+**NavBar**    
+I tested to make sure the following worked as designed and <span style="color:green">All passed</span>
 
-* When `signed in` you see the following icons (Home, All Recipes, Add Recipes, My Recipes & Sign Out)   
+When `signed in` you see the following icons <br> (Home, All Recipes, Add Recipes, My Recipes & Sign Out)   
 * Click on **Add Recipes** icon (route to `/<username>/add_recipe`)   
 * Click on **My Recipes** icon (route to `/<username>/by_my_recipes`) <br> if there are no recipes by username (Message saying `You don't have any recipes !`)   
-* When `not signed` in you see the following icons (Home, All Recipes, Add Recipes, Sign in & Register)   
+  When `not signed` in you see the following icons (Home, All Recipes, Add Recipes, Sign in & Register)   
 * Click on **Home** icon (route to `/base)`   
 * Click on **All Recipes** icon (route to `/by_recipes)`   
 * Click on **sign in** icon (route to `/sign_in_user)`   
 * Click on **Register** icon (route to `/register_user)`   
 
 
-7 **/base**    
-    I tested to make sure the following worked as designed and <span style="color:green">All passed</span> <br>    
+**/base**    
+I tested to make sure the following worked as designed and <span style="color:green">All passed</span> <br>    
 * When `signed in` you see the following buttons **(Add Recipes, All Recipes, My Recipes)** <br>
-* Click on **Add Recipes** button (route to `/<username>/add_recipe`)   
-* Click on **All Recipes** button (route to `/by_recipes`)   
-* Click on **My recipes** button (route to `/<username/by_my_recipes`)<br> if there are no recipes by username (Message saying `You don't have any recipes !`)   
+* Click on **Add Recipes** button <br> (route to `/<username>/add_recipe`)   
+* Click on **All Recipes** button <br> (route to `/by_recipes`)   
+* Click on **My recipes** button <br> (route to `/<username/by_my_recipes`)<br> if there are no recipes by username <br> (Message saying `You don't have any recipes !`)   
 * Welcome message shows username signed in.
 
 
-8 **/add_recipe**   
-    I tested to make sure the following worked as designed and <span style="color:green">All passed</span> <br>                  
+**/add_recipe**   
+I tested to make sure the following worked as designed and <span style="color:green">All passed</span> <br>                  
     
 The add recipe form has the following input fields:   
- * **Cuisine** (Select cusine from dropdown)  
- * **Categories** (Select category(s) from dropdown) to multi-select hold cntl key  
- * **Author** (Input original recipe author)  
- * **Recipe name** (Input recipe name)  
- * **Recipe description** (Input recipe description)  
- * **Recipe image** (Input recipe url)  
- * **Preperation time** (Input hh:mm)  
- * **Cooking time** (Input hh:mm)  
- * **Serves** (Input servings)  
- * **Difficulty** (Select difficulty from dropdown  
- * **Main ingredient** (Input main ingredient)  
- * **Allergen** (Select allergen(s) from dropdown)to multi-select hold cntl key  
- * **Ingredients** (Input ingredient) Click `Add ingredent` if more ingredients required  
- * **Instructions** (Input Instructions) Click `Add instructions` if more instructions required    
- * Click on **Add recipe** button (route to `'url_for('add_recipe', username=session['username'])'`) <br> if field not completed then (Message saying `Please fill in this field`) <br>
-   when all fields are complete recipe is added to mongodb and (Message saying `Your recipe has been added`)   
- * Click on **Cancel** button (route to `/base` )
+**Cuisine** (Select cusine from dropdown)  
+**Categories** (Select category(s) from dropdown) to multi-select hold cntl key  
+**Author** (Input original recipe author)  
+**Recipe name** (Input recipe name)  
+**Recipe description** (Input recipe description)  
+**Recipe image** (Input recipe url)  
+**Preperation time** (Input hh:mm)  
+**Cooking time** (Input hh:mm)  
+**Serves** (Input servings)  
+**Difficulty** (Select difficulty from dropdown  
+**Main ingredient** (Input main ingredient)  
+**Allergen** (Select allergen(s) from dropdown)to multi-select hold cntl key  
+**Ingredients** (Input ingredient) Click `Add ingredent` if more ingredients required  
+**Instructions** (Input Instructions) Click `Add instructions` if more instructions required    
+
+* Click on **Add recipe** button <br> (route to `'url_for('add_recipe', username=session['username'])'`) <br> if field not completed then (Message saying `Please fill in this field`) <br>
+  when all fields are complete recipe is added to mongodb and <br> (Message saying `Your recipe has been added`)   
+
+* Click on **Cancel** button <br> (route to `/base` )
 
 
-9 **/by_recipes**   
-    I tested to make sure the following worked as designed and <span style="color:green">All passed</span>   
-* Click on **allergens** button to search dropdown for recipes by not allergen  (route to `/not_by_allergen/<allergen_name>`)   
-* Click on **Category** button to search dropdown for recipes by category (route to `/by_category/<category_name>`)   
-* Click on **Difficulty** button to search dropdown for recipes by category (route to `/by_difficulty/<difficulty_name>`)   
-* Click on **Main ingredient** button to search dropdown for recipes by category  (route to `/by_main_ingredient/<main_ingredient>`)   
-* Click on **Cuisine Card** to search for recipes by cuisine (route to `/by_cuisine/<cuisine_name>`) each cuisine card shows number of recipes by cuisine.   
+**/by_recipes**   
+I tested to make sure the following worked as designed and <span style="color:green">All passed</span>   
+* Click on **allergens** button to search dropdown for recipes by not allergen <br> (route to `/not_by_allergen/<allergen_name>`)   
+* Click on **Category** button to search dropdown for recipes by category <br> (route to `/by_category/<category_name>`)   
+* Click on **Difficulty** button to search dropdown for recipes by category <br> (route to `/by_difficulty/<difficulty_name>`)   
+* Click on **Main ingredient** button to search dropdown for recipes by category <br> (route to `/by_main_ingredient/<main_ingredient>`)   
+* Click on **Cuisine Card** to search for recipes by cuisine <br> (route to `/by_cuisine/<cuisine_name>`) each cuisine card shows number of recipes by cuisine.   
 
 
-10 **/by_my_recipes**   
-    I tested to make sure the following worked as designed and <span style="color:green">All passed</span> <br>
-* Click on **My Recipes** icon to view recipes by username (route to `/<username>/by_my_recipes`) <br> if there are no recipes by username (Message saying `You don't have any recipes !`)   
-* Click on **recipe card** to view recipe details (route to `/view_my_details_recipe/<recipe_id>`)   
-* Click on **Delete recipe** button to delete recipe (route to `/<username>/delete_recipe/<recipe_id>'`)   
-* Click on **Edit recipe** button to edit recipe (route to `/<username>/edit_recipe/<recipe_id>'`) you will see edit recipe form.   
+**/by_my_recipes**   
+I tested to make sure the following worked as designed and <span style="color:green">All passed</span> <br>
+* Click on **My Recipes** icon to view recipes by username <br> (route to `/<username>/by_my_recipes`) <br> if there are no recipes by username (Message saying `You don't have any recipes !`)   
+* Click on **recipe card** to view recipe details <br> (route to `/view_my_details_recipe/<recipe_id>`)   
+* Click on **Delete recipe** button to delete recipe <br> (route to `/<username>/delete_recipe/<recipe_id>'`)   
+* Click on **Edit recipe** button to edit recipe <br> (route to `/<username>/edit_recipe/<recipe_id>'`) you will see edit recipe form.   
 
 
-11 **/edit_recipe**   
-    I tested to make sure the following worked as designed and <span style="color:green">All passed</span> <br>                  
-    The edit recipe form has the following fields which are filled in by the recipe to be edited:   
-* **Cuisine** (cusine from dropdown)
-* **Categories** (category(s) from dropdown)
-* **Author** (original recipe author)
-* **Recipe name** recipe name)
-* **Recipe description** (recipe description)
-* **Recipe image** (recipe url)
-* **Preperation time** (hh:mm)
-* **Cooking time** (hh:mm)
-* **Serves** (servings)
-* **Difficulty** (difficulty from dropdown)
-* **Main ingredient** (main ingredient)
-* **Allergen** (allergen(s) from dropdown)
-* **Ingredients** (ingredient) Click `Add ingredent` if more ingredients required.
-* **Instructions** (Instructions) Click `Add instructions` if more instructions required. <br>
-* Click on **Update recipe** button (route to `/update_recipe/<recipe_id>`) <br> if field not completed then (Message saying `Please fill in this field`) <br>
-  when all fields are complete recipe is updated on mongodb   
-* Click on **Cancel** button (route to `/base` )
+**/edit_recipe**   
+I tested to make sure the following worked as designed and <span style="color:green">All passed</span> <br>                  
+The edit recipe form has the following fields which are filled in by the recipe to be edited:   
+**Cuisine** (cusine from dropdown)  
+**Categories** (category(s) from dropdown)  
+**Author** (original recipe author)  
+**Recipe name** recipe name)  
+**Recipe description** (recipe description)  
+**Recipe image** (recipe url)  
+**Preperation time** (hh:mm)  
+**Cooking time** (hh:mm)  
+**Serves** (servings)  
+**Difficulty** (difficulty from dropdown)  
+**Main ingredient** (main ingredient)  
+**Allergen** (allergen(s) from dropdown)  
+**Ingredients** (ingredient) Click `Add ingredent` if more ingredients required.  
+**Instructions** (Instructions) Click `Add instructions` if more instructions required.
+
+Click on **Update recipe** button <br> (route to `/update_recipe/<recipe_id>`) <br> 
+if field not completed then (Message saying `Please fill in this field`) <br>
+when all fields are complete recipe is updated on mongodb   
+
+Click on **Cancel** button <br> (route to `/base` )
 
 
-12 **/by_cuisine**   
-    I tested to make sure the following worked as designed and <span style="color:green">All passed</span> <br>
-* Click on `recipe card` to view recipe details (route to `/view_details_recipe/<recipe_id>`)   
-* Click on **Return to recipes** button to return to (route to `by_recipes`)   
-* Click on **Vote like** button to vote like recipe and increase ratings in recipe card (route to `/vote_like_recipe/<recipe_id>/<cuisine_name>`)   
-* Click on **Vote dislike** button to vote dislike recipe and decrease ratings in recipe card (route to `/vote_dislike_recipe/<recipe_id>/<cuisine_name>`)   
-* Both vote_like_recipe and vote_dislike_recipe (redirect to `return redirect(url_for('vote_if_negative',cuisine_name=cuisine_name))`) to check if votes are not negative then (redirect to `return redirect(url_for('by_cuisine',cuisine_name=cuisine_name))`      
+**/by_cuisine**   
+I tested to make sure the following worked as designed and <span style="color:green">All passed</span> <br>
+* Click on `recipe card` to view recipe details <br> (route to `/view_details_recipe/<recipe_id>`)   
+* Click on **Return to recipes** button to return to <br> (route to `by_recipes`)   
+* Click on **Vote like** button to vote like recipe and increase ratings in recipe card <br> (route to `/vote_like_recipe/<recipe_id>/<cuisine_name>`)   
+* Click on **Vote dislike** button to vote dislike recipe and decrease ratings in recipe card <br> (route to `/vote_dislike_recipe/<recipe_id>/<cuisine_name>`)   
+* Both vote_like_recipe and vote_dislike_recipe <br> 
+(redirect to `return redirect(url_for('vote_if_negative',cuisine_name=cuisine_name))`) <br>
+to check if votes are not negative then <br>
+(redirect to `return redirect(url_for('by_cuisine',cuisine_name=cuisine_name))`      
 
 #### Responsive screen testing
 
-* I created some Bootstrap card grids and there was an issue with different size cards , due to image size, issue was resolved by applying the following changes to the height based on size of device. <br> See https://stackoverflow.com/a/47698201/1375163  
+I created some Bootstrap card grids and there was an issue with different size cards , due to image size, issue was resolved by applying the following changes to the height based on size of device. <br> See https://stackoverflow.com/a/47698201/1375163  
 
 ```css
 /* Equal-height card images, cf. https://stackoverflow.com/a/47698201/1375163*/
@@ -757,8 +763,9 @@ The add recipe form has the following input fields:
   }
 ```
 
-* I used open source Bootstrap theme (Creative) by [Start Bootstrap](https://startbootstrap.com/) so responsive screen issues should be ok.
-* I inspected via google chrome developer each html page on the following devices <br>(Responsive, iphone 5/se, iphone 6/7/8/plus, iphone x, ipad, ipad pro) and made any corretions as required.
+I used open source Bootstrap theme (Creative) by [Start Bootstrap](https://startbootstrap.com/) so responsive screen issues should be ok.
+
+I inspected via google chrome developer each html page on the following devices <br>(Responsive, iphone 5/se, iphone 6/7/8/plus, iphone x, ipad, ipad pro) and made any corretions as required.
 
 #### Bugs and Issues
 Listed below are some of the issues I have had building the website , but they have all been resolved.
@@ -849,31 +856,32 @@ fixed by adding the following javascript code
 ``` 
  
 ##### Development Testing
-* Testing for this project was implemented manually and the majority of the testing was covered by building and developing flask routes.
+Testing for this project was implemented manually and the majority of the testing was covered by building and developing flask routes.
 
 ### Refactoring
-* Refactoring was implemented while developing this project and I am sure there are things that can be done to streamline code even more, in an additional phase of this project.
+Refactoring was implemented while developing this project and I am sure there are things that can be done to streamline code even more, in an additional phase of this project.
 
 ## Deployment Instructions
 
 ##### Instructions for setting up Github Remote repository
 Connecting your local repository to your remote repository and pushing the code from your local repository to your remote repository.
 
-1 **Create new remote repository**
-* **Sign into** [GitHub](https://github.com/)
-* **Click** on **new** button
-* **Enter** Repository Name `data-centric-dev-website`
-* **Enter** Description (optional) `My Data Centric Development Project Repository`
+**Create new remote repository**  
+* **Sign into** [GitHub](https://github.com/)  
+* **Click** on **new** button  
+* **Enter** Repository Name `data-centric-dev-website`  
+* **Enter** Description (optional) `My Data Centric Development Project Repository`  
 * **Click** on Create repository button
 
 
-2 **From Clould9**
-    1. from local repository enter the following command which can be cut and pasted from the website as below:     
-    …or push an existing repository from the command line <br>
+**From Clould9**  
+from local repository enter the following command which can be cut and pasted from the website as below:     
+    …or push an existing repository from the command line   
+    
     `git remote add origin https://github.com/bennettpe/data-centric-dev-website.git`   
     `git push -u origin master`
 
-    After entering these commands you will be asked for your github **Username** and **Password** and your local repository will be pushed to your remote repository
+After entering these commands you will be asked for your github **Username** and **Password** and your local repository will be pushed to your remote repository
 ```
     bennettpe:~/workspace (master) $ git remote add origin https://github.com/bennettpe/data-centric-dev-website.git
     bennettpe:~/workspace (master) $ git push -u origin master
@@ -894,7 +902,7 @@ Connecting your local repository to your remote repository and pushing the code 
 
 If you have not Signed up to Heroku then you need to start from **Signing Up To Heroku** , otherwise start from **In Heroku (Part One)**
 
-1 **Signing Up To Heroku**
+**Signing Up To Heroku**
 * Sign up to [Heroku](https://id.heroku.com/login)   
 * Click on New to Heroku? `Sign Up` at the bottom of the Log in to your account panel.   
 * Complete the Form by entering your details as required and in 'Primary Development Language Box' Enter `Python`.  
@@ -902,25 +910,26 @@ If you have not Signed up to Heroku then you need to start from **Signing Up To 
 * Open the 'Verification Email' and click on the link and you will be prompted to Enter a password and click `Here To Proceed button`.  
 
 
-2 **Heroku Checklist**
-    The following needs to be created  
-* Create a requirements.txt file.  
-* Create a Procfile file.  
-* Create a new Heroku app.  
-* Create any Config variables.  
-* Push the code to Heroku.
+**Heroku Checklist**
+The following needs to be created  
+
+Create a requirements.txt file.  
+Create a Procfile file.  
+Create a new Heroku app.  
+Create any Config variables.  
+Push the code to Heroku.
 
 
-3 **In Heroku (Create app)**
-* **Log in** to [Heroku](https://id.heroku.com/login)   
+**In Heroku (Create app)**
+**Log in** to [Heroku](https://id.heroku.com/login)   
 * Select **New** and **Create new app**.   
 * Create **App name** > Select **Choose a region** > Then **Create app**   
 
 
-4 **From Cloud9 (Readying for deployment)**   
-* Making the **app.py** file ready for deployment  
+**From Cloud9 (Readying for deployment)**   
+Making the **app.py** file ready for deployment  
 
-   We need to make the secret key an environment variable and its going to look for a variable called `SECRET` , the 2nd argument is the default value if Flask cannot find the variable called SECRET, so we apply the following changes in the app.secret_key method.
+* We need to make the secret key an environment variable and its going to look for a variable called `SECRET` , the 2nd argument is the default value if Flask cannot find the variable called SECRET, so we apply the following changes in the app.secret_key method.
 
 ```python
     app.secret_key = os.getenv("SECRET", "5149fde2f2f15a6f77dddf0f319b20c6")
@@ -933,31 +942,41 @@ If you have not Signed up to Heroku then you need to start from **Signing Up To 
 ```
 
 * Type in the following command in the terminal window, which creates the **Procfile file** (Remember to use a capital P in Procfile).   
-  `echo web: python app.py > Procfile`  
-  The **Procfile** file contains `web: python app.py` which tells Heroku to start a process called web and to run `python app.py` when it starts.
+  `echo web: python app.py > Procfile` 
+  
+* The **Procfile** file contains `web: python app.py` which tells Heroku to start a process called web and to run `python app.py` when it starts.
+
 * Type in the following command in the terminanl window, which creates the pip **requirements.txt file**.   
   `sudo pip3 freeze --local > requirements.txt`  
-  The **requirements.txt** file contains a list of items to be installed, defining the modules imported to Heroku:      
+
+* The **requirements.txt** file contains a list of items to be installed, defining the modules imported to Heroku:      
+
 * Type in the following command in the terminal window which adds all project files: `$ git add .`
+
 * Type in the following command in the terminal window to create a default message for the first commit to Heroku: `$ git commit -m "Added Procfile for deployment"`
+
 * Type in the following command into the terminal window to run the heroku login command `$ heroku login`
+
 * Type into the terminal window your email address and password.
+
 * Type into the terminl window `$ git remote -v` Heroku references have already been added.
+
 * Now you are logged into Heroku you need to create a new heroku app by typing the following command `$ heroku apps:create data-centric-dev-project`,once created it will also give us a git address as well.
+
 * Before we push our app to Heroku we need to set our enviroment variables `https://dashboard.heroku.comm/apps`
 
 
-5 **In Heroku (Config vars)**   
+**In Heroku (Config vars)**   
 * Refresh the Heroku dashboard and you should see your new heroku app `my-data-centric-dev-project` has been created, Click on that and then go to `Settings` > `Reveal Config Vars`, at the moment we don't have any config vars.   
 * So in the Key field enter `SECRET` and in the Value field enter `"5149fde2f2f15a6f77dddf0f319b20c6"` and then click on Add Button.  
 
 
-6   **In Cloud9 (Build the source)**   
+**In Cloud9 (Build the source)**   
 * Once that's gone we can Push the project to Heroku so we go back into cloud9 terminal window and type the following command  `$ git push -u heroku master` this will build the source and then install everything from the requirements.txt file, watch the installation log for error.   
   This has now deployed our app to Heroku.
 
 
-7 **In Heroku (Open app)**    
+**In Heroku (Open app)**    
 * Click Open app
 * Select new tab, [my data centric development project](https:// data-centric-dev-project.herokuapp.com/)
 
