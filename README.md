@@ -313,7 +313,7 @@ To connect using mongo shell
   `mongo ds229790.mlab.com:29790/online_cookbook -u <dbuser> -p <dbpassword>`   
   
 To connect using driver via the standard MongoDB URI    
-  `app.config["MONGO_URI"] = 'mongodb://admin_cookbook:project04@ds213665.mlab.com:13665/online_cookbook'`
+  `app.config["MONGO_URI"] = 'mongodb://<dbuser>:<dbpassword>@ds213665.mlab.com:13665/online_cookbook'`
 
 ### Connect Flask To MongoDB
 To connect MongoDB database `online_cookbook` via flask application we need to do the following.   
@@ -326,7 +326,7 @@ In Flask add the following configuration code after the `app = Flask(__name__)` 
 
 ```python
 app.config["MONGO_DBNAME"] = 'task_manager'
-app.config["MONGO_URI"] = 'mongodb://admin_cookbook:project04@ds213665.mlab.com:13665/online_cookbook'
+app.config["MONGO_URI"] = 'mongodb://<dbuser>:<dbpassword>@ds213665.mlab.com:13665/online_cookbook'
 mongo = PyMongo(app)
 ```
 
@@ -574,7 +574,7 @@ I ran the connection test as per mLab documentation https://docs.mlab.com/#load-
 To generate a hashed password of **'testings'** adding (.decode('utf-8')) creates a string. <br>
      - `>>> hashed_pw = bcrypt.generate_password_hash('testings').decode('utf-8')` <br>
 
-To check if hashed password = password of 'testings' <br>d
+To check if hashed password = password of 'testings' <br>
      - `>>> bcrypt.check_password_hash(hashed_pw, 'testings'.encode('utf-8'))`
 
 ```
