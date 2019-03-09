@@ -563,7 +563,8 @@ I ran the connection test as per mLab documentation https://docs.mlab.com/#load-
 
  I needed to make sure that the hashing the password worked and reading a hashed password worked ok.
 
- I ran the following checks as per Corey Schafer youtube video `Python Flask Tutorial: Full-Featured Web App Part 6 - User Authentication`
+ I ran the following checks as per Corey Schafer youtube video <br> 
+ `Python Flask Tutorial: Full-Featured Web App Part 6 - User Authentication`
  https://youtu.be/CSHx6eCkmv0 <br>
  
  Ran the following commands after logging into python <br>
@@ -573,7 +574,7 @@ I ran the connection test as per mLab documentation https://docs.mlab.com/#load-
 To generate a hashed password of **'testings'** adding (.decode('utf-8')) creates a string. <br>
      - `>>> hashed_pw = bcrypt.generate_password_hash('testings').decode('utf-8')` <br>
 
-To check if hashed password = password of 'testings'
+To check if hashed password = password of 'testings' <br>d
      - `>>> bcrypt.check_password_hash(hashed_pw, 'testings'.encode('utf-8'))`
 
 ```
@@ -836,9 +837,8 @@ fixed by adding the following javascript code
         </select>
     </div> 
 ```
-    
-    to this
 
+to this
 
 ```html
     <!--EDIT ALLERGEN SELECTION(s)-->
