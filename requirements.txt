@@ -5,7 +5,7 @@ cffi==1.11.5
 Click==7.0
 CodeIntel==0.9.3
 configparser==3.7.4
-Django==1.11.21
+Django==1.11.28
 Flask==1.0.2
 Flask-Bcrypt==0.7.1
 Flask-PyMongo==2.2.0
