@@ -477,7 +477,6 @@ def vote_if_negative(cuisine_name):
             })
     return redirect(url_for('by_cuisine',
                              cuisine_name=cuisine_name))
-
-    
+   
 if __name__ == '__main__':
-     app.run(host=os.getenv("IP", "0.0.0.0"), port=int(os.getenv('PORT',"5000")), debug=False)  
+    app.run(host=os.getenv("IP", "0.0.0.0"), port=int(os.getenv('PORT',"5000")), debug=False)  
