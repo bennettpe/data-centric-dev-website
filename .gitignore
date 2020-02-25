@@ -2,7 +2,6 @@
 static/data/json/
 mongo.py
 secretkey.pymongo.py
-.vscode/
 venv-requirements.txt
 
 
