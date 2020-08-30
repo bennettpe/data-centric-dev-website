@@ -6,16 +6,20 @@ from flask_bcrypt import Bcrypt
 from flask_wtf import FlaskForm
 from forms import RegisterForm, SigninForm
 
+if os.path.exists("env.py"):
+    import env
+
 app = Flask(__name__)
+
 app.secret_key = os.getenv("SECRET", "5149fde2f2f15a6f77dddf0f319b20c6")
 
 # BCRYPT CONFIGURATION
 bcrypt = Bcrypt(app)
 
 # MONGODB CONFIGURATION
-app.config["MONGO_DBNAME"] = 'task_manager'
-app.config["MONGO_URI"] = 'mongodb://admin_cookbook:project04@ds213665.mlab.com:13665/online_cookbook'
-                           
+app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
+app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
+                          
 mongo = PyMongo(app)
     
 # FUNCTION: GET ALLERGENS DB DOCUMENT

@@ -3,6 +3,7 @@ static/data/json/
 mongo.py
 secretkey.pymongo.py
 venv-requirements.txt
+env.py
 
 
 # Created by https://www.gitignore.io/api/python,flask,virtualenv,visualstudiocode
